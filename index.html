@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ada Bungalow Uzungöl | Quiet Luxury in the Mist</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Private villas. Panoramic forest. Quiet luxury in Uzungöl's misty mountains.">
+    <meta name="keywords" content="Ada Bungalow, Uzungöl, luxury villa, quiet luxury, forest retreat">
+    <meta property="og:title" content="Ada Bungalow | Where Mist Meets Luxury">
+    <meta property="og:description" content="Experience quiet luxury in the heart of Uzungöl's ancient forests.">
+    <meta property="og:image" content="images/bungalow-gallery/IMG_8723.JPG">
+    <meta property="og:type" content="website">
+    
+    <!-- Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://api.openweathermap.org">
+    
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="premium-polish.css">
+    <link rel="stylesheet" href="footer-premium.css">
+    <link rel="stylesheet" href="booking-premium.css">
+    <link rel="stylesheet" href="booking-luxury.css">
+    <link rel="stylesheet" href="booking-ultimate.css">
+    <link rel="stylesheet" href="booking-mobile.css">
+    <link rel="stylesheet" href="hero-supreme.css">
+    <link rel="stylesheet" href="animation-fixes.css">
+    <link rel="stylesheet" href="villa-borders.css">
+    <link rel="stylesheet" href="rtl-styles.css">
+    <!-- Just spacing adjustments, no background -->
+    <link rel="stylesheet" href="spacing-adjustments.css">
+    
+    <!-- GSAP & ScrollTrigger for sexy animations -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    
+    <!-- Lenis for buttery smooth scrolling -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+</head>
+<body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+    
+    <!-- Accessibility -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    
+    <!-- Preloader -->
+    <div class="preloader" aria-hidden="true">
+        <svg class="preloader-svg" viewBox="0 0 120 120">
+            <path class="preloader-path" d="M 60 10 Q 90 30 90 60 Q 90 90 60 90 Q 30 90 30 60 Q 30 30 60 10" />
+        </svg>
+    </div>
+    
+    <!-- Header -->
+    <header class="header-minimal" role="banner">
+        <div class="header-content">
+            <a href="#" class="logotype" aria-label="Ada Bungalow Home">
+                <span class="logo-text">ADA BUNGALOW</span>
+                <span class="hairline" aria-hidden="true"></span>
+            </a>
+            <div class="weather-chip" role="status" aria-live="polite">
+                <span class="weather-temp">18°C</span>
+                <span class="sep" aria-hidden="true"></span>
+                <span class="weather-desc">Partly cloudy</span>
+                <span class="sep" aria-hidden="true"></span>
+                <span class="weather-location">Uzungöl</span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main">
+        
+        <!-- Hero Section -->
+        <section class="hero-supreme" role="region" aria-label="Welcome">
+            <!-- Cinematic Background Layers -->
+            <div class="hero-backdrop">
+                <div class="hero-video-container">
+                    <img src="images/bungalow-gallery/IMG_8723.JPG" alt="" class="hero-image" loading="eager">
+                    <div class="hero-gradient-overlay"></div>
+                </div>
+                <div class="hero-particles" aria-hidden="true">
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                </div>
+                <div class="hero-mist" aria-hidden="true"></div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="hero-stage">
+                <div class="hero-inner">
+                    <!-- Top Badge -->
+                    <div class="hero-badge">
+                        <span class="badge-line"></span>
+                        <span class="badge-text">EST. 2020</span>
+                        <span class="badge-line"></span>
+                    </div>
+                    
+                    <!-- Main Title Composition -->
+                    <div class="hero-composition">
+                        <span class="hero-serif">Ada</span>
+                        <h1 class="hero-headline">
+                            <span class="line line-1">
+                                <span class="word">Where</span>
+                                <span class="word">mountains</span>
+                            </span>
+                            <span class="line line-2">
+                                <span class="word">whisper</span>
+                                <span class="word italic">luxury</span>
+                            </span>
+                        </h1>
+                        <span class="hero-serif">Bungalow</span>
+                    </div>
+                    
+                    <!-- Subtitle with Motion -->
+                    <div class="hero-description">
+                        <p class="hero-prose">
+                            <span class="prose-line">Suspended between earth and sky,</span>
+                            <span class="prose-line">where morning mist embraces</span>
+                            <span class="prose-line">architectural poetry</span>
+                        </p>
+                    </div>
+                    
+                    <!-- Premium CTA Group -->
+                    <div class="hero-actions">
+                        <a href="#availability" class="btn-supreme btn-gold">
+                            <span class="btn-bg"></span>
+                            <span class="btn-inner">
+                                <span class="btn-label">Begin Your Journey</span>
+                                <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M5 12h14m-7-7l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+                        <button class="btn-play" aria-label="Play video">
+                            <span class="play-ring"></span>
+                            <span class="play-ring"></span>
+                            <svg class="play-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"/>
+                            </svg>
+                            <span class="play-text">Watch Story</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Side Elements -->
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <span class="meta-value">40°45'N</span>
+                        <span class="meta-label">Latitude</span>
+                    </div>
+                    <div class="meta-divider"></div>
+                    <div class="meta-item">
+                        <span class="meta-value">40°37'E</span>
+                        <span class="meta-label">Longitude</span>
+                    </div>
+                    <div class="meta-divider"></div>
+                    <div class="meta-item">
+                        <span class="meta-value">1,100m</span>
+                        <span class="meta-label">Elevation</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-track">
+                    <div class="scroll-thumb"></div>
+                </div>
+                <span class="scroll-label">Discover</span>
+            </div>
+            
+            <!-- Corner Accents -->
+            <div class="hero-corners">
+                <span class="corner corner-tl"></span>
+                <span class="corner corner-tr"></span>
+                <span class="corner corner-bl"></span>
+                <span class="corner corner-br"></span>
+            </div>
+        </section>
+        
+        <!-- Villas Section -->
+        <section id="villas" class="chapter-villas" role="region" aria-label="Our Villas">
+            
+            <!-- Villa 1: Havuzlu VIP -->
+            <article class="villa-chapter" data-villa-number="01">
+                <div class="villa-accent-line left"></div>
+                <div class="villa-accent-line right"></div>
+                <div class="villa-split">
+                    <div class="villa-visual">
+                        <img src="images/bungalow-gallery/IMG_8754.JPG" alt="Havuzlu VIP Villa with private pool" class="villa-image" loading="lazy">
+                    </div>
+                    <div class="villa-narrative">
+                        <p class="micro-label">01 — VIP</p>
+                        <h2 class="villa-name">Havuzlu Villa</h2>
+                        <p class="villa-prose">
+                            Your private infinity pool merges with the morning mist,
+                            creating moments where sky meets water meets forest.
+                        </p>
+                        <div class="amenity-chips" lang="en">
+                            <span class="badge">Private Pool</span>
+                            <span class="badge">King Suite</span>
+                            <span class="badge">Panoramic View</span>
+                            <span class="badge">Jacuzzi</span>
+                        </div>
+                        <div class="villa-cta">
+                            <p class="price-whisper">Request a quote</p>
+                            <a href="https://wa.me/905454174344?text=Havuzlu%20VIP%20Villa%20hakkında%20bilgi%20almak%20istiyorum" 
+                               class="btn btn-primary" target="_blank" rel="noopener">
+                                Reserve via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="villa-divider"></div>
+            </article>
+            
+            <!-- Villa 2: Şelaleli -->
+            <article class="villa-chapter" data-villa-number="02">
+                <div class="villa-accent-line left"></div>
+                <div class="villa-accent-line right"></div>
+                <div class="villa-split">
+                    <div class="villa-visual">
+                        <img src="images/bungalow-gallery/IMG_8746.JPG" alt="Şelaleli Villa with waterfall view" class="villa-image" loading="lazy">
+                    </div>
+                    <div class="villa-narrative">
+                        <p class="micro-label">02 — PREMIUM</p>
+                        <h2 class="villa-name">Şelaleli Villa</h2>
+                        <p class="villa-prose">
+                            Wake to the symphony of cascading water,
+                            where nature's rhythm sets the pace of your day.
+                        </p>
+                        <div class="amenity-chips" lang="en">
+                            <span class="badge">Waterfall View</span>
+                            <span class="badge">Fireplace</span>
+                            <span class="badge">Natural Air</span>
+                            <span class="badge">Terrace</span>
+                        </div>
+                        <div class="villa-cta">
+                            <p class="price-whisper">Request a quote</p>
+                            <a href="https://wa.me/905454174344?text=Şelaleli%20Villa%20hakkında%20bilgi%20almak%20istiyorum" 
+                               class="btn btn-primary" target="_blank" rel="noopener">
+                                Reserve via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="villa-divider"></div>
+            </article>
+            
+            <!-- Villa 3: Luxury 3+1 -->
+            <article class="villa-chapter" data-villa-number="03">
+                <div class="villa-accent-line left"></div>
+                <div class="villa-accent-line right"></div>
+                <div class="villa-split">
+                    <div class="villa-visual">
+                        <img src="images/bungalow-gallery/IMG_8758.JPG" alt="Luxury 3+1 family villa" class="villa-image" loading="lazy">
+                    </div>
+                    <div class="villa-narrative">
+                        <p class="micro-label">03 — FAMILY</p>
+                        <h2 class="villa-name">Luxury 3+1</h2>
+                        <p class="villa-prose">
+                            Spacious elegance for those who travel with their tribe,
+                            where every corner whispers comfort.
+                        </p>
+                        <div class="amenity-chips" lang="en">
+                            <span class="badge">Three Bedrooms</span>
+                            <span class="badge">Full Kitchen</span>
+                            <span class="badge">Living Room</span>
+                            <span class="badge">Garden</span>
+                        </div>
+                        <div class="villa-cta">
+                            <p class="price-whisper">Request a quote</p>
+                            <a href="https://wa.me/905454174344?text=Luxury%203%2B1%20Villa%20hakkında%20bilgi%20almak%20istiyorum" 
+                               class="btn btn-primary" target="_blank" rel="noopener">
+                                Reserve via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+        
+        <!-- Horizontal Rituals Section -->
+        <section id="rituals" class="chapter-rituals" role="region" aria-label="The Rituals">
+            <div class="rituals-container">
+                <div class="rituals-header">
+                    <p class="micro-label">THE EXPERIENCE</p>
+                    <h2 class="section-title">Daily Rituals</h2>
+                </div>
+                
+                <div class="rituals-track">
+                    <div class="ritual-panel">
+                        <div class="ritual-image-wrap">
+                            <img src="images/bungalow-gallery/IMG_8760.JPG" alt="Morning coffee ritual" class="ritual-image">
+                        </div>
+                        <div class="ritual-content">
+                            <h3 class="ritual-title">Morning Coffee</h3>
+                            <p class="ritual-desc">Wake to freshly brewed Turkish coffee served on your private terrace</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ritual-panel">
+                        <div class="ritual-image-wrap">
+                            <img src="images/bungalow-gallery/IMG_8754.JPG" alt="Private pool" class="ritual-image">
+                        </div>
+                        <div class="ritual-content">
+                            <h3 class="ritual-title">Private Pool</h3>
+                            <p class="ritual-desc">Your infinity pool merges with the morning mist</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ritual-panel">
+                        <div class="ritual-image-wrap">
+                            <img src="images/bungalow-gallery/IMG_8746.JPG" alt="Waterfall meditation" class="ritual-image">
+                        </div>
+                        <div class="ritual-content">
+                            <h3 class="ritual-title">Waterfall Sounds</h3>
+                            <p class="ritual-desc">Nature's symphony sets the rhythm of your day</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ritual-panel">
+                        <div class="ritual-image-wrap">
+                            <img src="images/bungalow-gallery/IMG_8762.JPG" alt="Evening fireplace" class="ritual-image">
+                        </div>
+                        <div class="ritual-content">
+                            <h3 class="ritual-title">Fireplace Evenings</h3>
+                            <p class="ritual-desc">Gather around the crackling fire as stars emerge</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ritual-panel">
+                        <div class="ritual-image-wrap">
+                            <img src="images/bungalow-gallery/IMG_8758.JPG" alt="Family gathering" class="ritual-image">
+                        </div>
+                        <div class="ritual-content">
+                            <h3 class="ritual-title">Family Moments</h3>
+                            <p class="ritual-desc">Spacious living areas designed for togetherness</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ritual-panel">
+                        <div class="ritual-image-wrap">
+                            <img src="images/bungalow-gallery/IMG_8766.JPG" alt="24/7 Service" class="ritual-image">
+                        </div>
+                        <div class="ritual-content">
+                            <h3 class="ritual-title">24/7 Service</h3>
+                            <p class="ritual-desc">Discreet luxury service whenever you need</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gallery Section -->
+        <section id="gallery" class="chapter-gallery" role="region" aria-label="Photo Gallery">
+            <div class="gallery-header">
+                <p class="micro-label">VISUAL DIARY</p>
+                <h2 class="section-title">The Mood Reel</h2>
+            </div>
+            <div class="gallery-justified">
+                <figure class="gallery-item" data-index="01">
+                    <img src="images/bungalow-gallery/IMG_8723.JPG" alt="Ada Bungalow entrance" class="gallery-image" loading="lazy" data-full-src="images/bungalow-gallery/IMG_8723.JPG">
+                </figure>
+                <figure class="gallery-item" data-index="02">
+                    <img src="images/bungalow-gallery/IMG_8744.JPG" alt="Interior view" class="gallery-image" loading="lazy" data-full-src="images/bungalow-gallery/IMG_8744.JPG">
+                </figure>
+                <figure class="gallery-item" data-index="03">
+                    <img src="images/bungalow-gallery/IMG_8746.JPG" alt="Forest view" class="gallery-image" loading="lazy" data-full-src="images/bungalow-gallery/IMG_8746.JPG">
+                </figure>
+                <figure class="gallery-item" data-index="04">
+                    <img src="images/bungalow-gallery/IMG_8754.JPG" alt="Private pool" class="gallery-image" loading="lazy" data-full-src="images/bungalow-gallery/IMG_8754.JPG">
+                </figure>
+                <figure class="gallery-item" data-index="05">
+                    <img src="images/bungalow-gallery/IMG_8758.JPG" alt="Living area" class="gallery-image" loading="lazy" data-full-src="images/bungalow-gallery/IMG_8758.JPG">
+                </figure>
+                <figure class="gallery-item" data-index="06">
+                    <img src="images/bungalow-gallery/IMG_8760.JPG" alt="Bedroom" class="gallery-image" loading="lazy" data-full-src="images/bungalow-gallery/IMG_8760.JPG">
+                </figure>
+                <figure class="gallery-item" data-index="07">
+                    <img src="images/bungalow-gallery/IMG_8762.JPG" alt="Terrace view" class="gallery-image" loading="lazy" data-full-src="images/bungalow-gallery/IMG_8762.JPG">
+                </figure>
+                <figure class="gallery-item" data-index="08">
+                    <img src="images/bungalow-gallery/IMG_8766.JPG" alt="Night view" class="gallery-image" loading="lazy" data-full-src="images/bungalow-gallery/IMG_8766.JPG">
+                </figure>
+            </div>
+        </section>
+        
+        <!-- Lightbox -->
+        <div class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+            <img src="" alt="" class="lightbox-image">
+            <button class="lightbox-close" aria-label="Close">×</button>
+        </div>
+        
+        <!-- Check Availability Section -->
+        <section id="availability" class="chapter-availability" role="region" aria-label="Check Availability">
+            <div class="availability-container">
+                <div class="availability-header">
+                    <p class="micro-label">RESERVE YOUR ESCAPE</p>
+                    <h2 class="availability-title">Check Availability</h2>
+                    <p class="availability-subtitle">Select your perfect dates for a mountain retreat</p>
+                </div>
+                
+                <div class="booking-card">
+                    <div class="booking-grid">
+                        <!-- Check-in Date -->
+                        <div class="booking-field">
+                            <label class="field-label">Check-in</label>
+                            <div class="field-input date-input">
+                                <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                <input type="date" id="checkin" class="date-field" required>
+                                <span class="field-hint">Select arrival date</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Check-out Date -->
+                        <div class="booking-field">
+                            <label class="field-label">Check-out</label>
+                            <div class="field-input date-input">
+                                <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                    <polyline points="9 16 12 18 15 16"/>
+                                </svg>
+                                <input type="date" id="checkout" class="date-field" required>
+                                <span class="field-hint">Select departure date</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Villa Selection -->
+                        <div class="booking-field">
+                            <label class="field-label">Villa Type</label>
+                            <div class="field-input select-input">
+                                <svg class="field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                                <select id="villa" class="select-field">
+                                    <option value="">Choose your villa</option>
+                                    <option value="havuzlu">Havuzlu VIP - Private Pool</option>
+                                    <option value="selaleli">Şelaleli - Waterfall View</option>
+                                    <option value="luxury31">Luxury 3+1 - Family</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Guest Count -->
+                        <div class="booking-field">
+                            <label class="field-label">Guests</label>
+                            <div class="field-input guest-input">
+                                <button class="guest-btn minus" aria-label="Decrease guests">
+                                    <svg width="14" height="2" viewBox="0 0 14 2" fill="none">
+                                        <path d="M1 1H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <input type="number" id="guests" class="guest-count" value="2" min="1" max="10" readonly>
+                                <button class="guest-btn plus" aria-label="Increase guests">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                        <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Special Requests -->
+                    <div class="booking-extras">
+                        <label class="field-label">Special Requests</label>
+                        <textarea class="special-requests" placeholder="Airport transfer, dietary preferences, special occasions..." rows="3"></textarea>
+                    </div>
+                    
+                    <!-- Price Estimate -->
+                    <div class="price-preview">
+                        <div class="price-row">
+                            <span class="price-label">Estimated Total</span>
+                            <span class="price-value">Contact for pricing</span>
+                        </div>
+                        <p class="price-note">Final price will be confirmed via WhatsApp</p>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="booking-actions">
+                        <button id="whatsapp-btn" class="btn-luxury btn-primary" type="button">
+                            <span class="btn-content">
+                                <svg class="btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="btn-text">Check Availability</span>
+                            </span>
+                            <span class="btn-shimmer"></span>
+                        </button>
+                        <p class="booking-note">Instant response · No booking fees · Best price guaranteed</p>
+                    </div>
+                </div>
+                
+                <!-- Trust Badges -->
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <svg class="badge-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="badge-text">Free Cancellation</span>
+                    </div>
+                    <div class="trust-badge">
+                        <svg class="badge-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="badge-text">Secure Booking</span>
+                    </div>
+                    <div class="trust-badge">
+                        <svg class="badge-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="badge-text">4.9/5 Guest Rating</span>
+                    </div>
+                    <div class="trust-badge">
+                        <svg class="badge-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                            <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="badge-text">24/7 Support</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer-luxury" role="contentinfo">
+        <!-- Map Section -->
+        <div class="map-container">
+            <div class="map-overlay">
+                <div class="map-header">
+                    <p class="micro-label">FIND US</p>
+                    <h2 class="map-title">Hidden in the Mist</h2>
+                    <p class="map-subtitle">Where ancient forests meet modern luxury</p>
+                </div>
+            </div>
+            <div class="map-frame">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.2859831234567!2d40.6209!3d40.7590!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4067635e3c8b0b0b%3A0x0!2sUzung%C3%B6l%2C%20%C3%87aykara%2FTrabzon!5e0!3m2!1sen!2str!4v1701234567890"
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ada Bungalow Uzungöl Location">
+                </iframe>
+                <div class="map-border"></div>
+            </div>
+            <div class="map-details">
+                <div class="detail-card">
+                    <span class="detail-icon">📍</span>
+                    <div>
+                        <h4>Exact Location</h4>
+                        <p>Uzungöl Mahallesi, Çaykara, Trabzon</p>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">✈️</span>
+                    <div>
+                        <h4>From Airport</h4>
+                        <p>90 minutes scenic drive from Trabzon</p>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-icon">🏔️</span>
+                    <div>
+                        <h4>Altitude</h4>
+                        <p>1,100m above sea level</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Content -->
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand-section">
+                    <div class="footer-logo-mark">
+                        <span class="logo-a">A</span>
+                        <span class="logo-divider"></span>
+                        <span class="logo-b">B</span>
+                    </div>
+                    <h3 class="footer-logo">ADA BUNGALOW</h3>
+                    <p class="footer-tagline">Quiet luxury in Uzungöl's misty mountains</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Experience</h4>
+                        <ul class="footer-list">
+                            <li><a href="#villas" class="footer-link">Our Villas</a></li>
+                            <li><a href="#rituals" class="footer-link">Daily Rituals</a></li>
+                            <li><a href="#gallery" class="footer-link">Gallery</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Connect</h4>
+                        <ul class="footer-list">
+                            <li>
+                                <a href="tel:+905454174344" class="footer-link">
+                                    <span class="link-label">Call</span>
+                                    <span class="link-value">+90 545 417 43 44</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wa.me/905454174344" class="footer-link" target="_blank" rel="noopener">
+                                    <span class="link-label">WhatsApp</span>
+                                    <span class="link-value">Direct Message</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@adabungalow.com" class="footer-link">
+                                    <span class="link-label">Email</span>
+                                    <span class="link-value">info@adabungalow.com</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Visit</h4>
+                        <address class="footer-address">
+                            Uzungöl Mahallesi<br>
+                            Çaykara, Trabzon<br>
+                            Turkey 61940<br>
+                            <a href="https://maps.google.com/?q=Ada+Bungalow+Uzungol" class="footer-link" target="_blank" rel="noopener">
+                                Get Directions →
+                            </a>
+                        </address>
+                    </div>
+                </div>
+                
+                <div class="footer-reservation">
+                    <h4 class="footer-title">Begin Your Escape</h4>
+                    <p class="footer-text">Reserve your mountain sanctuary today</p>
+                    <a href="https://wa.me/905454174344" class="btn btn-primary footer-cta" target="_blank" rel="noopener">
+                        Reserve Now
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-divider" aria-hidden="true"></div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 Ada Bungalow</p>
+                <p class="footer-crafted">Crafted with precision in the mountains</p>
+                <div class="footer-languages">
+                    <button class="lang-btn active" aria-label="Turkish">TR</button>
+                    <span class="lang-sep">·</span>
+                    <button class="lang-btn" aria-label="English">EN</button>
+                    <span class="lang-sep">·</span>
+                    <button class="lang-btn" aria-label="Arabic">AR</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+    <script src="main.js" defer></script>
+    <script src="animations.js"></script>
+    <script src="booking-interactions.js"></script>
+    <script src="performance-opt.js" async></script>
+</body>
+</html>

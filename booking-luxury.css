@@ -1,0 +1,380 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ULTRA-LUXURY BOOKING ENHANCEMENTS
+   Premium icons, buttons, and refinements
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LUXURY SVG ICONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.field-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--brass);
+    opacity: 0.5;
+    margin-right: var(--s-3);
+    transition: all 0.3s var(--ease);
+}
+
+.field-input:hover .field-icon {
+    opacity: 0.7;
+    transform: translateY(-1px);
+}
+
+.field-input:focus-within .field-icon {
+    opacity: 1;
+    color: var(--brass);
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* Calendar icon animation */
+.date-input .field-icon {
+    animation: calendar-float 4s ease-in-out infinite;
+}
+
+@keyframes calendar-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+/* Home icon pulse */
+.select-input:hover .field-icon {
+    animation: home-pulse 1.5s ease-in-out;
+}
+
+@keyframes home-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ULTRA-LUXURY BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.btn-luxury {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 56px;
+    background: linear-gradient(135deg, var(--brass), #B8921F);
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: none;
+    border-radius: 60px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3),
+                0 1px 3px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.15), 
+        transparent);
+    pointer-events: none;
+}
+
+.btn-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+}
+
+.btn-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.btn-text {
+    font-family: var(--font-body);
+    transition: letter-spacing 0.3s var(--ease);
+}
+
+/* Shimmer effect */
+.btn-shimmer {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 60%
+    );
+    transform: rotate(45deg) translate(-100%, -100%);
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-luxury:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4),
+                0 2px 8px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #D4A82A, var(--brass));
+}
+
+.btn-luxury:hover .btn-shimmer {
+    transform: rotate(45deg) translate(100%, 100%);
+}
+
+.btn-luxury:hover .btn-icon {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.btn-luxury:hover .btn-text {
+    letter-spacing: 0.04em;
+}
+
+.btn-luxury:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 8px rgba(201, 162, 39, 0.3),
+                0 1px 2px rgba(0, 0, 0, 0.1),
+                inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PREMIUM GUEST COUNTER BUTTONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.guest-btn {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(201, 162, 39, 0.2);
+    background: linear-gradient(145deg, #FFFFFF, #F9F8F6);
+    color: var(--evergreen);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.guest-btn svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.guest-btn::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid var(--brass);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s var(--ease);
+}
+
+.guest-btn:hover {
+    background: var(--brass);
+    border-color: var(--brass);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.guest-btn:hover::after {
+    opacity: 0.3;
+    transform: scale(1);
+}
+
+.guest-btn:hover svg {
+    transform: scale(1.2);
+}
+
+.guest-btn:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TRUST BADGES LUXURY STYLING
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.badge-icon-svg {
+    width: 22px;
+    height: 22px;
+    color: var(--brass);
+    stroke-width: 1.5;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.trust-badge {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.7));
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    border: 0.5px solid rgba(201, 162, 39, 0.1);
+    transition: all 0.3s var(--ease);
+}
+
+.trust-badge::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+        transparent,
+        rgba(201, 162, 39, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+}
+
+.trust-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(201, 162, 39, 0.15);
+    border-color: rgba(201, 162, 39, 0.3);
+}
+
+.trust-badge:hover::before {
+    opacity: 1;
+}
+
+.trust-badge:hover .badge-icon-svg {
+    transform: rotate(5deg) scale(1.15);
+    color: var(--evergreen);
+}
+
+/* Star animation */
+.trust-badge:nth-child(3) .badge-icon-svg {
+    animation: star-twinkle 3s ease-in-out infinite;
+}
+
+@keyframes star-twinkle {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(5deg); }
+}
+
+/* Shield pulse */
+.trust-badge:nth-child(2):hover .badge-icon-svg {
+    animation: shield-pulse 1s ease-in-out;
+}
+
+@keyframes shield-pulse {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(0.95); }
+    75% { transform: scale(1.05); }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ENHANCED FIELD INPUTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.field-input {
+    position: relative;
+    background: linear-gradient(135deg, #FAFAF8, #F7F6F2);
+    border: 1.5px solid rgba(231, 231, 224, 0.5);
+    border-radius: 14px;
+    padding: 14px 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02),
+                inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.field-input::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 16px;
+    background: linear-gradient(135deg,
+        var(--brass),
+        rgba(201, 162, 39, 0.5));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s var(--ease);
+}
+
+.field-input:hover {
+    background: white;
+    border-color: rgba(201, 162, 39, 0.2);
+    box-shadow: 0 4px 12px rgba(27, 42, 36, 0.05),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.field-input:focus-within {
+    background: white;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.15),
+                0 8px 24px rgba(201, 162, 39, 0.1);
+}
+
+.field-input:focus-within::after {
+    opacity: 0.1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PREMIUM ANIMATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Icon entrance animations */
+.booking-card .field-icon {
+    animation: icon-entrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: calc(var(--index, 0) * 0.1s);
+}
+
+@keyframes icon-entrance {
+    from {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    to {
+        opacity: 0.5;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Booking note refined */
+.booking-note {
+    position: relative;
+    padding-top: 16px;
+    margin-top: 20px;
+}
+
+.booking-note::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 0.5px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--brass),
+        transparent);
+    opacity: 0.5;
+}

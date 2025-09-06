@@ -1,0 +1,147 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SUBTLE MARBLE BACKGROUND - Elegant, not overwhelming
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Reset all the crazy stuff */
+html {
+    background: #FAF9F6 !important; /* Light warm white */
+}
+
+body,
+body.background-marble {
+    /* Subtle marble with soft veins */
+    background: 
+        /* Soft golden vein */
+        linear-gradient(
+            115deg,
+            transparent 45%,
+            rgba(201, 162, 39, 0.06) 48%,
+            rgba(201, 162, 39, 0.08) 49%,
+            rgba(201, 162, 39, 0.06) 50%,
+            transparent 53%
+        ),
+        /* Subtle dark vein */
+        linear-gradient(
+            -25deg,
+            transparent 40%,
+            rgba(27, 42, 36, 0.04) 42%,
+            rgba(27, 42, 36, 0.05) 43%,
+            rgba(27, 42, 36, 0.04) 44%,
+            transparent 46%
+        ),
+        /* Soft base gradient */
+        linear-gradient(
+            180deg,
+            #FAF9F6 0%,
+            #F5F3EF 50%,
+            #FAF9F6 100%
+        ) !important;
+    
+    background-size: 100% 100%, 100% 100%, 100% 100% !important;
+    background-attachment: fixed !important;
+    min-height: 100vh !important;
+}
+
+/* Very subtle shine effect */
+body::before {
+    content: '' !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: 
+        radial-gradient(
+            ellipse at 30% 40%,
+            rgba(201, 162, 39, 0.03) 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at 70% 60%,
+            rgba(255, 255, 255, 0.4) 0%,
+            transparent 35%
+        ) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* Minimal texture - barely visible */
+body::after {
+    content: '' !important;
+    position: fixed !important;
+    inset: 0 !important;
+    opacity: 0.02 !important; /* Very subtle */
+    background-image: 
+        url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='subtle'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='1' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23subtle)' opacity='0.3'/%3E%3C/svg%3E") !important;
+    mix-blend-mode: multiply !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Content stays above */
+main,
+header,
+footer,
+section {
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Cards with subtle glass */
+.villa-split {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(5px) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06) !important;
+}
+
+.booking-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08) !important;
+}
+
+.weather-card-inner {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Subtle particles */
+.background-particles .light-particle {
+    width: 2px !important;
+    height: 2px !important;
+    background: radial-gradient(
+        circle,
+        rgba(201, 162, 39, 0.3) 0%,
+        transparent 70%
+    ) !important;
+    box-shadow: none !important;
+}
+
+/* Remove all the crazy overlays from other files */
+body.background-marble::before,
+body.background-marble::after {
+    display: none !important;
+}
+
+/* Hide the overpowering elements */
+.hero-particles span {
+    opacity: 0.3 !important;
+}
+
+.villa-accent-line {
+    opacity: 0.3 !important;
+}
+
+/* Keep text readable */
+body {
+    color: #1B2A24 !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    body::after {
+        display: none !important; /* No texture on mobile */
+    }
+    
+    .background-particles {
+        display: none !important; /* No particles on mobile */
+    }
+}

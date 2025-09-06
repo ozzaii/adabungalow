@@ -1,0 +1,215 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MARBLE BACKGROUND ENHANCEMENTS
+   Making the marble pattern more visible and luxurious
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Ensure marble shows through properly */
+body.background-marble {
+    min-height: 100vh;
+    background-color: #F5F2ED !important;
+    
+    /* Rich marble pattern with golden veins */
+    background-image: 
+        /* Major golden vein */
+        linear-gradient(
+            125deg,
+            transparent 45%,
+            rgba(201, 162, 39, 0.15) 48%,
+            rgba(201, 162, 39, 0.25) 50%,
+            rgba(201, 162, 39, 0.15) 52%,
+            transparent 55%
+        ),
+        /* Dark accent vein */
+        linear-gradient(
+            -35deg,
+            transparent 40%,
+            rgba(27, 42, 36, 0.1) 42%,
+            rgba(27, 42, 36, 0.15) 43%,
+            rgba(27, 42, 36, 0.1) 44%,
+            transparent 46%
+        ),
+        /* Fine detail veins */
+        linear-gradient(
+            65deg,
+            transparent 30%,
+            rgba(201, 162, 39, 0.06) 31%,
+            transparent 32%,
+            transparent 68%,
+            rgba(201, 162, 39, 0.04) 69%,
+            transparent 70%
+        ),
+        /* Cloud-like organic patterns */
+        radial-gradient(
+            ellipse 600px 400px at 20% 30%,
+            rgba(201, 162, 39, 0.06) 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse 500px 350px at 80% 70%,
+            rgba(239, 237, 232, 0.5) 0%,
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse 400px 600px at 60% 20%,
+            rgba(27, 42, 36, 0.03) 0%,
+            transparent 35%
+        );
+    
+    background-size: 
+        100% 100%,
+        100% 100%,
+        80px 80px,
+        100% 100%,
+        100% 100%,
+        100% 100%;
+    
+    background-attachment: fixed;
+}
+
+/* Marble texture overlay with more visibility */
+body.background-marble::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+        /* Polished surface shine */
+        linear-gradient(
+            115deg,
+            transparent 20%,
+            rgba(255, 255, 255, 0.15) 35%,
+            rgba(255, 255, 255, 0.3) 40%,
+            rgba(255, 255, 255, 0.15) 45%,
+            transparent 60%
+        );
+    background-size: 200% 200%;
+    animation: marble-polish 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes marble-polish {
+    0%, 100% {
+        background-position: -100% -100%;
+        opacity: 0.3;
+    }
+    50% {
+        background-position: 100% 100%;
+        opacity: 0.5;
+    }
+}
+
+/* Natural stone texture */
+body.background-marble::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+        url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='stone'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.01' numOctaves='4' seed='5' /%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.92 0 0 0 0 0.87 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23stone)'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.2;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Adjust main content areas to show marble */
+body.background-marble main {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+}
+
+/* Make sections semi-transparent to show marble */
+body.background-marble .villa-chapter {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.3) 100%
+    );
+    backdrop-filter: blur(2px);
+}
+
+body.background-marble .villa-split {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Booking card with glass effect */
+body.background-marble .booking-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Gallery items with marble reflection */
+body.background-marble .gallery-item {
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Header with subtle glass on marble */
+body.background-marble .header-minimal.scrolled {
+    background: rgba(247, 246, 242, 0.85);
+    backdrop-filter: blur(15px);
+}
+
+/* Enhanced golden accents on marble */
+body.background-marble .villa-chapter::after {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(201, 162, 39, 0.3) 20%,
+        rgba(201, 162, 39, 0.5) 50%,
+        rgba(201, 162, 39, 0.3) 80%,
+        transparent 100%
+    );
+}
+
+/* Floating particles more visible on marble */
+body.background-marble .light-particle {
+    width: 3px;
+    height: 3px;
+    background: radial-gradient(
+        circle,
+        rgba(201, 162, 39, 0.6) 0%,
+        rgba(201, 162, 39, 0.3) 40%,
+        transparent 70%
+    );
+    box-shadow: 0 0 10px rgba(201, 162, 39, 0.3);
+}
+
+/* Adjust text contrast on marble */
+body.background-marble {
+    color: #1B2A24;
+}
+
+body.background-marble .chapter-title,
+body.background-marble .villa-name {
+    color: #18332C;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Ensure amenity chips pop on marble */
+body.background-marble .amenity-chips .badge {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(201, 162, 39, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    body.background-marble::before {
+        animation-duration: 20s;
+    }
+    
+    body.background-marble .villa-split {
+        background: rgba(255, 255, 255, 0.8);
+    }
+}

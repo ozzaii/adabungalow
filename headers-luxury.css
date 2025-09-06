@@ -1,0 +1,367 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LUXURY HEADERS - UNIFIED SECTION HEADER SYSTEM
+   Elegant, Consistent, Perfectly Positioned
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Universal Section Header Container */
+.section-header-luxury {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    padding-top: 20px;
+}
+
+/* Decorative Line Above */
+.section-header-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+    animation: expand-line 2s ease-in-out infinite;
+}
+
+@keyframes expand-line {
+    0%, 100% {
+        width: 60px;
+        opacity: 0.6;
+    }
+    50% {
+        width: 120px;
+        opacity: 1;
+    }
+}
+
+/* Section Badge/Label */
+.section-badge-luxury {
+    display: inline-block;
+    padding: 10px 35px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 215, 0, 0.03) 100%);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 50px;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-badge-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+    animation: shimmer-badge 3s ease-in-out infinite;
+}
+
+@keyframes shimmer-badge {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.section-label-luxury {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #FFD700;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Main Section Title */
+.section-title-luxury {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(135deg, #1A1A1A 0%, #3E3E3E 25%, #1A1A1A 50%, #3E3E3E 75%, #1A1A1A 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift-title 8s ease infinite;
+}
+
+@keyframes gradient-shift-title {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Gold accent version for special sections */
+.section-title-luxury.gold {
+    background: linear-gradient(135deg, #FFD700 0%, #F7E7CE 25%, #E8B86D 50%, #F7E7CE 75%, #FFD700 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Section Subtitle */
+.section-subtitle-luxury {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #6B6B6B;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+/* Decorative Diamond Separator */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.divider-line {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+}
+
+.divider-diamond {
+    width: 8px;
+    height: 8px;
+    background: #FFD700;
+    transform: rotate(45deg);
+    margin: 0 20px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    animation: pulse-diamond 2s ease-in-out infinite;
+}
+
+@keyframes pulse-diamond {
+    0%, 100% {
+        transform: rotate(45deg) scale(1);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        transform: rotate(45deg) scale(1.2);
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    }
+}
+
+/* Special Headers for Different Sections */
+
+/* Hero Header */
+.hero-header-luxury {
+    margin-bottom: 40px;
+}
+
+.hero-label-luxury {
+    font-size: 1rem;
+    letter-spacing: 0.4em;
+    color: rgba(255, 215, 0, 0.9);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.hero-title-luxury {
+    font-size: clamp(4rem, 8vw, 7rem);
+    text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Villas Section Header */
+.villas-header-luxury {
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 215, 0, 0.02) 100%);
+    padding: 40px 0;
+    border-radius: 30px;
+}
+
+/* Experience Section Header */
+.experience-header-luxury {
+    position: relative;
+}
+
+.experience-header-luxury::after {
+    content: '✦';
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: #FFD700;
+    animation: rotate-star 10s linear infinite;
+}
+
+@keyframes rotate-star {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+/* Weather Section Header */
+.weather-header-luxury {
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+    padding: 30px;
+    border-radius: 50%;
+    max-width: 600px;
+    margin: 0 auto 60px;
+}
+
+/* Gallery Section Header */
+.gallery-header-luxury {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.gallery-header-luxury::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #FFD700 20%, 
+        #F7E7CE 50%, 
+        #FFD700 80%, 
+        transparent 100%);
+    border-radius: 2px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .section-header-luxury {
+        margin-bottom: 50px;
+    }
+    
+    .section-title-luxury {
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+    }
+    
+    .section-subtitle-luxury {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+    
+    .section-badge-luxury {
+        padding: 8px 25px;
+    }
+    
+    .section-label-luxury {
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+    }
+}
+
+/* Apply to all sections */
+section {
+    position: relative;
+}
+
+/* Experience Section Styles */
+.experience-section {
+    padding: 100px 0;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF8F3 50%, #FFFFFF 100%);
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 0 2rem;
+}
+
+.experience-item {
+    text-align: center;
+    padding: 40px 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.experience-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.experience-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: float-icon 3s ease-in-out infinite;
+}
+
+.experience-item:nth-child(2) .experience-icon { animation-delay: 0.5s; }
+.experience-item:nth-child(3) .experience-icon { animation-delay: 1s; }
+.experience-item:nth-child(4) .experience-icon { animation-delay: 1.5s; }
+
+@keyframes float-icon {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.experience-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 15px;
+}
+
+.experience-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #6B6B6B;
+    line-height: 1.6;
+}
+
+/* Number decoration for sections */
+.section-number {
+    position: absolute;
+    top: -20px;
+    right: 5%;
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    font-weight: 700;
+    color: rgba(255, 215, 0, 0.05);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Entrance animations */
+.section-header-luxury[data-aos="fade-up"] .section-badge-luxury {
+    animation-delay: 0.2s;
+}
+
+.section-header-luxury[data-aos="fade-up"] .section-title-luxury {
+    animation-delay: 0.4s;
+}
+
+.section-header-luxury[data-aos="fade-up"] .section-subtitle-luxury {
+    animation-delay: 0.6s;
+}

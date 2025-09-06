@@ -1,0 +1,274 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LUXURY COLOR OVERRIDE - ULTRA PREMIUM PALETTE
+   Black, Gold, Pearl White, Champagne
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* Remove Green Colors - Replace with Luxury Palette */
+    --forest-deep: #1A1A1A !important;        /* Deep Black */
+    --forest-mid: #2C2C2C !important;         /* Charcoal */
+    --forest-light: #3E3E3E !important;       /* Dark Gray */
+    --forest-muted: #6B6B6B !important;       /* Medium Gray */
+    
+    /* Gold Accents */
+    --gold-sunrise: #FFD700 !important;       /* Pure Gold */
+    --gold-champagne: #F7E7CE !important;     /* Champagne */
+    --gold-rose: #E8B86D !important;          /* Rose Gold */
+    --gold-antique: #D4A574 !important;       /* Antique Gold */
+    
+    /* Pearl & Cream */
+    --pearl-white: #FEFEFE !important;        /* Pearl White */
+    --cream-soft: #FFF8F3 !important;         /* Soft Cream */
+    --ivory: #FFFFF0 !important;              /* Ivory */
+    
+    /* Premium Gradients */
+    --gradient-luxury: linear-gradient(135deg, #1A1A1A 0%, #3E3E3E 50%, #1A1A1A 100%) !important;
+    --gradient-gold: linear-gradient(135deg, #FFD700 0%, #F7E7CE 50%, #E8B86D 100%) !important;
+    --gradient-premium: linear-gradient(180deg, #FEFEFE 0%, #FFF8F3 50%, #FEFEFE 100%) !important;
+    --gradient-dark: linear-gradient(180deg, #000000 0%, #1A1A1A 50%, #000000 100%) !important;
+}
+
+/* Update All Green References */
+.weather-elegant-label,
+.section-label {
+    color: var(--gold-sunrise) !important;
+}
+
+.weather-elegant-title,
+.section-title {
+    color: var(--forest-deep) !important;
+}
+
+.weather-elegant-subtitle {
+    color: var(--forest-muted) !important;
+}
+
+.location-name-elegant {
+    color: var(--forest-muted) !important;
+}
+
+.detail-label-elegant {
+    color: var(--forest-muted) !important;
+}
+
+.weather-elegant-card {
+    border: 2px solid rgba(255, 215, 0, 0.2) !important;
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--cream-soft) 100%) !important;
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.12),
+        0 10px 40px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Gallery Color Updates */
+.gallery-item-supreme {
+    background: linear-gradient(135deg, var(--forest-deep) 0%, var(--forest-mid) 100%) !important;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 2px rgba(255, 215, 0, 0.4),
+        inset 0 0 30px rgba(255, 215, 0, 0.15) !important;
+}
+
+.gallery-title {
+    color: var(--forest-deep) !important;
+}
+
+.gallery-subtitle {
+    color: var(--forest-muted) !important;
+}
+
+.filter-btn {
+    color: var(--forest-muted) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--gradient-gold) !important;
+    color: var(--forest-deep) !important;
+    border-color: var(--gold-sunrise) !important;
+}
+
+/* Navigation Updates */
+.nav-supreme {
+    background: rgba(26, 26, 26, 0.98) !important;
+}
+
+.nav-logo {
+    background: var(--gradient-gold) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.nav-link:hover {
+    color: var(--gold-sunrise) !important;
+}
+
+/* Hero Section */
+.hero-excellence {
+    background: var(--gradient-dark) !important;
+}
+
+.hero-title {
+    background: var(--gradient-gold) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.hero-subtitle {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Buttons */
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+}
+
+.btn-primary {
+    background: var(--gradient-gold) !important;
+    color: var(--forest-deep) !important;
+    border: 2px solid var(--gold-sunrise) !important;
+}
+
+.btn-outline {
+    border-color: var(--gold-sunrise) !important;
+    color: var(--gold-sunrise) !important;
+}
+
+.btn-outline:hover {
+    background: var(--gradient-gold) !important;
+    color: var(--forest-deep) !important;
+}
+
+/* Room Cards */
+.room-card {
+    background: white !important;
+    border: 2px solid rgba(255, 215, 0, 0.15) !important;
+}
+
+.room-card:hover {
+    border-color: var(--gold-sunrise) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+}
+
+.room-name {
+    color: var(--forest-deep) !important;
+}
+
+.room-price {
+    background: var(--gradient-gold) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Features */
+.feature-icon {
+    background: var(--gradient-gold) !important;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3) !important;
+}
+
+.feature-title {
+    color: var(--forest-deep) !important;
+}
+
+.feature-desc {
+    color: var(--forest-muted) !important;
+}
+
+/* Experience Section */
+.experience-badge {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%) !important;
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+    color: var(--gold-sunrise) !important;
+}
+
+.experience-title {
+    color: var(--forest-deep) !important;
+}
+
+.experience-subtitle {
+    color: var(--forest-muted) !important;
+}
+
+/* Footer */
+footer {
+    background: var(--gradient-dark) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Weather Section Special */
+.weather-elegant-section {
+    background: linear-gradient(180deg, var(--pearl-white) 0%, var(--cream-soft) 100%) !important;
+}
+
+.location-icon-elegant {
+    color: var(--gold-sunrise) !important;
+}
+
+.temp-unit {
+    color: var(--gold-sunrise) !important;
+}
+
+.weather-desc-elegant {
+    color: var(--forest-deep) !important;
+}
+
+.weather-feels-elegant {
+    color: var(--forest-muted) !important;
+}
+
+.detail-value-elegant {
+    color: var(--forest-deep) !important;
+}
+
+/* Live Indicator */
+.live-dot {
+    background: var(--gold-sunrise) !important;
+    box-shadow: 0 0 10px var(--gold-sunrise) !important;
+}
+
+.live-text {
+    color: var(--gold-sunrise) !important;
+}
+
+.weather-live-indicator {
+    background: rgba(255, 215, 0, 0.08) !important;
+    border: 1px solid rgba(255, 215, 0, 0.2) !important;
+}
+
+/* Override any remaining green */
+*[style*="#0B3D2E"],
+*[style*="#1A5F4A"],
+*[style*="#5A8770"] {
+    color: var(--forest-deep) !important;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar-track {
+    background: var(--cream-soft) !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-gold) !important;
+}
+
+/* Selection Color */
+::selection {
+    background: var(--gold-sunrise) !important;
+    color: var(--forest-deep) !important;
+}
+
+/* Photo Tags in Gallery */
+.photo-tag {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.95) 0%, rgba(247, 231, 206, 0.95) 100%) !important;
+    color: var(--forest-deep) !important;
+}
+
+.photo-tag.new {
+    background: linear-gradient(135deg, var(--gold-rose) 0%, var(--gold-antique) 100%) !important;
+    color: white !important;
+}

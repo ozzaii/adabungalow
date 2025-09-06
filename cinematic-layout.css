@@ -1,0 +1,584 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CINEMATIC LAYOUT - CHAPTER-BASED NARRATIVE
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header-minimal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: var(--s-6) var(--s-8);
+    transition: all var(--duration-normal) var(--ease);
+}
+
+.header-minimal.scrolled {
+    background: rgba(247, 246, 242, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-xs);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logotype {
+    display: flex;
+    align-items: center;
+    gap: var(--s-4);
+    text-decoration: none;
+}
+
+.logo-text {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--evergreen);
+    text-transform: uppercase;
+}
+
+.logotype .hairline {
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--brass), transparent);
+    opacity: 0.4;
+}
+
+.weather-chip {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    padding: var(--s-2) var(--s-4);
+    background: var(--chip);
+    border-radius: var(--r-full);
+    font-size: 0.8rem;
+    color: var(--evergreen);
+    opacity: 0.8;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHAPTER 1: ARRIVAL
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.chapter-arrival {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: var(--s-8);
+}
+
+.hero-title {
+    margin: var(--s-6) 0;
+    color: var(--evergreen);
+    text-shadow: 0 2px 20px rgba(255, 255, 255, 0.8);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--evergreen);
+    opacity: 0.8;
+    margin-bottom: var(--s-12);
+}
+
+.hero-cta {
+    display: flex;
+    gap: var(--s-4);
+    justify-content: center;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+.hero-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(247, 246, 242, 0.6) 100%);
+    pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHAPTER 2: SIGNATURE SCENE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.signature-scene {
+    position: relative;
+    height: 200vh;
+}
+
+.scene-layers {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.forest-layer,
+.deck-layer,
+.ui-layer {
+    position: absolute;
+    inset: 0;
+}
+
+.forest-layer img {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+}
+
+.ui-layer {
+    display: flex;
+    align-items: center;
+    padding: var(--s-16);
+}
+
+.pinned-text {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.scene-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.3;
+    color: var(--alpine-white);
+    text-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHAPTER 3: VILLAS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.chapter-villas {
+    position: relative;
+    background: var(--bg);
+}
+
+.progress-dots {
+    position: fixed;
+    right: var(--s-8);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    z-index: 100;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(27, 42, 36, 0.2);
+    transition: all var(--duration-normal) var(--ease);
+    cursor: pointer;
+}
+
+.dot.active {
+    background: var(--brass);
+    transform: scale(1.5);
+}
+
+.villa-chapter {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: var(--s-16) 0;
+}
+
+.villa-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-16);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--s-8);
+}
+
+.villa-visual {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--r-16);
+}
+
+.villa-image {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    transition: transform 1s var(--ease);
+}
+
+.villa-chapter:hover .villa-image {
+    transform: scale(1.05);
+}
+
+.image-vignette {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.3) 100%);
+    pointer-events: none;
+}
+
+.villa-narrative {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--s-8);
+}
+
+.villa-name {
+    margin: var(--s-4) 0;
+    color: var(--evergreen);
+}
+
+.villa-prose {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--evergreen);
+    opacity: 0.8;
+    margin-bottom: var(--s-8);
+}
+
+.amenity-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    margin-bottom: var(--s-8);
+}
+
+.price-whisper {
+    font-size: 0.9rem;
+    color: var(--evergreen);
+    opacity: 0.6;
+    margin-bottom: var(--s-4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHAPTER 4: HORIZONTAL AMENITIES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.amenities-horizontal {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--evergreen);
+}
+
+.amenities-header {
+    position: absolute;
+    top: var(--s-16);
+    left: var(--s-8);
+    z-index: 2;
+}
+
+.amenities-header .section-title {
+    color: var(--alpine-white);
+}
+
+.amenities-track {
+    display: flex;
+    height: 100%;
+    width: max-content;
+}
+
+.amenity-panel {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--s-16);
+}
+
+.amenity-visual {
+    position: relative;
+    width: 60%;
+    max-width: 600px;
+    height: 60%;
+    border-radius: var(--r-24);
+    overflow: hidden;
+    margin-bottom: var(--s-8);
+}
+
+.amenity-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.particle-overlay {
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,...') center/cover;
+    opacity: 0.1;
+    mix-blend-mode: screen;
+}
+
+.amenity-panel h4 {
+    font-size: 2rem;
+    color: var(--alpine-white);
+    margin-bottom: var(--s-2);
+}
+
+.amenity-panel p {
+    color: var(--alpine-white);
+    opacity: 0.7;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHAPTER 5: GALLERY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.chapter-gallery {
+    padding: var(--s-24) var(--s-8);
+    background: var(--bg);
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: var(--s-16);
+}
+
+.gallery-justified {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--s-4);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--r-12);
+    cursor: pointer;
+    aspect-ratio: 4/3;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--ease);
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 18, 15, 0.95);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: var(--r-12);
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: var(--s-8);
+    right: var(--s-8);
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease);
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CHAPTER 6: TRUST
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.chapter-trust {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--moss-chip) 100%);
+    overflow: hidden;
+}
+
+.floating-quotes {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--s-16);
+}
+
+.review-quote {
+    position: absolute;
+    max-width: 400px;
+    padding: var(--s-8);
+    background: white;
+    border-radius: var(--r-16);
+    box-shadow: var(--shadow-lg);
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--evergreen);
+}
+
+.review-quote:nth-child(1) {
+    top: 0;
+    left: 10%;
+}
+
+.review-quote:nth-child(2) {
+    top: 200px;
+    right: 10%;
+}
+
+.review-quote:nth-child(3) {
+    bottom: 0;
+    left: 30%;
+}
+
+.review-quote cite {
+    display: block;
+    margin-top: var(--s-4);
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+.trust-badge {
+    position: absolute;
+    bottom: var(--s-16);
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.rating-stars {
+    font-size: 2rem;
+    color: var(--brass);
+    margin-bottom: var(--s-2);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BOOKING DOCK
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.booking-dock {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid var(--divider);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    z-index: 900;
+    padding: var(--s-4);
+}
+
+@media (max-width: 768px) {
+    .booking-dock {
+        display: block;
+    }
+}
+
+.dock-content {
+    display: flex;
+    gap: var(--s-2);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dock-dates,
+.dock-guests {
+    flex: 1;
+    padding: var(--s-3);
+    background: var(--chip);
+    border: none;
+    border-radius: var(--r-8);
+    font-size: 0.9rem;
+    color: var(--evergreen);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 968px) {
+    .villa-split {
+        grid-template-columns: 1fr;
+    }
+    
+    .villa-image {
+        height: 50vh;
+    }
+    
+    .progress-dots {
+        display: none;
+    }
+    
+    .amenity-visual {
+        width: 80%;
+        height: 40%;
+    }
+    
+    .floating-quotes {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: var(--s-8);
+    }
+    
+    .review-quote {
+        position: static;
+        max-width: 100%;
+    }
+}

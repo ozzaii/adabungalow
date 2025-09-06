@@ -1,0 +1,310 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ULTIMATE BOOKING SECTION ENHANCEMENTS
+   Final premium layer of refinement
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BOOKING CARD REFINEMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.booking-card {
+    position: relative;
+    background: linear-gradient(145deg, 
+        #FFFFFF,
+        #FAFAF9);
+    border: 1px solid rgba(201, 162, 39, 0.08);
+    box-shadow: 0 30px 80px rgba(27, 42, 36, 0.12),
+                0 10px 25px rgba(27, 42, 36, 0.08),
+                0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+}
+
+.booking-card::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--brass),
+        transparent);
+    opacity: 0.5;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FIELD LABEL ENHANCEMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.field-label {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.field-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 1px;
+    background: var(--brass);
+    opacity: 0.3;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LUXURY DATE PICKER STYLING
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.date-field::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Removed duplicate calendar icon - already in HTML */
+
+/* Hover states for date icons handled in HTML/SVG */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LUXURY SELECT DROPDOWN
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.select-field {
+    cursor: pointer;
+    padding-right: 48px;
+    /* Arrow already handled by booking-premium.css */
+}
+
+.select-field option {
+    padding: 12px;
+    background: white;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GUEST COUNTER ULTIMATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.guest-input {
+    background: linear-gradient(145deg, #FAFAF8, #F5F4F0);
+    padding: 8px;
+    border-radius: 50px;
+}
+
+.guest-count {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--evergreen);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SPECIAL REQUESTS LUXURY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.special-requests {
+    line-height: 1.6;
+    padding: 16px 20px;
+}
+
+.special-requests::placeholder {
+    color: var(--evergreen);
+    opacity: 0.3;
+    font-style: italic;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PRICE PREVIEW ULTIMATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.price-preview {
+    position: relative;
+    background: linear-gradient(135deg,
+        rgba(239, 242, 237, 0.9),
+        rgba(239, 242, 237, 0.6));
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.price-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(201, 162, 39, 0.3),
+        transparent);
+}
+
+.price-value {
+    position: relative;
+}
+
+.price-value::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--brass);
+    opacity: 0.2;
+    transform: scaleX(0);
+    transition: transform 0.4s var(--ease);
+}
+
+.price-preview:hover .price-value::after {
+    transform: scaleX(1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BOOKING ACTIONS ULTIMATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.booking-actions {
+    position: relative;
+    padding: 32px 0 24px;
+}
+
+.booking-actions::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--brass),
+        transparent);
+    opacity: 0.3;
+}
+
+/* Button pulse animation */
+.btn-luxury {
+    animation: luxury-pulse 4s ease-in-out infinite;
+}
+
+@keyframes luxury-pulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3),
+                    0 1px 3px rgba(0, 0, 0, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4),
+                    0 2px 6px rgba(0, 0, 0, 0.12),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TRUST BADGES ULTIMATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.trust-badges {
+    position: relative;
+    padding: 32px 0 16px;
+}
+
+.trust-badges::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--divider) 20%,
+        var(--divider) 80%,
+        transparent);
+}
+
+/* Badge glow effect */
+.trust-badge {
+    position: relative;
+}
+
+.trust-badge::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 34px;
+    background: radial-gradient(circle,
+        rgba(201, 162, 39, 0.1),
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+}
+
+.trust-badge:hover::after {
+    opacity: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE OPTIMIZATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .btn-luxury {
+        padding: 18px 40px;
+        font-size: 1rem;
+    }
+    
+    .btn-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .trust-badges {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .trust-badge {
+        justify-content: center;
+        padding: 12px;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FORM VALIDATION STATES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.field-input.valid {
+    border-color: rgba(34, 197, 94, 0.3);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.9),
+        rgba(240, 253, 244, 0.5));
+}
+
+.field-input.valid .field-icon {
+    color: #22C55E;
+}
+
+.field-input.error {
+    border-color: rgba(239, 68, 68, 0.3);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.9),
+        rgba(254, 242, 242, 0.5));
+    animation: field-shake 0.4s ease-in-out;
+}
+
+@keyframes field-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}

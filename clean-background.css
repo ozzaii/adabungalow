@@ -1,0 +1,94 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CLEAN MINIMAL BACKGROUND
+   Simple, elegant, not overwhelming
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Clean base - slightly off-white for less harshness */
+body {
+    background: #FAFAF8 !important; /* Very light warm grey */
+    min-height: 100vh;
+}
+
+/* Optional: Very subtle gradient for depth without being distracting */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        transparent 50%,
+        rgba(239, 237, 232, 0.3) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Ensure content stays above background */
+main, header, footer, section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Keep villa sections clean - no cards */
+.villa-chapter {
+    background: transparent;
+}
+
+.villa-split {
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    padding: 2rem;
+}
+
+/* Booking section stays clean */
+.booking-card {
+    background: white !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08) !important;
+    backdrop-filter: none !important;
+}
+
+/* Gallery clean */
+.gallery-item {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Remove all the card-based designs */
+.weather-card-inner {
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+/* Simple weather in header if exists */
+.weather-chip {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Keep text crisp and readable */
+body {
+    color: #1B2A24;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Optional: Add a very subtle texture if you want MINIMAL texture */
+/* Uncomment if you want just a hint of texture
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.015;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+*/

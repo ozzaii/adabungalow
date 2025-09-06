@@ -1,0 +1,141 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION FIXES & OPTIMIZATIONS
+   Prevent white flash and duplicate icons
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   INITIAL STATE FIXES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Ensure elements are visible before animation */
+.booking-card,
+.booking-field,
+.price-preview,
+.booking-actions,
+.trust-badge {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Remove duplicate icons from CSS - keep only HTML versions */
+.date-input::after,
+.date-input::before {
+    display: none !important;
+}
+
+/* Fix select dropdown double arrow */
+select.select-field {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23C9A227' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ANIMATION PERFORMANCE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Use transform for animations instead of position properties */
+.booking-card,
+.booking-field,
+.price-preview,
+.booking-actions,
+.trust-badge {
+    will-change: transform, opacity;
+    transform: translateZ(0); /* Force GPU acceleration */
+}
+
+/* Disable complex animations on mobile for performance */
+@media (max-width: 768px) {
+    .booking-card::before,
+    .booking-card::after {
+        animation: none !important;
+    }
+    
+    .particle {
+        display: none;
+    }
+    
+    .hero-mist {
+        animation: none;
+        opacity: 0.2;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SCROLL TRIGGER OPTIMIZATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Ensure availability section is ready */
+.chapter-availability {
+    min-height: 100vh;
+    position: relative;
+    contain: layout style;
+}
+
+/* Prevent layout shift during animations */
+.booking-grid {
+    min-height: 300px;
+}
+
+.price-preview {
+    min-height: 120px;
+}
+
+.booking-actions {
+    min-height: 100px;
+}
+
+.trust-badges {
+    min-height: 80px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ICON VISIBILITY FIXES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Ensure SVG icons in HTML are visible */
+.field-icon {
+    display: inline-block !important;
+    width: 20px;
+    height: 20px;
+    color: var(--brass);
+    opacity: 0.5;
+}
+
+.field-input:hover .field-icon {
+    opacity: 0.7;
+}
+
+.field-input:focus-within .field-icon {
+    opacity: 1;
+    color: var(--brass);
+}
+
+/* Guest button icons */
+.guest-btn svg {
+    display: block;
+    width: 14px;
+    height: 14px;
+    margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LOADING STATE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Add loading state to prevent flash */
+.chapter-availability[data-loading="true"] .booking-card {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.chapter-availability[data-loading="false"] .booking-card,
+.chapter-availability:not([data-loading]) .booking-card {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}

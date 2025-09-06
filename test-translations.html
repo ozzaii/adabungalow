@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Translation Test - Ada Bungalow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f7f7f7;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .lang-buttons button {
+            padding: 10px 20px;
+            background: #d4af37;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .lang-buttons button.active {
+            background: #b8941f;
+        }
+        .test-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f0f0f0;
+            border-left: 3px solid #d4af37;
+        }
+        .test-item strong {
+            display: inline-block;
+            width: 200px;
+            color: #333;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ada Bungalow - Translation System Test</h1>
+    
+    <div class="lang-buttons">
+        <button onclick="testLanguage('tr')" id="btn-tr">🇹🇷 Türkçe</button>
+        <button onclick="testLanguage('en')" id="btn-en">🇬🇧 English</button>
+        <button onclick="testLanguage('ar')" id="btn-ar">🇸🇦 العربية</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Translation Test Results</h2>
+        <div id="test-results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Sample Translations</h2>
+        <div id="sample-translations"></div>
+    </div>
+
+    <script src="language-system.js"></script>
+    <script>
+        function testLanguage(lang) {
+            // Update button states
+            document.querySelectorAll('.lang-buttons button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`btn-${lang}`).classList.add('active');
+            
+            const results = document.getElementById('test-results');
+            const samples = document.getElementById('sample-translations');
+            const translations = siteTranslations[lang];
+            
+            if (!translations) {
+                results.innerHTML = '<div class="error">Language not found!</div>';
+                return;
+            }
+            
+            // Test key paths
+            const testPaths = [
+                'nav.home',
+                'nav.reserve',
+                'hero.badge',
+                'hero.title',
+                'suites.types.vip.name',
+                'suites.whatsappBtn',
+                'contact.form.villa',
+                'contact.form.message',
+                'contact.form.send',
+                'footer.tagline',
+                'footer.quickLinks',
+                'footer.followUs',
+                'footer.rights'
+            ];
+            
+            let resultHTML = '';
+            let allPassed = true;
+            
+            testPaths.forEach(path => {
+                const value = path.split('.').reduce((obj, key) => obj?.[key], translations);
+                if (value) {
+                    resultHTML += `<div class="test-item success">✅ <strong>${path}:</strong> "${value}"</div>`;
+                } else {
+                    resultHTML += `<div class="test-item error">❌ <strong>${path}:</strong> MISSING</div>`;
+                    allPassed = false;
+                }
+            });
+            
+            if (allPassed) {
+                resultHTML = '<div class="success" style="font-size: 20px; margin-bottom: 20px;">✅ All translations found!</div>' + resultHTML;
+            } else {
+                resultHTML = '<div class="error" style="font-size: 20px; margin-bottom: 20px;">❌ Some translations missing!</div>' + resultHTML;
+            }
+            
+            results.innerHTML = resultHTML;
+            
+            // Show sample translations
+            let sampleHTML = `
+                <div class="test-item"><strong>Language:</strong> ${lang.toUpperCase()}</div>
+                <div class="test-item"><strong>Direction:</strong> ${lang === 'ar' ? 'RTL' : 'LTR'}</div>
+                <div class="test-item"><strong>Hero Title:</strong> ${translations.hero?.title || 'N/A'}</div>
+                <div class="test-item"><strong>WhatsApp Button:</strong> ${translations.contact?.form?.send || 'N/A'}</div>
+                <div class="test-item"><strong>Footer Tagline:</strong> ${translations.footer?.tagline || 'N/A'}</div>
+            `;
+            
+            samples.innerHTML = sampleHTML;
+        }
+        
+        // Test Turkish by default
+        testLanguage('tr');
+    </script>
+</body>
+</html>

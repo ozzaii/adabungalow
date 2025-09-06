@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://adabungalow.com/sitemap.xml
+
+# Ada Bungalow Uzungöl
+# Luxury Mountain Retreat

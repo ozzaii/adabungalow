@@ -1,0 +1,433 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MOBILE-FIRST BOOKING REDESIGN
+   Ultra-optimized for performance and mobile UX
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE SECTION LAYOUT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .chapter-availability {
+        padding: 60px 16px 80px;
+        min-height: auto;
+    }
+    
+    .chapter-availability::before {
+        display: none; /* Remove heavy animation on mobile */
+    }
+    
+    .availability-header {
+        margin-bottom: 32px;
+    }
+    
+    .availability-title {
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 8px;
+    }
+    
+    .availability-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE BOOKING CARD
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .booking-card {
+        padding: 24px 16px;
+        border-radius: 20px;
+        margin: 0 -8px; /* Slight overhang for better edge feel */
+        box-shadow: 0 10px 30px rgba(27, 42, 36, 0.08),
+                    0 2px 8px rgba(27, 42, 36, 0.04);
+    }
+    
+    .booking-card::before,
+    .booking-card::after {
+        display: none; /* Remove decorative elements for performance */
+    }
+    
+    .booking-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE FORM FIELDS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .booking-field {
+        width: 100%;
+    }
+    
+    .field-label {
+        font-size: 0.625rem;
+        margin-bottom: 6px;
+        padding-left: 0;
+    }
+    
+    .field-label::before {
+        display: none; /* Remove decorative line on mobile */
+    }
+    
+    .field-input {
+        height: 56px;
+        padding: 0 16px;
+        border-radius: 12px;
+        background: white;
+        border: 1.5px solid rgba(231, 231, 224, 0.8);
+        /* Use transform for better performance than box-shadow */
+        will-change: transform;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    
+    .field-input:active {
+        transform: scale(0.98);
+    }
+    
+    .field-input:focus-within {
+        border-color: var(--brass);
+        transform: translateY(-1px);
+    }
+    
+    /* Optimize icon performance */
+    .field-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        /* Remove animations for better performance */
+        animation: none !important;
+    }
+    
+    .date-input::after {
+        right: 12px;
+        width: 18px;
+        height: 18px;
+    }
+    
+    /* Native date picker for better mobile UX */
+    .date-field {
+        font-size: 16px; /* Prevents zoom on iOS */
+        -webkit-appearance: none;
+    }
+    
+    .select-field {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding-right: 36px;
+        background-size: 14px;
+        background-position: right 12px center;
+    }
+    
+    /* Optimized guest counter for mobile */
+    .guest-input {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px;
+        background: white;
+        height: 56px;
+    }
+    
+    .guest-btn {
+        width: 44px;
+        height: 44px;
+        /* Use CSS instead of complex shadows */
+        background: var(--moss-chip);
+        border: 1px solid rgba(201, 162, 39, 0.15);
+        box-shadow: none;
+    }
+    
+    .guest-btn:active {
+        background: var(--brass);
+        color: white;
+        transform: scale(0.95);
+    }
+    
+    .guest-count {
+        font-size: 1.25rem;
+        min-width: 50px;
+        text-align: center;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE SPECIAL REQUESTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .booking-extras {
+        margin-bottom: 20px;
+    }
+    
+    .special-requests {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 12px;
+        min-height: 80px;
+        border-radius: 12px;
+        /* Optimize for performance */
+        box-shadow: none;
+        border: 1.5px solid rgba(231, 231, 224, 0.8);
+    }
+    
+    .special-requests:focus {
+        border-color: var(--brass);
+        box-shadow: none;
+        outline: none;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE PRICE PREVIEW
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .price-preview {
+        padding: 16px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        /* Simpler background for performance */
+        background: var(--moss-chip);
+        backdrop-filter: none;
+    }
+    
+    .price-preview::before {
+        display: none;
+    }
+    
+    .price-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .price-label {
+        font-size: 0.75rem;
+    }
+    
+    .price-value {
+        font-size: 1.25rem;
+    }
+    
+    .price-value::after {
+        display: none; /* Remove animation for performance */
+    }
+    
+    .price-note {
+        font-size: 0.7rem;
+        margin-top: 8px;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE CTA BUTTON
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .booking-actions {
+        padding: 20px 0 16px;
+    }
+    
+    .booking-actions::before {
+        display: none;
+    }
+    
+    .btn-luxury {
+        width: 100%;
+        max-width: none;
+        padding: 18px 32px;
+        font-size: 1rem;
+        border-radius: 50px;
+        /* Optimize animations */
+        animation: none;
+        /* Use simple shadow for performance */
+        box-shadow: 0 4px 12px rgba(201, 162, 39, 0.25);
+    }
+    
+    .btn-luxury:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 8px rgba(201, 162, 39, 0.2);
+    }
+    
+    /* Remove heavy shimmer on mobile */
+    .btn-shimmer {
+        display: none;
+    }
+    
+    .btn-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .btn-text {
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+    
+    .booking-note {
+        font-size: 0.75rem;
+        margin-top: 12px;
+        opacity: 0.6;
+    }
+    
+    .booking-note::before {
+        display: none;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE TRUST BADGES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .trust-badges {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding: 24px 0 0;
+        margin-top: 24px;
+    }
+    
+    .trust-badges::before {
+        top: 0;
+        left: 20%;
+        right: 20%;
+        opacity: 0.3;
+    }
+    
+    .trust-badge {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 12px 8px;
+        background: white;
+        border: 1px solid rgba(231, 231, 224, 0.6);
+        border-radius: 12px;
+        /* Remove complex effects */
+        backdrop-filter: none;
+        box-shadow: none;
+    }
+    
+    .trust-badge::before,
+    .trust-badge::after {
+        display: none;
+    }
+    
+    .trust-badge:active {
+        transform: scale(0.98);
+        background: var(--moss-chip);
+    }
+    
+    .badge-icon-svg {
+        width: 20px;
+        height: 20px;
+        /* Remove animations for performance */
+        animation: none !important;
+    }
+    
+    .badge-text {
+        font-size: 0.7rem;
+        text-align: center;
+        line-height: 1.2;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PERFORMANCE OPTIMIZATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    /* Use GPU acceleration wisely */
+    .field-input,
+    .btn-luxury,
+    .trust-badge {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+    
+    /* Reduce paint areas */
+    .booking-card {
+        contain: layout style;
+    }
+    
+    /* Optimize touch targets */
+    .guest-btn,
+    .btn-luxury,
+    button,
+    a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Remove unnecessary animations on scroll */
+    .booking-field,
+    .price-preview,
+    .trust-badge {
+        animation: none !important;
+    }
+    
+    /* Use native scrolling */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Optimize font rendering */
+    body {
+        text-rendering: optimizeSpeed;
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LANDSCAPE MOBILE ADJUSTMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .chapter-availability {
+        padding: 40px 16px 60px;
+    }
+    
+    .availability-header {
+        margin-bottom: 20px;
+    }
+    
+    .booking-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    
+    .trust-badges {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TINY MOBILE (< 360px)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 360px) {
+    .availability-title {
+        font-size: 1.75rem;
+    }
+    
+    .btn-luxury {
+        padding: 16px 24px;
+        font-size: 0.9rem;
+    }
+    
+    .trust-badge {
+        padding: 10px 6px;
+    }
+    
+    .badge-text {
+        font-size: 0.65rem;
+    }
+}

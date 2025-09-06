@@ -1,0 +1,93 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SPACING ADJUSTMENTS - Tighter Component Layout
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Reduce section padding */
+.chapter,
+.villa-chapter {
+    padding: 4rem 0 !important; /* Was 8rem */
+}
+
+.hero-supreme {
+    margin-bottom: -2rem; /* Pull next section closer */
+}
+
+/* Tighter villa sections */
+.villa-chapter {
+    margin-bottom: 2rem; /* Add small gap between villas */
+}
+
+.villa-chapter::after {
+    bottom: -1rem; /* Move divider closer */
+}
+
+.villa-divider {
+    bottom: -15px; /* Was -20px */
+}
+
+/* Reduce container spacing */
+.container,
+.booking-wrapper {
+    padding: 0 2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Tighter booking section */
+.chapter-availability {
+    padding: 3rem 0 !important; /* Was much larger */
+}
+
+.booking-card {
+    padding: 2rem !important; /* Was 3rem */
+}
+
+.booking-header {
+    margin-bottom: 2rem !important; /* Was 3rem */
+}
+
+.booking-grid {
+    gap: 1rem !important; /* Was 1.5rem */
+    margin-bottom: 1.5rem !important; /* Was 2rem */
+}
+
+/* Gallery tighter */
+.chapter-gallery {
+    padding: 3rem 0 !important;
+}
+
+.gallery-grid {
+    gap: 1rem !important; /* Was 1.5rem */
+    margin-top: 2rem !important;
+}
+
+/* Footer tighter */
+.footer-premium {
+    padding: 3rem 0 2rem !important;
+}
+
+.footer-grid {
+    gap: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Rituals section tighter */
+.chapter-rituals {
+    padding: 3rem 0 !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .chapter,
+    .villa-chapter {
+        padding: 2.5rem 0 !important;
+    }
+    
+    .villa-chapter {
+        margin-bottom: 1.5rem;
+    }
+    
+    .booking-card {
+        padding: 1.5rem 1rem !important;
+    }
+}

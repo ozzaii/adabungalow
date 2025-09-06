@@ -1,0 +1,135 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   VISIBLE MARBLE BACKGROUND - GUARANTEED TO SHOW
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Force dark marble pattern on HTML and BODY */
+html {
+    background: #D8D2C8 !important; /* Darker beige base */
+}
+
+body,
+body.background-marble {
+    /* Dark cream marble with visible texture */
+    background: 
+        /* Thick golden vein 1 */
+        linear-gradient(
+            105deg,
+            #D8D2C8 0%,
+            #D8D2C8 40%,
+            #C9A227 44%,
+            #B8921F 45%,
+            #C9A227 46%,
+            #D8D2C8 50%,
+            #D8D2C8 100%
+        ),
+        /* Dark vein 2 */
+        linear-gradient(
+            -15deg,
+            transparent 0%,
+            transparent 35%,
+            rgba(27, 42, 36, 0.3) 39%,
+            rgba(27, 42, 36, 0.4) 40%,
+            rgba(27, 42, 36, 0.3) 41%,
+            transparent 45%,
+            transparent 100%
+        ),
+        /* Base marble texture */
+        #D8D2C8 !important;
+    
+    background-size: 100% 100%, 100% 100% !important;
+    background-attachment: fixed !important;
+    min-height: 100vh !important;
+    position: relative !important;
+}
+
+/* Add marble texture with noise */
+body::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 100px,
+            rgba(201, 162, 39, 0.05) 100px,
+            rgba(201, 162, 39, 0.05) 101px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 100px,
+            rgba(27, 42, 36, 0.03) 100px,
+            rgba(27, 42, 36, 0.03) 101px
+        ),
+        radial-gradient(
+            ellipse at 30% 40%,
+            rgba(201, 162, 39, 0.1) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 70% 60%,
+            rgba(255, 255, 255, 0.2) 0%,
+            transparent 40%
+        ) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* Add visible marble grain */
+body::after {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0.4 !important;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.5' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E") !important;
+    mix-blend-mode: multiply !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Ensure all content is above marble */
+main,
+header,
+footer,
+section,
+article,
+.chapter,
+.villa-chapter {
+    position: relative !important;
+    z-index: 10 !important;
+    background: transparent !important;
+}
+
+/* Make cards translucent to show marble */
+.villa-split {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.booking-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.weather-card-inner {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(12px) !important;
+}
+
+/* Test visibility - add a colored overlay to confirm CSS is loading */
+body.test-marble {
+    background: linear-gradient(
+        45deg,
+        #FF0000 0%,
+        #00FF00 50%,
+        #0000FF 100%
+    ) !important;
+}

@@ -1,0 +1,156 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FORCE MARBLE BACKGROUND - HIGHEST PRIORITY
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Force marble background on body */
+body.background-marble {
+    /* Rich cream marble base */
+    background-color: #E8E2D8 !important;
+    
+    /* Strong marble veining pattern */
+    background-image: 
+        /* Primary golden vein - THICK */
+        linear-gradient(
+            115deg,
+            transparent 42%,
+            rgba(201, 162, 39, 0.25) 45%,
+            rgba(201, 162, 39, 0.4) 47%,
+            rgba(201, 162, 39, 0.35) 49%,
+            rgba(201, 162, 39, 0.25) 51%,
+            transparent 54%
+        ),
+        /* Secondary dark vein */
+        linear-gradient(
+            -25deg,
+            transparent 38%,
+            rgba(27, 42, 36, 0.15) 40%,
+            rgba(27, 42, 36, 0.25) 41%,
+            rgba(27, 42, 36, 0.15) 42%,
+            transparent 44%
+        ),
+        /* Third golden accent */
+        linear-gradient(
+            75deg,
+            transparent 60%,
+            rgba(201, 162, 39, 0.12) 61%,
+            rgba(201, 162, 39, 0.08) 62%,
+            transparent 63%
+        ),
+        /* Organic marble clouds */
+        radial-gradient(
+            ellipse 800px 600px at 25% 40%,
+            rgba(201, 162, 39, 0.12) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse 700px 500px at 75% 60%,
+            rgba(255, 251, 245, 0.6) 0%,
+            transparent 40%
+        ),
+        /* Base texture */
+        linear-gradient(
+            180deg,
+            rgba(232, 226, 216, 0.5) 0%,
+            rgba(245, 240, 232, 0.3) 50%,
+            rgba(232, 226, 216, 0.5) 100%
+        ) !important;
+    
+    background-size: 
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100% !important;
+    
+    background-attachment: fixed !important;
+    min-height: 100vh !important;
+}
+
+/* Even stronger marble shine effect */
+body.background-marble::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: 
+        linear-gradient(
+            135deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.2) 42%,
+            rgba(255, 255, 255, 0.4) 45%,
+            rgba(255, 255, 255, 0.2) 48%,
+            transparent 60%
+        ) !important;
+    background-size: 300% 300% !important;
+    animation: marble-shine 12s ease-in-out infinite !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    mix-blend-mode: overlay !important;
+}
+
+@keyframes marble-shine {
+    0%, 100% {
+        background-position: -50% -50%;
+        opacity: 0.4;
+    }
+    50% {
+        background-position: 150% 150%;
+        opacity: 0.7;
+    }
+}
+
+/* Stone texture overlay */
+body.background-marble::after {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='marble2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.008' numOctaves='2' seed='2' /%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0 0.75 0 0 0 0.25 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23marble2)'/%3E%3C/svg%3E") !important;
+    opacity: 0.3 !important;
+    mix-blend-mode: multiply !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Make sure main content shows properly */
+body.background-marble > * {
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Remove any white backgrounds that might be hiding marble */
+.hero-supreme,
+.chapter,
+.villa-chapter,
+.chapter-gallery,
+.chapter-availability {
+    background: transparent !important;
+}
+
+/* Semi-transparent cards to show marble through */
+.villa-split,
+.booking-card {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Make particles more visible on marble */
+.background-particles .light-particle {
+    width: 4px !important;
+    height: 4px !important;
+    background: radial-gradient(
+        circle,
+        rgba(201, 162, 39, 0.8) 0%,
+        rgba(201, 162, 39, 0.4) 40%,
+        transparent 60%
+    ) !important;
+    box-shadow: 
+        0 0 15px rgba(201, 162, 39, 0.5),
+        0 0 30px rgba(201, 162, 39, 0.2) !important;
+}

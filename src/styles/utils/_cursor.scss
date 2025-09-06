@@ -1,0 +1,53 @@
+.cursor,
+.cursor-follower {
+  display: none;
+  
+  @media (hover: hover) and (pointer: fine) {
+    display: block;
+  }
+}
+
+.cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  mix-blend-mode: difference;
+  
+  &.cursor-hover {
+    transform: translate(-50%, -50%) scale(3);
+    background: var(--color-secondary);
+  }
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  opacity: 0.5;
+  
+  &.cursor-hover {
+    width: 48px;
+    height: 48px;
+    border-color: var(--color-secondary);
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cursor,
+  .cursor-follower {
+    display: none !important;
+  }
+}

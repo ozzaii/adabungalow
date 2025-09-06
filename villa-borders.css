@@ -1,0 +1,287 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   VILLA BORDERS - Minimalist Luxury Separation
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Villa Chapter Enhancements */
+.villa-chapter {
+    position: relative;
+    padding: 8rem 0;
+    isolation: isolate;
+}
+
+/* Elegant Border Between Sections */
+.villa-chapter::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(201, 162, 39, 0.4) 20%,
+        rgba(201, 162, 39, 0.6) 50%,
+        rgba(201, 162, 39, 0.4) 80%,
+        transparent 100%
+    );
+    z-index: 10;
+}
+
+/* Remove border from last villa */
+.villa-chapter:last-of-type::after {
+    display: none;
+}
+
+/* Ornamental Divider */
+.villa-divider {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    background: var(--alpine-white);
+}
+
+.villa-divider::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='120' height='40' viewBox='0 0 120 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 20L40 10M40 10L50 20M40 10V30' stroke='%23C9A227' stroke-width='0.5' stroke-linecap='round'/%3E%3Ccircle cx='60' cy='20' r='3' fill='%23C9A227'/%3E%3Cpath d='M70 20L80 10M80 10L90 20M80 10V30' stroke='%23C9A227' stroke-width='0.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.85;
+}
+
+/* Villa Content Frame */
+.villa-split {
+    position: relative;
+    padding: 2rem;
+    background: var(--alpine-white);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Subtle Corner Accents */
+.villa-split::before,
+.villa-split::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(201, 162, 39, 0.5);
+    pointer-events: none;
+}
+
+.villa-split::before {
+    top: 20px;
+    left: 20px;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 8px 0 0 0;
+}
+
+.villa-split::after {
+    bottom: 20px;
+    right: 20px;
+    border-left: none;
+    border-top: none;
+    border-radius: 0 0 8px 0;
+}
+
+/* Luxury Frame for Villa Images */
+.villa-visual {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 40px rgba(27, 42, 36, 0.1),
+        inset 0 0 0 1px rgba(201, 162, 39, 0.25);
+}
+
+.villa-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, transparent 30%, rgba(201, 162, 39, 0.12) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s var(--ease);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.villa-visual:hover::before {
+    opacity: 1;
+}
+
+/* Golden Frame Overlay on Hover */
+.villa-visual::after {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(201, 162, 39, 0.5);
+    border-radius: 8px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.6s var(--ease);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.villa-visual:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Villa Name Underline */
+.villa-name {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-display, 'Fraunces', serif);
+}
+
+.villa-name::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brass) 0%, rgba(201, 162, 39, 0.4) 100%);
+    border-radius: 1px;
+}
+
+/* Amenity Chips with Border */
+.amenity-chip,
+.amenity-chips .badge {
+    border: 1px solid rgba(201, 162, 39, 0.3);
+    background: linear-gradient(135deg, var(--alpine-white) 0%, rgba(201, 162, 39, 0.06) 100%);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.875rem;
+    transition: all 0.2s var(--ease);
+}
+
+.amenity-chip::before,
+.amenity-chips .badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.25), transparent);
+    transition: left 0.6s var(--ease);
+}
+
+.amenity-chip:hover::before,
+.amenity-chips .badge:hover::before {
+    left: 100%;
+}
+
+.amenity-chips .badge:hover {
+    border-color: rgba(201, 162, 39, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(201, 162, 39, 0.25);
+}
+
+/* Section Number Badge */
+.villa-chapter::before {
+    content: attr(data-villa-number);
+    position: absolute;
+    top: 4rem;
+    right: 4rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgba(201, 162, 39, 0.6);
+    border: 1px solid rgba(201, 162, 39, 0.4);
+    border-radius: 50%;
+    background: var(--alpine-white);
+    z-index: 10;
+}
+
+/* Alternating Background Pattern */
+.villa-chapter:nth-child(odd) {
+    background: linear-gradient(135deg, var(--alpine-white) 0%, rgba(239, 242, 237, 0.3) 100%);
+}
+
+.villa-chapter:nth-child(even) {
+    background: linear-gradient(135deg, rgba(239, 242, 237, 0.3) 0%, var(--alpine-white) 100%);
+}
+
+/* Floating Accent Lines */
+.villa-accent-line {
+    position: absolute;
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(180deg, transparent 0%, rgba(201, 162, 39, 0.35) 50%, transparent 100%);
+    opacity: 0.8;
+}
+
+.villa-accent-line.left {
+    left: 5%;
+    top: 20%;
+}
+
+.villa-accent-line.right {
+    right: 5%;
+    bottom: 20%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .villa-chapter::after {
+        left: 5%;
+        right: 5%;
+    }
+    
+    .villa-chapter::before {
+        top: 2rem;
+        right: 2rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .villa-split {
+        padding: 1rem;
+    }
+    
+    .villa-split::before,
+    .villa-split::after {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .villa-split::before {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .villa-split::after {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .villa-accent-line {
+        display: none;
+    }
+}

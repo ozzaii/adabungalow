@@ -1,0 +1,293 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   RTL STYLES FOR ARABIC
+   Complete right-to-left layout support
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* RTL Base */
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Typography Adjustments */
+body.rtl {
+    font-family: 'Inter', 'Segoe UI Arabic', 'Arial', sans-serif;
+}
+
+body.rtl h1,
+body.rtl h2,
+body.rtl h3,
+body.rtl h4,
+body.rtl h5,
+body.rtl h6 {
+    font-family: 'Fraunces', 'Segoe UI Arabic', serif;
+}
+
+/* Header RTL */
+body.rtl .header-content {
+    flex-direction: row-reverse;
+}
+
+body.rtl .weather-chip {
+    flex-direction: row-reverse;
+}
+
+body.rtl .weather-chip .sep {
+    margin: 0 0.5rem;
+}
+
+/* Hero Section RTL */
+body.rtl .hero-cta-group {
+    flex-direction: row-reverse;
+}
+
+body.rtl .btn-primary .btn-icon {
+    transform: rotate(180deg);
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+
+body.rtl .hero-badge {
+    flex-direction: row-reverse;
+}
+
+body.rtl .badge-line {
+    background: linear-gradient(270deg, transparent, var(--brass), transparent);
+}
+
+/* Villa Sections RTL */
+body.rtl .villa-split {
+    grid-template-columns: 1fr 1.2fr;
+}
+
+body.rtl .villa-split.reverse {
+    grid-template-columns: 1.2fr 1fr;
+}
+
+body.rtl .villa-narrative {
+    text-align: right;
+}
+
+body.rtl .amenity-chips {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+body.rtl .villa-cta {
+    text-align: right;
+}
+
+body.rtl .villa-name::after {
+    left: auto;
+    right: 0;
+    background: linear-gradient(270deg, var(--brass) 0%, rgba(201, 162, 39, 0.4) 100%);
+}
+
+/* Corner Accents RTL */
+body.rtl .villa-split::before {
+    left: auto;
+    right: 20px;
+    border-right: 1px solid rgba(201, 162, 39, 0.5);
+    border-bottom: 1px solid rgba(201, 162, 39, 0.5);
+    border-left: none;
+    border-top: none;
+    border-radius: 0 8px 0 0;
+}
+
+body.rtl .villa-split::after {
+    right: auto;
+    left: 20px;
+    border-left: 1px solid rgba(201, 162, 39, 0.5);
+    border-top: 1px solid rgba(201, 162, 39, 0.5);
+    border-right: none;
+    border-bottom: none;
+    border-radius: 0 0 0 8px;
+}
+
+/* Villa Number Badge RTL */
+body.rtl .villa-chapter::before {
+    right: auto;
+    left: 4rem;
+}
+
+/* Booking Form RTL */
+body.rtl .booking-header {
+    text-align: center; /* Keep center for booking */
+}
+
+body.rtl .field-label {
+    text-align: right;
+}
+
+body.rtl .field-input input,
+body.rtl .field-input select,
+body.rtl .field-input textarea {
+    text-align: right;
+    padding: 1rem 1.25rem 1rem 3rem;
+}
+
+body.rtl .date-icon {
+    right: auto;
+    left: 1rem;
+}
+
+body.rtl .guest-counter {
+    flex-direction: row-reverse;
+}
+
+body.rtl .price-row {
+    flex-direction: row-reverse;
+}
+
+body.rtl .booking-actions {
+    flex-direction: row-reverse;
+}
+
+body.rtl .trust-badges {
+    flex-direction: row-reverse;
+}
+
+/* Gallery RTL */
+body.rtl .gallery-overlay {
+    text-align: right;
+}
+
+body.rtl .lightbox-close {
+    right: auto;
+    left: 2rem;
+}
+
+/* Footer RTL */
+body.rtl .footer-grid {
+    grid-template-columns: 1.5fr 1fr 1fr 2fr;
+    direction: rtl;
+}
+
+body.rtl .footer-links {
+    text-align: right;
+}
+
+body.rtl .footer-bottom {
+    flex-direction: row-reverse;
+}
+
+body.rtl .footer-languages {
+    flex-direction: row-reverse;
+}
+
+body.rtl .footer-social {
+    flex-direction: row-reverse;
+}
+
+/* Button Icons RTL */
+body.rtl .btn svg,
+body.rtl .btn-icon {
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+
+body.rtl .btn:hover .btn-icon {
+    transform: translateX(-4px);
+}
+
+/* WhatsApp Button RTL */
+body.rtl .btn-whatsapp svg {
+    margin-right: 0.75rem;
+    margin-left: 0;
+}
+
+/* Rituals Section RTL */
+body.rtl .rituals-track {
+    flex-direction: row-reverse;
+}
+
+body.rtl .ritual-content {
+    text-align: right;
+}
+
+/* Animations RTL */
+body.rtl .fade-left {
+    transform: translateX(-30px);
+}
+
+body.rtl .fade-right {
+    transform: translateX(30px);
+}
+
+body.rtl @keyframes float-particle {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scaleX(-1);
+    }
+    50% {
+        transform: translateY(-100vh) rotate(-180deg) scaleX(-1);
+    }
+}
+
+/* Floating Accent Lines RTL */
+body.rtl .villa-accent-line.left {
+    left: auto;
+    right: 5%;
+}
+
+body.rtl .villa-accent-line.right {
+    right: auto;
+    left: 5%;
+}
+
+/* Mobile RTL Adjustments */
+@media (max-width: 768px) {
+    body.rtl .villa-chapter::before {
+        left: auto;
+        right: 2rem;
+    }
+    
+    body.rtl .villa-split::before {
+        right: 10px;
+    }
+    
+    body.rtl .villa-split::after {
+        left: 10px;
+    }
+    
+    body.rtl .booking-actions {
+        flex-direction: column;
+    }
+    
+    body.rtl .trust-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Arabic Typography Enhancement */
+body.rtl[lang="ar"] {
+    font-size: 1.05rem; /* Slightly larger for Arabic readability */
+    line-height: 1.8;
+}
+
+body.rtl[lang="ar"] h1,
+body.rtl[lang="ar"] h2,
+body.rtl[lang="ar"] h3 {
+    letter-spacing: 0; /* Arabic doesn't need letter spacing */
+}
+
+/* Fix Number Display in Arabic */
+body.rtl .weather-temp,
+body.rtl .price-value,
+body.rtl .guest-count {
+    direction: ltr;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Smooth Transition */
+body {
+    transition: direction 0.3s ease;
+}
+
+/* Scroll Bar RTL */
+body.rtl::-webkit-scrollbar {
+    position: absolute;
+    left: 0;
+    right: auto;
+}

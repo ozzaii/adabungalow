@@ -1,0 +1,313 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   UZUNGÖL WEATHER - ELEGANT MINIMALIST EDITION
+   Sophisticated, Clean, Perfectly Integrated
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.weather-elegant-section {
+    padding: 100px 0;
+    background: linear-gradient(180deg, #FEFEFE 0%, #FFF8F3 100%);
+    position: relative;
+}
+
+.weather-elegant-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+/* Elegant Header */
+.weather-elegant-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.weather-elegant-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #5A8770;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.weather-elegant-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #0B3D2E;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.weather-elegant-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #5A8770;
+    opacity: 0.8;
+}
+
+/* Elegant Weather Card */
+.weather-elegant-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%);
+    border-radius: 40px;
+    padding: 80px;
+    box-shadow: 
+        0 30px 80px rgba(11, 61, 46, 0.1),
+        0 10px 40px rgba(11, 61, 46, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    margin: 0 auto;
+    max-width: 100%;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 2px solid rgba(255, 215, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.weather-elegant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 80px rgba(11, 61, 46, 0.12);
+}
+
+/* Left Side - Current Weather */
+.weather-current {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(11, 61, 46, 0.08);
+    padding-right: 4rem;
+}
+
+.weather-location-elegant {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 2rem;
+}
+
+.location-icon-elegant {
+    width: 24px;
+    height: 24px;
+    color: #FFD700;
+}
+
+.location-name-elegant {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: #5A8770;
+    text-transform: uppercase;
+}
+
+.weather-temp-elegant {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.temp-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #0B3D2E;
+}
+
+.temp-unit {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #5A8770;
+    margin-top: 0.5rem;
+}
+
+.weather-icon-elegant {
+    font-size: 3rem;
+    margin-top: -0.5rem;
+}
+
+.weather-desc-elegant {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #0B3D2E;
+    margin-bottom: 1rem;
+}
+
+.weather-feels-elegant {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #5A8770;
+    opacity: 0.8;
+}
+
+/* Right Side - Weather Details */
+.weather-details-elegant {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding-left: 4rem;
+    align-content: center;
+}
+
+.detail-elegant {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detail-icon-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.detail-icon-elegant {
+    font-size: 1.25rem;
+    opacity: 0.7;
+}
+
+.detail-value-elegant {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: #0B3D2E;
+}
+
+.detail-label-elegant {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #5A8770;
+    opacity: 0.7;
+}
+
+/* Live Indicator */
+.weather-live-indicator {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(37, 211, 102, 0.08);
+    border: 1px solid rgba(37, 211, 102, 0.2);
+    border-radius: 20px;
+}
+
+.live-dot {
+    width: 6px;
+    height: 6px;
+    background: #25D366;
+    border-radius: 50%;
+    animation: pulse-live 2s ease-in-out infinite;
+}
+
+@keyframes pulse-live {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+.live-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #25D366;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Decorative Elements */
+.weather-elegant-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        #FFD700 0%, transparent 20%, 
+        transparent 40%, #FFD700 50%, 
+        transparent 60%, transparent 80%, 
+        #FFD700 100%);
+    border-radius: 40px;
+    opacity: 0.3;
+    z-index: -1;
+    animation: shimmer-border 4s linear infinite;
+}
+
+@keyframes shimmer-border {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .weather-elegant-card {
+        grid-template-columns: 1fr;
+        padding: 40px 30px;
+        gap: 3rem;
+    }
+    
+    .weather-current {
+        border-right: none;
+        border-bottom: 1px solid rgba(11, 61, 46, 0.08);
+        padding-right: 0;
+        padding-bottom: 3rem;
+    }
+    
+    .weather-details-elegant {
+        padding-left: 0;
+        padding-top: 3rem;
+    }
+    
+    .weather-elegant-title {
+        font-size: 2.5rem;
+    }
+    
+    .temp-number {
+        font-size: 4rem;
+    }
+    
+    .weather-live-indicator {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+    }
+}
+
+/* Smooth entrance animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.weather-elegant-card {
+    animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+}

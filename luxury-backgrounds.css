@@ -1,0 +1,412 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LUXURY BACKGROUND SYSTEM
+   Sophisticated textures and atmospheric depth
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   OPTION 1: MISTY FOREST GRADIENT
+   Subtle atmospheric depth inspired by morning mist
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+body {
+    /* Deep forest base with subtle warmth */
+    background: linear-gradient(
+        135deg,
+        #F5F4F0 0%,      /* Warm ivory */
+        #E8E6E1 25%,     /* Soft stone */
+        #F0EDE8 50%,     /* Cashmere */
+        #E2DFD8 75%,     /* Morning mist */
+        #EAE8E3 100%     /* Pearl grey */
+    );
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Organic noise texture overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Subtle vignette for depth */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 0%,
+        transparent 40%,
+        rgba(27, 42, 36, 0.02) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   OPTION 2: WARM LINEN TEXTURE
+   Luxury fabric-inspired background
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.background-linen body {
+    background-color: #F8F6F2;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(201, 162, 39, 0.01) 10px,
+            rgba(201, 162, 39, 0.01) 20px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 10px,
+            rgba(27, 42, 36, 0.01) 10px,
+            rgba(27, 42, 36, 0.01) 20px
+        );
+    background-blend-mode: multiply;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   OPTION 3: WATERCOLOR WASH
+   Artistic, organic background
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.background-watercolor body {
+    background: 
+        radial-gradient(
+            ellipse at top left,
+            rgba(239, 242, 237, 0.8) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at bottom right,
+            rgba(201, 162, 39, 0.03) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at center,
+            rgba(27, 42, 36, 0.02) 0%,
+            transparent 70%
+        ),
+        linear-gradient(
+            180deg,
+            #F5F4F0 0%,
+            #EAE8E3 100%
+        );
+    background-attachment: fixed;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SECTIONAL BACKGROUNDS
+   Different atmospheres for different sections
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Hero maintains dramatic dark for contrast */
+.hero-supreme {
+    background: transparent;
+}
+
+/* Villa sections with alternating subtle tones */
+.villa-chapter {
+    position: relative;
+    background: transparent;
+}
+
+.villa-chapter:nth-child(odd) {
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(239, 242, 237, 0.3) 50%,
+        transparent 100%
+    );
+}
+
+.villa-chapter:nth-child(even) {
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(201, 162, 39, 0.02) 50%,
+        transparent 100%
+    );
+}
+
+/* Booking section - warmer, inviting */
+.chapter-availability {
+    background: linear-gradient(
+        135deg,
+        rgba(239, 242, 237, 0.5) 0%,
+        rgba(201, 162, 39, 0.03) 50%,
+        rgba(247, 246, 242, 0.8) 100%
+    );
+    position: relative;
+}
+
+/* Gallery - neutral to let images pop */
+.chapter-gallery {
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(27, 42, 36, 0.02) 100%
+    );
+}
+
+/* Footer - grounded, darker */
+.footer-premium {
+    /* Keeps its dark evergreen */
+    background: var(--evergreen);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATED BACKGROUND ELEMENTS
+   Subtle living texture
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Floating light particles */
+.background-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.light-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: radial-gradient(
+        circle,
+        rgba(201, 162, 39, 0.3) 0%,
+        transparent 70%
+    );
+    border-radius: 50%;
+    animation: float-light 20s infinite;
+}
+
+@keyframes float-light {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0;
+    }
+}
+
+.light-particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 15s; }
+.light-particle:nth-child(2) { left: 20%; animation-delay: 3s; animation-duration: 18s; }
+.light-particle:nth-child(3) { left: 30%; animation-delay: 5s; animation-duration: 20s; }
+.light-particle:nth-child(4) { left: 40%; animation-delay: 7s; animation-duration: 16s; }
+.light-particle:nth-child(5) { left: 50%; animation-delay: 10s; animation-duration: 22s; }
+.light-particle:nth-child(6) { left: 60%; animation-delay: 12s; animation-duration: 19s; }
+.light-particle:nth-child(7) { left: 70%; animation-delay: 14s; animation-duration: 17s; }
+.light-particle:nth-child(8) { left: 80%; animation-delay: 16s; animation-duration: 21s; }
+.light-particle:nth-child(9) { left: 90%; animation-delay: 18s; animation-duration: 15s; }
+.light-particle:nth-child(10) { left: 95%; animation-delay: 20s; animation-duration: 18s; }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PAPER TEXTURE OPTION
+   Premium stationery feel
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.background-paper body {
+    background-color: #FAF9F6;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.04' numOctaves='5' result='noise' /%3E%3CfeDiffuseLighting in='noise' lighting-color='white' surfaceScale='1'%3E%3CfeDistantLight azimuth='45' elevation='60' /%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23paper)' opacity='0.3'/%3E%3C/svg%3E");
+    background-blend-mode: soft-light;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MARBLE VEINING OPTION
+   Ultra luxury stone-inspired
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.background-marble,
+body.background-marble {
+    /* Base marble color - warm cream */
+    background-color: #F9F7F3;
+    
+    /* Complex marble veining pattern */
+    background-image: 
+        /* Primary diagonal veins */
+        linear-gradient(
+            105deg,
+            transparent 40%,
+            rgba(201, 162, 39, 0.08) 45%,
+            rgba(201, 162, 39, 0.12) 47%,
+            rgba(201, 162, 39, 0.08) 49%,
+            transparent 54%
+        ),
+        /* Secondary cross veins */
+        linear-gradient(
+            -15deg,
+            transparent 35%,
+            rgba(27, 42, 36, 0.06) 38%,
+            rgba(27, 42, 36, 0.08) 40%,
+            rgba(27, 42, 36, 0.06) 42%,
+            transparent 45%
+        ),
+        /* Tertiary fine veins */
+        linear-gradient(
+            45deg,
+            transparent 20%,
+            rgba(201, 162, 39, 0.04) 21%,
+            transparent 22%,
+            transparent 29%,
+            rgba(201, 162, 39, 0.03) 30%,
+            transparent 31%
+        ),
+        /* Organic texture overlay */
+        radial-gradient(
+            ellipse at top left,
+            rgba(239, 237, 232, 0.4) 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at bottom right,
+            rgba(201, 162, 39, 0.05) 0%,
+            transparent 50%
+        ),
+        /* Subtle color variations */
+        linear-gradient(
+            180deg,
+            rgba(251, 249, 245, 0.9) 0%,
+            rgba(245, 242, 237, 0.6) 50%,
+            rgba(251, 249, 245, 0.9) 100%
+        );
+    
+    background-size: 
+        100% 100%,
+        100% 100%,
+        50px 50px,
+        100% 100%,
+        100% 100%,
+        100% 100%;
+    
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Enhanced marble shimmer overlay */
+body.background-marble::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(
+            135deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.1) 45%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.1) 55%,
+            transparent 70%
+        );
+    background-size: 200% 200%;
+    animation: marble-shimmer 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: soft-light;
+}
+
+@keyframes marble-shimmer {
+    0%, 100% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Marble depth texture */
+body.background-marble::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='marble'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='3' /%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0 0.89 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23marble)'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: multiply;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE ADJUSTMENTS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Simplify on mobile for performance */
+@media (max-width: 768px) {
+    body::before {
+        opacity: 0.02; /* Less noise on mobile */
+    }
+    
+    .light-particle:nth-child(n+6) {
+        display: none; /* Fewer particles on mobile */
+    }
+    
+    .villa-chapter:nth-child(odd),
+    .villa-chapter:nth-child(even) {
+        background: linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(239, 242, 237, 0.2) 50%,
+            transparent 100%
+        );
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   DARK MODE OPTION (Future Enhancement)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(
+            135deg,
+            #1B2A24 0%,
+            #2A3B34 50%,
+            #1F2E28 100%
+        );
+    }
+    
+    body::before {
+        opacity: 0.05;
+    }
+    
+    body::after {
+        background: radial-gradient(
+            ellipse at center,
+            transparent 0%,
+            transparent 40%,
+            rgba(0, 0, 0, 0.3) 100%
+        );
+    }
+}

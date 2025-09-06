@@ -1,0 +1,199 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LANGUAGE SELECTOR STYLES - ADA BUNGALOW UZUNGÖL
+   Modern Language Switcher Design
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.language-selector {
+  position: relative;
+  margin-left: 1rem;
+}
+
+.lang-current {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 2rem;
+  color: var(--pearl);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-current:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.lang-flag {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.lang-code {
+  letter-spacing: 0.05em;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--midnight);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  min-width: 150px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.lang-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-dropdown button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  color: var(--pearl);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0.25rem;
+}
+
+.lang-dropdown button:hover {
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--gold);
+}
+
+.lang-dropdown button.active {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold);
+}
+
+/* RTL Support */
+html[dir="rtl"] .language-selector {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+html[dir="rtl"] .lang-dropdown {
+  right: auto;
+  left: 0;
+}
+
+html[dir="rtl"] .lang-dropdown button {
+  text-align: right;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .language-selector {
+    position: fixed;
+    top: 1rem;
+    right: 4rem;
+    z-index: 999;
+  }
+  
+  .lang-current {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .lang-flag {
+    font-size: 1rem;
+  }
+  
+  .lang-dropdown {
+    right: 0;
+    min-width: 120px;
+  }
+  
+  .lang-dropdown button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Animation for language change */
+@keyframes langChange {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.language-transitioning * {
+  animation: langChange 0.3s ease;
+}
+
+/* Tooltip for language names */
+.lang-tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--midnight);
+  color: var(--pearl);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.lang-current:hover .lang-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Loading state */
+.language-selector.loading .lang-current {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.language-selector.loading .lang-current::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--gold);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}

@@ -1,0 +1,536 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MOBILE OPTIMIZATIONS - ADA BUNGALOW UZUNGÖL
+   Responsive Design with Golden Ratio
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MOBILE VIEWPORT FIX
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@supports (-webkit-touch-callout: none) {
+  /* iOS specific fixes */
+  .hero-luxury {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Remove problematic overlays on mobile */
+.page-transition-layer,
+.premium-loader,
+.loader-overlay {
+  display: none !important;
+}
+
+/* Disable preloader on mobile to prevent black screen */
+.preloader {
+  display: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MOBILE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 768px) {
+  
+  /* Reset base font size for better mobile scaling */
+  :root {
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-md: 1.25rem;
+    --text-lg: 1.75rem;
+    --text-xl: 2.5rem;
+    --text-2xl: 3.5rem;
+    
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-base: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    --nav-height: 3.5rem;
+  }
+  
+  /* Navigation Mobile */
+  .nav-luxury {
+    padding: 0 1rem;
+    height: var(--nav-height);
+  }
+  
+  .nav-container {
+    padding: 0;
+  }
+  
+  .nav-logo {
+    font-size: 1.25rem;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--midnight);
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+  
+  .nav-menu.active {
+    right: 0;
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 2rem;
+  }
+  
+  .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-link {
+    font-size: 1.25rem;
+    padding: 1rem;
+    display: block;
+  }
+  
+  .nav-actions {
+    display: none;
+  }
+  
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--pearl);
+    transition: all 0.3s ease;
+    display: block;
+  }
+  
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+  
+  /* Hero Section Mobile */
+  .hero-luxury {
+    min-height: 100vh;
+    padding: var(--nav-height) 1rem 2rem;
+  }
+  
+  .hero-content {
+    padding: 2rem 0;
+    text-align: center;
+  }
+  
+  .hero-badge {
+    font-size: 0.625rem;
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  
+  .title-line {
+    display: block;
+    margin: 0.25rem 0;
+  }
+  
+  .hero-description {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .btn-luxury {
+    width: 100%;
+    padding: 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .hero-meta {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  
+  .meta-item {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  /* Experience Section Mobile */
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .experience-container {
+    padding: 0 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .experience-visual {
+    order: -1;
+  }
+  
+  .visual-stats {
+    position: static;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  /* Suites Section Mobile */
+  .suites-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .suite-card {
+    border-radius: 0.5rem;
+  }
+  
+  .suite-image {
+    height: 250px;
+  }
+  
+  .suite-content {
+    padding: 1.5rem;
+  }
+  
+  .suite-title {
+    font-size: 1.25rem;
+  }
+  
+  .suite-description {
+    font-size: 0.875rem;
+  }
+  
+  .suite-price {
+    padding: 1rem 1.5rem;
+  }
+  
+  .price-value {
+    font-size: 1.75rem;
+  }
+  
+  /* Amenities Mobile */
+  .amenities-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .amenity-card {
+    padding: 1.5rem;
+  }
+  
+  .amenity-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+  }
+  
+  .amenity-title {
+    font-size: 1.125rem;
+  }
+  
+  .amenity-description {
+    font-size: 0.875rem;
+  }
+  
+  /* Gallery Mobile */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .gallery-item {
+    height: 250px;
+  }
+  
+  /* Contact Form Mobile */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .contact-info {
+    order: 1;
+  }
+  
+  .contact-form-wrapper {
+    order: 2;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+  
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  /* Footer Mobile */
+  .footer-luxury {
+    padding: 2rem 1rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .footer-brand {
+    margin-bottom: 2rem;
+  }
+  
+  .footer-links {
+    justify-content: center;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding-top: 1.5rem;
+  }
+  
+  /* Disable animations on mobile for performance */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* Hide cursor effects on mobile */
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
+  
+  /* Optimize images for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Better touch targets */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+  
+  .container,
+  section {
+    overflow-x: hidden;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SMALL MOBILE (iPhone SE, etc)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 375px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .btn-luxury {
+    font-size: 0.75rem;
+    padding: 0.875rem;
+  }
+  
+  .suite-card {
+    margin: 0 -0.5rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   TABLET OPTIMIZATIONS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .nav-menu {
+    display: flex !important;
+  }
+  
+  .nav-toggle {
+    display: none;
+  }
+  
+  .hero-content {
+    padding: 3rem 2rem;
+  }
+  
+  .experience-grid,
+  .suites-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LANDSCAPE MOBILE
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 896px) and (orientation: landscape) {
+  .hero-luxury {
+    min-height: 100vh;
+  }
+  
+  .hero-content {
+    padding: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .hero-meta {
+    display: none;
+  }
+  
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   TOUCH DEVICE OPTIMIZATIONS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .btn-luxury:hover,
+  .nav-link:hover,
+  .suite-card:hover {
+    transform: none;
+  }
+  
+  /* Improve tap targets */
+  .btn-luxury,
+  .nav-link {
+    padding: 1rem 1.5rem;
+  }
+  
+  /* Remove parallax on mobile for performance */
+  [data-parallax] {
+    transform: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PERFORMANCE OPTIMIZATIONS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 768px) {
+  /* Reduce blur effects on mobile */
+  .hero-overlay,
+  .glass-morphism {
+    backdrop-filter: none;
+    background: rgba(10, 14, 26, 0.9);
+  }
+  
+  /* Simplify gradients */
+  .gradient-luxury {
+    background: var(--midnight);
+  }
+  
+  /* Disable complex animations */
+  .complex-animation {
+    animation: none;
+  }
+  
+  /* Use GPU acceleration */
+  .mobile-accelerate {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}

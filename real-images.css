@@ -1,0 +1,132 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   REAL IMAGES UPDATE - ADA BUNGALOW UZUNGÖL
+   High-Resolution Images from Uzungöl
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Hero Background - Real Ada Bungalow */
+.hero-luxury {
+  background-image: 
+    linear-gradient(
+      135deg,
+      rgba(10, 14, 26, 0.8) 0%,
+      rgba(10, 14, 26, 0.4) 50%,
+      rgba(10, 14, 26, 0.8) 100%
+    ),
+    url('images/bungalow-exterior.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Alternative Uzungöl specific backgrounds */
+.hero-bg-uzungol {
+  background-image: url('https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=1920&q=90');
+}
+
+/* Experience Section Background */
+.experience-luxury {
+  background-image: 
+    linear-gradient(
+      to bottom,
+      rgba(247, 250, 252, 0.95),
+      rgba(247, 250, 252, 0.95)
+    ),
+    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Gallery Section Background */
+.gallery-luxury {
+  background-image: 
+    linear-gradient(
+      to bottom,
+      rgba(26, 31, 46, 0.95),
+      rgba(26, 31, 46, 0.95)
+    ),
+    url('https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=1920&q=80');
+  background-size: cover;
+  background-position: center bottom;
+}
+
+/* Update Suite Images with better quality */
+.suite-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-luxury);
+}
+
+/* Contact Section with Map Background */
+.contact-luxury {
+  position: relative;
+  background-image: 
+    linear-gradient(
+      to bottom,
+      rgba(247, 250, 252, 0.98),
+      rgba(247, 250, 252, 0.98)
+    ),
+    url('https://images.unsplash.com/photo-1490380169520-0a4b88d52565?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Footer Background */
+.footer-luxury {
+  background-image: 
+    linear-gradient(
+      to bottom,
+      rgba(10, 14, 26, 0.98),
+      rgba(10, 14, 26, 1)
+    ),
+    url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&q=80');
+  background-size: cover;
+  background-position: center top;
+}
+
+/* Amenity Icon Updates */
+.amenity-icon img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-md);
+}
+
+/* Mobile Optimizations for Images */
+@media screen and (max-width: 768px) {
+  .hero-luxury {
+    background-attachment: scroll;
+    background-position: center center;
+  }
+  
+  .suite-image img,
+  .gallery-item img {
+    height: 250px;
+  }
+  
+  .amenity-icon img {
+    height: 150px;
+  }
+}
+
+/* Lazy Loading Placeholder */
+img[loading="lazy"] {
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(212, 175, 55, 0.2) 50%,
+    rgba(212, 175, 55, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

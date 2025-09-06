@@ -1,0 +1,415 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ULTRA POLISH PASS - COUTURE REFINEMENTS
+   Final touch-ups for perfection
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. WEATHER CHIP - Small, Translucent, Header-Only
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.weather-chip {
+    position: sticky;
+    top: calc(env(safe-area-inset-top) + 8px);
+    margin-left: auto;
+    z-index: 40;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: saturate(120%) blur(10px);
+    -webkit-backdrop-filter: saturate(120%) blur(10px);
+    border: 1px solid rgba(27, 42, 36, 0.14);
+    border-radius: 999px;
+    padding: 6px 12px;
+    box-shadow: 0 6px 24px rgba(20, 36, 32, 0.08);
+    color: #1B2A24;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.weather-chip .sep::before {
+    content: "·";
+    opacity: 0.45;
+    margin: 0 4px;
+}
+
+@media (max-width: 360px) {
+    .weather-chip .weather-location {
+        display: none;
+    }
+    .weather-chip {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+}
+
+/* Remove weather from all other sections */
+.chapter-trust .weather-chip,
+.chapter-gallery .weather-chip,
+.amenities-horizontal .weather-chip {
+    display: none !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. TURKISH UPPERCASE FIX - Small Caps
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.badge,
+.amenity-chips .badge,
+.micro-label {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.08em;
+    text-transform: none;
+}
+
+/* English language attribute for chips */
+.amenity-chips {
+    lang: en;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. STICKY BOOKING DOCK - Safe Area & Translucency
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.booking-dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(247, 246, 242, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 -10px 24px rgba(20, 36, 32, 0.08);
+    padding: 10px 12px;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 10px);
+    border-top: 1px solid rgba(27, 42, 36, 0.10);
+}
+
+/* Prevent content overlap */
+main,
+body > section:last-of-type {
+    padding-bottom: 140px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   4. HEADING RHYTHM & COMPOSITION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.section-title,
+.hero-title,
+.villa-name,
+.scene-title {
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+    text-wrap: balance;
+}
+
+.micro-label,
+.eyebrow {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.12em;
+    color: rgba(27, 42, 36, 0.7);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Prevent orphans in headings */
+h1, h2, h3, h4 {
+    text-wrap: balance;
+    hyphens: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   5. ROOM BLOCKS POLISH
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Limit chips to 6 */
+.amenity-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 100%;
+}
+
+.amenity-chips .badge:nth-child(n+7) {
+    display: none;
+}
+
+/* Price refinement */
+.price-whisper {
+    color: rgba(79, 91, 86, 0.9);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* CTA buttons - no underlines */
+.villa-cta .btn-primary {
+    background: #1B2A24;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.9rem 1.8rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.villa-cta .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27, 42, 36, 0.2);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   6. WATERMARK REFINEMENT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.watermark,
+.logo-watermark {
+    opacity: 0.18;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Only show on hero and signature scene */
+.chapter-arrival .watermark,
+.signature-scene .watermark {
+    display: block;
+}
+
+.chapter-villas .watermark,
+.chapter-gallery .watermark {
+    display: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   7. RITUALS SECTION FIX
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.amenities-horizontal .section-title {
+    position: sticky;
+    top: 100px;
+    z-index: 30;
+    padding: 20px;
+    background: linear-gradient(180deg, 
+        rgba(27, 42, 36, 1) 0%, 
+        rgba(27, 42, 36, 0.9) 70%,
+        transparent 100%);
+}
+
+.amenity-panel {
+    padding: 60px 40px;
+}
+
+.amenity-visual {
+    border-radius: 24px;
+    box-shadow: 0 6px 24px rgba(20, 36, 32, 0.12);
+    overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   8. REVIEW CARDS POLISH
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.review-quote {
+    max-width: 360px;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(20, 36, 32, 0.08);
+    padding: 24px;
+    background: white;
+}
+
+.review-quote blockquote {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.6;
+}
+
+.rating-stars {
+    display: flex;
+    gap: 4px;
+}
+
+.rating-stars svg {
+    width: 20px;
+    height: 20px;
+    stroke: #C9A227;
+    fill: transparent;
+    stroke-width: 1.5;
+}
+
+.rating-text {
+    font-size: 0.85rem;
+    color: rgba(27, 42, 36, 0.7);
+    margin-top: 8px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   9. TYPOGRAPHY REFINEMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+    font-feature-settings: "liga" 1, "dlig" 1, "kern" 1, "calt" 1;
+    hyphens: none;
+    word-break: normal;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+    max-width: 68ch;
+    line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   10. IMAGE CONSISTENCY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.villa-image,
+.gallery-image,
+.amenity-visual img {
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    filter: saturate(0.95) contrast(1.05);
+}
+
+/* Consistent color grade */
+img {
+    color-scheme: only light;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   11. MOTION CONSISTENCY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+    --ease-unified: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --duration-ui: 180ms;
+    --duration-scene: 420ms;
+    --stagger: 60ms;
+}
+
+* {
+    transition-timing-function: var(--ease-unified) !important;
+}
+
+.btn,
+.badge,
+.card {
+    transition-duration: var(--duration-ui);
+}
+
+.villa-chapter,
+.gallery-item,
+.review-quote {
+    transition-duration: var(--duration-scene);
+}
+
+/* Stagger animations */
+.stagger-item {
+    animation-delay: calc(var(--stagger) * var(--stagger-index, 0));
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   12. REDUCED MOTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .parallax-slow,
+    .parallax-mid,
+    .parallax-fast {
+        transform: none !important;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   13. ACCESSIBILITY IMPROVEMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #C9A227;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Skip to content */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #1B2A24;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Ensure contrast */
+.micro-label,
+.price-whisper,
+.weather-desc {
+    color: rgba(27, 42, 36, 0.8);
+    font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FINAL POLISH DETAILS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Remove all debug borders/backgrounds */
+* {
+    outline: none !important;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-padding-top: 80px;
+}
+
+/* Prevent text selection on UI elements */
+.btn,
+.badge,
+.weather-chip {
+    user-select: none;
+}
+
+/* Ensure images don't break layout */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
