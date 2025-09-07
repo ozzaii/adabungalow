@@ -18,27 +18,38 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://api.openweathermap.org">
     
-    <!-- Core Styles -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="premium-polish.css">
-    <link rel="stylesheet" href="footer-premium.css">
-    <link rel="stylesheet" href="booking-premium.css">
-    <link rel="stylesheet" href="booking-luxury.css">
-    <link rel="stylesheet" href="booking-ultimate.css">
-    <link rel="stylesheet" href="booking-mobile.css">
-    <link rel="stylesheet" href="hero-supreme.css">
-    <link rel="stylesheet" href="animation-fixes.css">
-    <link rel="stylesheet" href="villa-borders.css">
-    <link rel="stylesheet" href="rtl-styles.css">
-    <!-- Just spacing adjustments, no background -->
-    <link rel="stylesheet" href="spacing-adjustments.css">
+    <!-- Core Styles - Optimized Loading -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="hero-supreme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="hero-supreme.css">
+    </noscript>
     
-    <!-- GSAP & ScrollTrigger for sexy animations -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <!-- Deferred Styles -->
+    <link rel="stylesheet" href="premium-polish.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="footer-premium.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="booking-premium.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="booking-luxury.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="booking-ultimate.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="booking-mobile.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="animation-fixes.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="villa-borders.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="rtl-styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="spacing-adjustments.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="ux-enhancements.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="navigation-styles.css" media="print" onload="this.media='all'">
     
-    <!-- Lenis for buttery smooth scrolling -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- GSAP & ScrollTrigger - Deferred Loading -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    
+    <!-- Lenis for smooth scrolling - Deferred -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+    
+    <!-- Performance Optimization -->
+    <script src="performance-optimization.js" defer></script>
+    <script src="navigation-enhancements.js" defer></script>
 </head>
 <body>
     <!-- Scroll Progress -->
@@ -75,11 +86,11 @@
     <main id="main">
         
         <!-- Hero Section -->
-        <section class="hero-supreme" role="region" aria-label="Welcome">
+        <section id="hero" class="hero-supreme" role="region" aria-label="Welcome">
             <!-- Cinematic Background Layers -->
             <div class="hero-backdrop">
                 <div class="hero-video-container">
-                    <img src="images/bungalow-gallery/IMG_8723.JPG" alt="" class="hero-image" loading="eager">
+                    <img src="images/bungalow-gallery/IMG_8723.JPG" alt="Ada Bungalow luxury villa in misty mountains" class="hero-image" loading="eager" fetchpriority="high">
                     <div class="hero-gradient-overlay"></div>
                 </div>
                 <div class="hero-particles" aria-hidden="true">
@@ -682,5 +693,35 @@
     <script src="animations.js"></script>
     <script src="booking-interactions.js"></script>
     <script src="performance-opt.js" async></script>
+    <!-- Optimized Script Loading -->
+    <script>
+        // Preload critical scripts
+        ['animations.js', 'language-switcher.js', 'translations.js'].forEach(script => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'script';
+            link.href = script;
+            document.head.appendChild(link);
+        });
+        
+        // Load scripts after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                // Load non-critical scripts
+                const scripts = [
+                    'booking-interactions.js',
+                    'smooth-scroll.js',
+                    'lightbox.js'
+                ];
+                
+                scripts.forEach(src => {
+                    const script = document.createElement('script');
+                    script.src = src;
+                    script.async = true;
+                    document.body.appendChild(script);
+                });
+            }, 100);
+        });
+    </script>
 </body>
 </html>
