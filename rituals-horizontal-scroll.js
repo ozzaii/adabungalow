@@ -27,13 +27,16 @@
             panels.forEach(panel => {
                 panelWidth += panel.offsetWidth + parseInt(window.getComputedStyle(panel).marginRight);
             });
-            return panelWidth - window.innerWidth + 100; // Extra padding
+            // Adjust calculation for mobile screens
+            const isMobile = window.innerWidth <= 768;
+            const padding = isMobile ? 50 : 100;
+            return panelWidth - window.innerWidth + padding;
         };
         
-        // Only apply on desktop
+        // Apply on ALL devices including mobile
         const mm = gsap.matchMedia();
         
-        mm.add("(min-width: 768px)", () => {
+        mm.add("(min-width: 1px)", () => {  // Changed from 768px to 1px to include all devices
             // Pin the section and transform vertical scroll to horizontal
             const scrollTween = gsap.to(ritualsTrack, {
                 x: () => -getScrollAmount(),
@@ -90,12 +93,14 @@
             };
         });
         
-        // Mobile - keep regular horizontal scroll
+        // Remove mobile fallback - use vertical-to-horizontal on all devices
+        /*
         mm.add("(max-width: 767px)", () => {
             // Reset any transforms
             gsap.set(ritualsTrack, { x: 0 });
             gsap.set(panels, { scale: 1, opacity: 1 });
         });
+        */
         
         // Refresh ScrollTrigger on window resize
         ScrollTrigger.addEventListener("refreshInit", () => gsap.set(ritualsTrack, { x: 0 }));

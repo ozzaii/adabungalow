@@ -186,17 +186,29 @@
     }
 }
 
-/* Mobile - disable fancy effects */
+/* Mobile - keep luxury effects but optimize */
 @media (max-width: 767px) {
-    .chapter-rituals::before,
-    .chapter-rituals::after,
+    .chapter-rituals {
+        min-height: 100vh;
+        overflow: hidden;
+    }
+    
+    /* Keep subtle effects on mobile */
+    .chapter-rituals::before {
+        opacity: 0.02; /* Lighter grain on mobile */
+    }
+    
     .rituals-container::before,
-    .rituals-container::after,
-    .rituals-progress {
-        display: none;
+    .rituals-container::after {
+        width: 50px; /* Narrower vignettes on mobile */
     }
     
     .ritual-panel {
+        width: min(320px, 85vw); /* Adjust panel width for mobile */
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+    
+    .rituals-progress {
+        bottom: 1rem; /* Closer to bottom on mobile */
     }
 }
