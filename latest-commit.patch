@@ -1,0 +1,579 @@
+From 64cf4751642ef7b84fbf90e039a47bae41846c97 Mon Sep 17 00:00:00 2001
+From: ozzaii <rahipdotaci@gmail.com>
+Date: Mon, 8 Sep 2025 16:46:25 +0300
+Subject: [PATCH] Add elegant language switcher button with dropdown
+
+- Create floating language switcher with flag icons (TR/EN/AR)
+- Implement smooth dropdown menu with native language names
+- Add keyboard navigation and accessibility support
+- Integrate with existing translation system
+- Support RTL layout for Arabic
+- Add smooth animations and hover effects
+- Persist language selection in localStorage
+- Mobile-optimized responsive design
+---
+ index.html                     |   2 +
+ language-switcher-component.js | 284 +++++++++++++++++++++++++++++++++
+ language-switcher-ui.css       | 237 +++++++++++++++++++++++++++
+ 3 files changed, 523 insertions(+)
+ create mode 100644 language-switcher-component.js
+ create mode 100644 language-switcher-ui.css
+
+diff --git a/index.html b/index.html
+index 27e8058..9352030 100644
+--- a/index.html
++++ b/index.html
+@@ -39,6 +39,7 @@
+     <link rel="stylesheet" href="spacing-adjustments.css" media="print" onload="this.media='all'">
+     <link rel="stylesheet" href="ux-enhancements.css" media="print" onload="this.media='all'">
+     <link rel="stylesheet" href="navigation-styles.css" media="print" onload="this.media='all'">
++    <link rel="stylesheet" href="language-switcher-ui.css" media="print" onload="this.media='all'">
+     
+     <!-- GSAP & ScrollTrigger - Deferred Loading -->
+     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+@@ -50,6 +51,7 @@
+     <!-- Performance Optimization -->
+     <script src="performance-optimization.js" defer></script>
+     <script src="navigation-enhancements.js" defer></script>
++    <script src="language-switcher-component.js" defer></script>
+ </head>
+ <body>
+     <!-- Scroll Progress -->
+diff --git a/language-switcher-component.js b/language-switcher-component.js
+new file mode 100644
+index 0000000..41a0c6c
+--- /dev/null
++++ b/language-switcher-component.js
+@@ -0,0 +1,284 @@
++// Language Switcher Component
++(function() {
++    'use strict';
++
++    class LanguageSwitcher {
++        constructor() {
++            this.languages = [
++                { code: 'tr', name: 'Türkçe', flag: '🇹🇷', native: 'Turkish' },
++                { code: 'en', name: 'English', flag: '🇬🇧', native: 'English' },
++                { code: 'ar', name: 'العربية', flag: '🇸🇦', native: 'Arabic' }
++            ];
++            
++            this.currentLang = localStorage.getItem('preferred-language') || 'tr';
++            this.dropdown = null;
++            this.trigger = null;
++            
++            this.init();
++        }
++
++        init() {
++            this.createSwitcherUI();
++            this.attachEventListeners();
++            this.applyCurrentLanguage();
++        }
++
++        createSwitcherUI() {
++            // Create language switcher container
++            const switcher = document.createElement('div');
++            switcher.className = 'language-switcher';
++            switcher.setAttribute('role', 'navigation');
++            switcher.setAttribute('aria-label', 'Language selection');
++
++            // Get current language info
++            const currentLangInfo = this.languages.find(l => l.code === this.currentLang);
++
++            // Create trigger button
++            const trigger = document.createElement('button');
++            trigger.className = 'language-trigger';
++            trigger.setAttribute('aria-expanded', 'false');
++            trigger.setAttribute('aria-haspopup', 'true');
++            trigger.setAttribute('aria-label', `Current language: ${currentLangInfo.name}`);
++            
++            trigger.innerHTML = `
++                <span class="language-icon">
++                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
++                        <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
++                    </svg>
++                </span>
++                <span class="flag-icon">${currentLangInfo.flag}</span>
++                <span class="current-lang">${currentLangInfo.code}</span>
++                <svg class="language-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
++                    <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
++                </svg>
++            `;
++
++            // Create dropdown menu
++            const dropdown = document.createElement('div');
++            dropdown.className = 'language-dropdown';
++            dropdown.setAttribute('role', 'menu');
++
++            // Create language options
++            this.languages.forEach(lang => {
++                const option = document.createElement('button');
++                option.className = `language-option ${lang.code === this.currentLang ? 'active' : ''}`;
++                option.setAttribute('role', 'menuitem');
++                option.setAttribute('data-lang', lang.code);
++                option.setAttribute('aria-label', `Switch to ${lang.name}`);
++                
++                option.innerHTML = `
++                    <span class="flag-icon">${lang.flag}</span>
++                    <div class="language-name">
++                        <div>${lang.name}</div>
++                        <div class="language-native">${lang.native}</div>
++                    </div>
++                `;
++                
++                dropdown.appendChild(option);
++            });
++
++            // Append elements
++            switcher.appendChild(trigger);
++            switcher.appendChild(dropdown);
++
++            // Insert into header or body
++            const header = document.querySelector('.header-content');
++            if (header) {
++                // Insert before weather chip if it exists
++                const weatherChip = header.querySelector('.weather-chip');
++                if (weatherChip) {
++                    header.insertBefore(switcher, weatherChip);
++                } else {
++                    header.appendChild(switcher);
++                }
++            } else {
++                // Fallback to body if no header
++                document.body.appendChild(switcher);
++            }
++
++            // Store references
++            this.dropdown = dropdown;
++            this.trigger = trigger;
++        }
++
++        attachEventListeners() {
++            // Toggle dropdown
++            this.trigger.addEventListener('click', (e) => {
++                e.stopPropagation();
++                this.toggleDropdown();
++            });
++
++            // Language selection
++            this.dropdown.querySelectorAll('.language-option').forEach(option => {
++                option.addEventListener('click', (e) => {
++                    e.stopPropagation();
++                    const lang = option.getAttribute('data-lang');
++                    this.switchLanguage(lang);
++                });
++            });
++
++            // Close dropdown on outside click
++            document.addEventListener('click', () => {
++                this.closeDropdown();
++            });
++
++            // Keyboard navigation
++            this.trigger.addEventListener('keydown', (e) => {
++                if (e.key === 'Enter' || e.key === ' ') {
++                    e.preventDefault();
++                    this.toggleDropdown();
++                } else if (e.key === 'Escape') {
++                    this.closeDropdown();
++                }
++            });
++
++            // Arrow key navigation in dropdown
++            this.dropdown.addEventListener('keydown', (e) => {
++                const options = Array.from(this.dropdown.querySelectorAll('.language-option'));
++                const currentIndex = options.findIndex(opt => opt === document.activeElement);
++                
++                if (e.key === 'ArrowDown') {
++                    e.preventDefault();
++                    const nextIndex = (currentIndex + 1) % options.length;
++                    options[nextIndex].focus();
++                } else if (e.key === 'ArrowUp') {
++                    e.preventDefault();
++                    const prevIndex = currentIndex === -1 ? options.length - 1 : 
++                                     (currentIndex - 1 + options.length) % options.length;
++                    options[prevIndex].focus();
++                } else if (e.key === 'Escape') {
++                    this.closeDropdown();
++                    this.trigger.focus();
++                }
++            });
++        }
++
++        toggleDropdown() {
++            const isOpen = this.dropdown.classList.contains('active');
++            
++            if (isOpen) {
++                this.closeDropdown();
++            } else {
++                this.openDropdown();
++            }
++        }
++
++        openDropdown() {
++            this.dropdown.classList.add('active');
++            this.trigger.classList.add('active');
++            this.trigger.setAttribute('aria-expanded', 'true');
++            
++            // Focus first option
++            const firstOption = this.dropdown.querySelector('.language-option');
++            if (firstOption) {
++                firstOption.focus();
++            }
++        }
++
++        closeDropdown() {
++            this.dropdown.classList.remove('active');
++            this.trigger.classList.remove('active');
++            this.trigger.setAttribute('aria-expanded', 'false');
++        }
++
++        switchLanguage(langCode) {
++            if (langCode === this.currentLang) {
++                this.closeDropdown();
++                return;
++            }
++
++            // Add animation class
++            this.trigger.classList.add('changing');
++            
++            // Update current language
++            this.currentLang = langCode;
++            localStorage.setItem('preferred-language', langCode);
++            
++            // Update UI
++            const langInfo = this.languages.find(l => l.code === langCode);
++            
++            // Update trigger button
++            this.trigger.querySelector('.flag-icon').textContent = langInfo.flag;
++            this.trigger.querySelector('.current-lang').textContent = langInfo.code;
++            this.trigger.setAttribute('aria-label', `Current language: ${langInfo.name}`);
++            
++            // Update active state in dropdown
++            this.dropdown.querySelectorAll('.language-option').forEach(option => {
++                if (option.getAttribute('data-lang') === langCode) {
++                    option.classList.add('active');
++                } else {
++                    option.classList.remove('active');
++                }
++            });
++            
++            // Close dropdown
++            this.closeDropdown();
++            
++            // Apply language change
++            this.applyCurrentLanguage();
++            
++            // Remove animation class
++            setTimeout(() => {
++                this.trigger.classList.remove('changing');
++            }, 300);
++            
++            // Announce change to screen readers
++            this.announceLanguageChange(langInfo.name);
++        }
++
++        applyCurrentLanguage() {
++            // Update HTML lang and dir attributes
++            document.documentElement.lang = this.currentLang;
++            document.documentElement.dir = this.currentLang === 'ar' ? 'rtl' : 'ltr';
++            
++            // Integration with existing translation system
++            if (window.languageSwitcherInstance && typeof window.languageSwitcherInstance.switchLanguage === 'function') {
++                // Use existing language switcher instance
++                window.languageSwitcherInstance.switchLanguage(this.currentLang);
++            } else if (window.updateLanguage && typeof window.updateLanguage === 'function') {
++                // Use updateLanguage function if available
++                window.updateLanguage(this.currentLang);
++            } else {
++                // Try to initialize the existing LanguageSwitcher class
++                if (window.LanguageSwitcher && !window.languageSwitcherInstance) {
++                    window.languageSwitcherInstance = new window.LanguageSwitcher();
++                    if (window.languageSwitcherInstance.switchLanguage) {
++                        window.languageSwitcherInstance.switchLanguage(this.currentLang);
++                    }
++                }
++                
++                // Also dispatch custom event for other scripts
++                window.dispatchEvent(new CustomEvent('languageChanged', {
++                    detail: { language: this.currentLang }
++                }));
++            }
++            
++            // Update localStorage with consistent key
++            localStorage.setItem('adaBungalowLang', this.currentLang);
++        }
++
++        announceLanguageChange(languageName) {
++            // Create announcement for screen readers
++            const announcement = document.createElement('div');
++            announcement.className = 'sr-only';
++            announcement.setAttribute('role', 'status');
++            announcement.setAttribute('aria-live', 'polite');
++            announcement.textContent = `Language changed to ${languageName}`;
++            
++            document.body.appendChild(announcement);
++            setTimeout(() => announcement.remove(), 1000);
++        }
++    }
++
++    // Initialize when DOM is ready
++    if (document.readyState === 'loading') {
++        document.addEventListener('DOMContentLoaded', () => {
++            window.languageSwitcher = new LanguageSwitcher();
++        });
++    } else {
++        window.languageSwitcher = new LanguageSwitcher();
++    }
++
++    // Export for use with existing translation system
++    window.LanguageSwitcher = LanguageSwitcher;
++})();
+\ No newline at end of file
+diff --git a/language-switcher-ui.css b/language-switcher-ui.css
+new file mode 100644
+index 0000000..e807d51
+--- /dev/null
++++ b/language-switcher-ui.css
+@@ -0,0 +1,237 @@
++/* Language Switcher UI Styles */
++
++.language-switcher {
++    position: fixed;
++    top: 1.5rem;
++    right: 2rem;
++    z-index: 1001;
++    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
++}
++
++.language-trigger {
++    display: flex;
++    align-items: center;
++    gap: 0.5rem;
++    padding: 0.5rem 1rem;
++    background: rgba(255, 255, 255, 0.95);
++    backdrop-filter: blur(10px);
++    border: 1px solid var(--divider, #E7E7E0);
++    border-radius: 24px;
++    cursor: pointer;
++    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
++    font-size: 0.875rem;
++    font-weight: 500;
++    color: var(--ink, #1B2A24);
++    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
++}
++
++.language-trigger:hover {
++    background: white;
++    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
++    transform: translateY(-1px);
++}
++
++.language-trigger:active {
++    transform: translateY(0);
++}
++
++.language-icon {
++    width: 20px;
++    height: 20px;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++}
++
++.language-icon svg {
++    width: 100%;
++    height: 100%;
++    stroke: currentColor;
++    stroke-width: 1.5;
++    fill: none;
++}
++
++.current-lang {
++    text-transform: uppercase;
++    letter-spacing: 0.02em;
++}
++
++.language-dropdown-arrow {
++    width: 12px;
++    height: 12px;
++    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
++}
++
++.language-trigger.active .language-dropdown-arrow {
++    transform: rotate(180deg);
++}
++
++.language-dropdown {
++    position: absolute;
++    top: calc(100% + 0.5rem);
++    right: 0;
++    background: white;
++    border-radius: 12px;
++    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
++    padding: 0.5rem;
++    min-width: 180px;
++    opacity: 0;
++    visibility: hidden;
++    transform: translateY(-10px) scale(0.95);
++    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
++    border: 1px solid var(--divider, #E7E7E0);
++}
++
++.language-dropdown.active {
++    opacity: 1;
++    visibility: visible;
++    transform: translateY(0) scale(1);
++}
++
++.language-option {
++    display: flex;
++    align-items: center;
++    gap: 0.75rem;
++    padding: 0.75rem 1rem;
++    border-radius: 8px;
++    cursor: pointer;
++    transition: all 0.2s ease;
++    border: none;
++    background: none;
++    width: 100%;
++    text-align: left;
++    font-size: 0.875rem;
++    color: var(--ink, #1B2A24);
++}
++
++.language-option:hover {
++    background: rgba(201, 162, 39, 0.08);
++}
++
++.language-option.active {
++    background: rgba(201, 162, 39, 0.12);
++    font-weight: 600;
++}
++
++.language-option.active::before {
++    content: '✓';
++    position: absolute;
++    right: 1rem;
++    color: var(--accent, #C9A227);
++    font-weight: bold;
++}
++
++.flag-icon {
++    width: 20px;
++    height: 20px;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    font-size: 1rem;
++}
++
++.language-name {
++    flex: 1;
++}
++
++.language-native {
++    color: var(--ink, #1B2A24);
++    opacity: 0.7;
++    font-size: 0.75rem;
++    margin-top: 2px;
++}
++
++/* Mobile Adjustments */
++@media (max-width: 768px) {
++    .language-switcher {
++        top: 1rem;
++        right: 1rem;
++    }
++    
++    .language-trigger {
++        padding: 0.4rem 0.8rem;
++        font-size: 0.8rem;
++    }
++    
++    .language-icon {
++        width: 18px;
++        height: 18px;
++    }
++    
++    .language-dropdown {
++        right: 0;
++        left: auto;
++        min-width: 160px;
++    }
++    
++    .language-option {
++        padding: 0.6rem 0.8rem;
++        font-size: 0.8rem;
++    }
++}
++
++/* RTL Support */
++html[dir="rtl"] .language-switcher {
++    left: 2rem;
++    right: auto;
++}
++
++html[dir="rtl"] .language-dropdown {
++    left: 0;
++    right: auto;
++}
++
++html[dir="rtl"] .language-option {
++    text-align: right;
++    flex-direction: row-reverse;
++}
++
++html[dir="rtl"] .language-option.active::before {
++    left: 1rem;
++    right: auto;
++}
++
++/* Header Integration */
++.header-minimal .language-switcher {
++    position: static;
++    margin-left: auto;
++}
++
++/* Animation for flag change */
++@keyframes flagBounce {
++    0%, 100% { transform: scale(1); }
++    50% { transform: scale(1.1); }
++}
++
++.language-trigger.changing .flag-icon {
++    animation: flagBounce 0.3s ease;
++}
++
++/* Accessibility */
++.language-trigger:focus-visible,
++.language-option:focus-visible {
++    outline: 2px solid var(--accent, #C9A227);
++    outline-offset: 2px;
++}
++
++/* Dark mode support (if needed) */
++@media (prefers-color-scheme: dark) {
++    .language-trigger {
++        background: rgba(30, 30, 30, 0.95);
++        color: white;
++        border-color: rgba(255, 255, 255, 0.1);
++    }
++    
++    .language-dropdown {
++        background: #1a1a1a;
++        border-color: rgba(255, 255, 255, 0.1);
++    }
++    
++    .language-option {
++        color: white;
++    }
++    
++    .language-option:hover {
++        background: rgba(201, 162, 39, 0.15);
++    }
++}
+\ No newline at end of file
+-- 
+2.51.0
+

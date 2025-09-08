@@ -4,8 +4,10 @@ gsap.registerPlugin(ScrollTrigger);
 // Check for reduced motion preference
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// DISABLED: Lenis causing scroll stuttering
 // Initialize Lenis for buttery smooth scrolling
-let lenis;
+let lenis = null;
+/*
 if (!prefersReducedMotion) {
     lenis = new Lenis({
         duration: 1.2,
@@ -32,6 +34,7 @@ if (!prefersReducedMotion) {
     });
     gsap.ticker.lagSmoothing(0);
 }
+*/
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
