@@ -194,8 +194,10 @@ html {
 /* 8. Image Load Transitions */
 img {
     transition: opacity 0.3s ease-out, filter 0.3s ease-out;
+    opacity: 1; /* Default visible since lazy loading is disabled */
 }
 
+/* Disabled - causing images to be hidden
 img:not(.loaded) {
     opacity: 0;
 }
@@ -203,6 +205,7 @@ img:not(.loaded) {
 img.loaded {
     opacity: 1;
 }
+*/
 
 /* 9. Parallax Performance */
 [data-parallax] {
