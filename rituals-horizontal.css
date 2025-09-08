@@ -37,17 +37,29 @@
     display: flex;
     gap: 2rem;
     padding: 0 2rem;
-    overflow-x: auto;
+    /* Desktop: No overflow, GSAP handles scroll */
+    overflow-x: visible;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    position: relative;
+    width: max-content;
 }
 
-.rituals-track::-webkit-scrollbar {
-    display: none;
+/* Mobile: Regular horizontal scroll */
+@media (max-width: 767px) {
+    .rituals-track {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        width: 100%;
+    }
+    
+    .rituals-track::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 /* Ritual Panels */
