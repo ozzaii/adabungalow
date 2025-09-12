@@ -1,0 +1,111 @@
+<!-- Add this directly in <head> before any link tags -->
+<style>
+/* Critical CSS to prevent FOUC */
+html {
+    visibility: hidden;
+    opacity: 0;
+}
+
+html.fonts-loaded {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Immediate basic layout to prevent jump */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #1B2A24;
+    background: #F7F6F2;
+    min-height: 100vh;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #F7F6F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.header-minimal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.5rem 2rem;
+    background: transparent;
+}
+
+.hero-supreme {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: #1B2A24;
+}
+
+.chapter,
+.villa-chapter {
+    padding: 4rem 0;
+    background: #F7F6F2;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    opacity: 1;
+}
+
+/* Hide content initially */
+.hero-stage,
+.chapter,
+.villa-chapter,
+.gallery,
+.footer-premium {
+    opacity: 0;
+}
+
+/* Show after styles load */
+.styles-loaded .hero-stage,
+.styles-loaded .chapter,
+.styles-loaded .villa-chapter,
+.styles-loaded .gallery,
+.styles-loaded .footer-premium {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+</style>
+
+<script>
+// Prevent FOUC
+document.documentElement.className = 'no-js';
+
+// Check when styles are loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Give styles a moment to load
+    setTimeout(function() {
+        document.documentElement.classList.add('fonts-loaded');
+        document.body.classList.add('styles-loaded');
+    }, 100);
+});
+
+// Fallback - show content after 1 second regardless
+setTimeout(function() {
+    document.documentElement.classList.add('fonts-loaded');
+    document.body.classList.add('styles-loaded');
+}, 1000);
+</script>

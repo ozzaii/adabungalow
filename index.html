@@ -18,13 +18,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://api.openweathermap.org">
     
-    <!-- Core Styles - Optimized Loading -->
-    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="hero-supreme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="hero-supreme.css">
-    </noscript>
+    <!-- Critical inline styles to prevent FOUC -->
+    <style>
+        /* Prevent flash of unstyled content */
+        html { visibility: hidden; opacity: 0; }
+        .no-fouc { visibility: visible; opacity: 1; transition: opacity 0.3s ease; }
+    </style>
+    
+    <!-- Core Styles - Load immediately -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="hero-supreme.css">
     
     <!-- Deferred Styles -->
     <link rel="stylesheet" href="premium-polish.css" media="print" onload="this.media='all'">
@@ -60,6 +63,12 @@
     -->
 </head>
 <body>
+    <script>
+        // Show content once styles start loading
+        requestAnimationFrame(() => {
+            document.documentElement.classList.add('no-fouc');
+        });
+    </script>
     <!-- Scroll Progress -->
     <div class="scroll-progress" aria-hidden="true"></div>
     
