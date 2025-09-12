@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="rituals-horizontal.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="rituals-luxury.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="coordinates-fix.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="weather-widget.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="premium-weather-widget.css" media="print" onload="this.media='all'">
     
     <!-- GSAP & ScrollTrigger - Deferred Loading -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
@@ -58,7 +58,8 @@
     <!-- Performance Optimization -->
     <script src="scroll-fix.js"></script>
     <script src="image-fix.js"></script>
-    <script src="weather-widget.js" defer></script>
+    <script src="premium-weather-widget.js" defer></script>
+    <script src="navbar-language.js" defer></script>
     <script src="rituals-horizontal-scroll.js" defer></script>
     <!-- Temporarily disabled due to scroll issues
     <script src="performance-optimization.js" defer></script>
@@ -92,12 +93,10 @@
                 <span class="logo-text">ADA BUNGALOW</span>
                 <span class="hairline" aria-hidden="true"></span>
             </a>
-            <div class="weather-chip" role="status" aria-live="polite">
-                <span class="weather-temp">18°C</span>
-                <span class="sep" aria-hidden="true"></span>
-                <span class="weather-desc">Partly cloudy</span>
-                <span class="sep" aria-hidden="true"></span>
-                <span class="weather-location">Uzungöl</span>
+            <div class="navbar-language-switcher">
+                <button class="lang-btn active" data-lang="tr">TR</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">AR</button>
             </div>
         </div>
     </header>
