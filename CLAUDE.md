@@ -235,3 +235,275 @@ requestAnimationFrame(raf);
 
 ## 🎯 Final Goal
 The experience should feel like entering a quiet, misty forest retreat. Every scroll reveals a new chapter, every interaction feels considered, and the entire journey from arrival to booking flows like a carefully directed film. No flashy effects — just subtle, tasteful motion that enhances the story of luxury in nature.
+
+---
+
+# Premium Revamp Report — UX/UI + Content + Flow
+
+## Executive Summary
+
+### Identified Issues:
+- Language selector/translation inconsistencies
+- Overlay and card alignment errors
+- Contrast/readability problems
+- "Daily Rituals" section scroll/opacity bugs
+- Gallery aspect ratio inconsistencies
+- Map layer white blur issue
+- **Booking form WEAK** (missing fields, no validation, no pricing/availability flow, premature WhatsApp escape)
+
+### Goals:
+- Boutique-luxury feel
+- "Skylight" brightness (airy, open)
+- One-click booking flow
+- Flawless 3-language (TR/EN/AR) experience
+- Mobile-first performance (LCP < 2.5s)
+
+### Approach:
+- Design system + flow corrections
+- Content language standardization
+- Form/booking engine architecture
+- Performance/accessibility
+
+---
+
+## Simple WhatsApp Booking Form
+
+**Philosophy:** Keep it dead simple. Collect basic info → send prefilled WhatsApp message. No complex APIs, no multi-step wizard, no pricing calculations.
+
+### Form Fields (Single Page)
+
+```
+[ H2 ] Check Availability / Müsaitlik Kontrolü
+
+[ Check-in Date ▢ ]
+[ Check-out Date ▢ ]
+
+[ Villa Type ▽ ]
+  - Havuzlu VIP Villa
+  - Şelaleli Villa
+  - Luxury 3+1 Villa
+
+[ Guests ]
+  Adults: [−] 2 [+]
+  (Children optional)
+
+[ Special Requests (optional) ]
+  ▭▭▭
+
+[ CTA: "Check via WhatsApp" / "WhatsApp'tan Kontrol Et" ]
+```
+
+### WhatsApp Message Template
+
+```
+Merhaba Ada Bungalow 👋
+
+{checkIn} - {checkOut} tarihleri için müsait mi?
+
+Villa: {villaType}
+Kişi sayısı: {guests} yetişkin
+{optionalChildren}
+{optionalRequests}
+
+Teşekkürler!
+```
+
+**English:**
+```
+Hello Ada Bungalow 👋
+
+Are you available {checkIn} - {checkOut}?
+
+Villa: {villaType}
+Guests: {guests} adults
+{optionalChildren}
+{optionalRequests}
+
+Thank you!
+```
+
+**Arabic:**
+```
+مرحبا Ada Bungalow 👋
+
+هل أنت متاح {checkIn} - {checkOut}؟
+
+فيلا: {villaType}
+الضيوف: {guests} بالغين
+{optionalChildren}
+{optionalRequests}
+
+شكراً!
+```
+
+### Implementation Notes
+
+- No validation beyond "dates filled + villa selected"
+- No pricing shown (too complex, changes seasonally)
+- Button generates WhatsApp link with prefilled text
+- Works offline, no API calls
+- Fast, simple, bulletproof
+
+---
+
+## Priority Fixes
+
+### 1. Nav & Language Selector
+**Issues:**
+- TR/EN/AR buttons inconsistent; empty/borderless states
+- Some texts remain in TR when switched to EN/AR
+- No RTL support for Arabic
+
+**Solutions:**
+- Language switcher: fixed in header (right) + mobile drawer
+- Labels in native language: TR / English / العربية
+- AR: full RTL layout
+- URL structure: /tr, /en, /ar
+- Hreflang + meta-title/desc/og in all languages
+
+### 2. Hero & CTA
+**Issues:**
+- Dark overlay + text contrast borderline
+- CTA buried in dark background
+- Title typography kerning/line-height overflow
+
+**Solutions:**
+- Title font: Display serif (Canela/Cinzel/Cormorant) H1 56–64px, line-height 1.05
+- Subtitle: sans (Manrope/Inter) 18–20px
+- Primary CTA: "Book Now" (TR/EN/AR). Gold fill (#c8a96a) on dark / dark text
+- Secondary CTA: "Villas" anchor
+
+### 3. Villa Cards
+**Issues:**
+- Image aspect ratios vary; content jumps
+- Feature chips diffuse, low clickability
+- "WhatsApp reservation" too early
+
+**Solutions:**
+- Aspect ratio lock: all card images 3:2 (desktop), 4:3 (mobile). object-fit: cover
+- Chip style: rounded, filled min-badge; icon + short label (e.g. 🛁 Jacuzzi)
+- Card CTA: "View Details" → modal or villa detail page
+- Reservation CTA leads to form; WhatsApp secondary for support/special requests
+
+### 4. Daily Rituals Section
+**Issues:**
+- Opacity/blur overlay cuts off cards; collides with titles; slider misaligned
+
+**Solutions:**
+- Static grid (3 columns desktop / 1 column mobile) + hover lift (soft shadow)
+- Thin gradient over image; title white, subtitle 90% white
+- Click card → lightbox (text + photo) or "Experience details" modal
+
+### 5. Gallery
+**Issues:**
+- Last row two images + gap; inconsistent aspect/color temperature; no caption
+
+**Solutions:**
+- Uniform grid instead of masonry; WebP/AVIF sources; lazyload + blur-up
+- Lightbox shows room name + angle (e.g. "VIP Villa — Terrace")
+- 12–18 select images; rest in "Load More"
+
+### 6. Map & "Hidden in the Mist"
+**Issues:**
+- Thick white blur under map; low interactivity
+
+**Solutions:**
+- Thin blur, default terrain/satellite toggle
+- POI pins: "Ada Bungalow" branded pin + "Get Directions" (Google Maps link)
+
+---
+
+## Design System
+
+### Color Palette (Example)
+```css
+--deep-forest: #10241b    /* Primary dark */
+--gold: #c8a96a          /* Accent/CTA */
+--ivory: #f6f3ec         /* Background */
+--skylight-accent: #e8f3ff → #f6faff  /* Subtle gradient, airiness */
+```
+
+### Typography
+- Display serif (Canela/Cormorant) + Sans (Manrope/Inter)
+
+### Components
+- **Buttons:** Fill (gold) / Outline (dark border, light bg). Focus ring visible
+- **Chip/Badge:** filled min-badge, icon + short label
+- **Card:** 16–20px radius, soft shadow, hover 2–4px lift
+
+---
+
+## Accessibility (A11y)
+
+- Contrast AA: check text/bg ratios
+- Keyboard access: tab order, skip-to-content
+- Images: alt text; language selector aria-current
+- Animations: prefers-reduced-motion support
+
+---
+
+## Performance
+
+- Hero and gallery images: AVIF/WebP, responsive srcset
+- Lazyload + priority preload (hero)
+- Critical CSS inline, no blocking JS
+- **Targets:** LCP < 2.5s, CLS < 0.05, TTFB < 0.8s
+
+---
+
+## SEO & Social
+
+- Language-based hreflang, structured data (LodgingBusiness/Hotel)
+- OpenGraph/Twitter images 1200×630, title/description per language
+- FAQ rich snippet for "Reservation" and "Villas" (cancellation policy, check-in)
+
+---
+
+## Analytics & Measurement
+
+**Events:** Hero CTA, Villa detail, Form step, Submit, WhatsApp fallback
+
+**Funnel:** Landing → Villa → Form Step1 → Step2 → Submit → WhatsApp/Call
+
+---
+
+## Implementation Sprint Plan
+
+### Sprint 1 (Foundation):
+- Design system, header/footer, hero, language selector (RTL), nav
+
+### Sprint 2 (Content):
+- Villa cards, Rituals, Gallery
+
+### Sprint 3 (Form):
+- Booking form + availability/pricing mock + WhatsApp fallback
+
+### Sprint 4 (Map & SEO):
+- Map layer, hreflang, schema, performance optimization
+
+### Sprint 5 (QA):
+- Device tests, accessibility, Lighthouse, copy final
+
+---
+
+## QA Checklist
+
+- [ ] All languages menu flow / RTL verified
+- [ ] CTA contrasts / hover & focus
+- [ ] Card ratios consistent across all breakpoints
+- [ ] Gallery lightbox caption + description correct
+- [ ] Form: date/capacity/coupon validation + inline errors
+- [ ] Availability badges correct state
+- [ ] WhatsApp summary text correct language
+- [ ] LCP/CLS targets met
+- [ ] OG images and hreflang tests passed
+
+---
+
+## Sample Micro-Copy (TR)
+
+- **Hero title:** "Dağların fısıldadığı yer: lüks"
+- **Subtitle:** "Sabah sisinin kucakladığı mimari şiir."
+- **CTA:** "Hemen Rezervasyon"
+- **Form info note:** "Fiyat tahminidir; kesin fiyat onayla birlikte paylaşılır."
+- **WhatsApp fallback:** "Merhaba Ada Bungalow, 12–14 Kasım için 2 yetişkin 1 çocuk, Havuzlu VIP müsaid mi? Adım Kaan, tel: +49… Ek istek: şömine & geç check-out."
