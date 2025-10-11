@@ -285,15 +285,33 @@ html[lang="ar"] .line[data-lang-ar] {
 
 /* Badge */
 .badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     background: var(--moss-chip);
     border-radius: var(--r-full);
-    padding: 0.35rem 0.75rem;
+    padding: 0.4rem 0.85rem;
     font-size: 0.7rem;
     font-weight: 600;
     font-variant-caps: all-small-caps;
     letter-spacing: 0.08em;
     color: var(--evergreen);
+    border: 1px solid rgba(27, 42, 36, 0.08);
+    transition: transform 120ms var(--ease),
+                box-shadow 120ms var(--ease);
+}
+
+.badge:hover {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(20, 36, 32, 0.08);
+}
+
+.badge-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: var(--brass);
+    opacity: 0.8;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
