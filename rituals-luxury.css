@@ -30,17 +30,18 @@
     z-index: 2;
 }
 
-/* Cinematic fade edges */
+/* Cinematic fade edges - Subtle only */
 .chapter-rituals::after {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
-    width: 100px;
+    width: 60px;
     background: linear-gradient(
         90deg,
         transparent 0%,
+        rgba(247, 246, 242, 0.5) 70%,
         var(--bg, #F7F6F2) 100%
     );
     pointer-events: none;
@@ -132,7 +133,7 @@
     z-index: 2;
 }
 
-/* Cinematic overlay on images */
+/* Thin gradient overlay on images - Improved readability */
 .ritual-image-wrap::after {
     content: '';
     position: absolute;
@@ -142,9 +143,10 @@
     bottom: 0;
     background: linear-gradient(
         180deg,
-        transparent 0%,
-        transparent 70%,
-        rgba(27, 42, 36, 0.4) 100%
+        rgba(27, 42, 36, 0.05) 0%,
+        transparent 30%,
+        transparent 60%,
+        rgba(27, 42, 36, 0.3) 100%
     );
     pointer-events: none;
 }
@@ -154,33 +156,35 @@
     .chapter-rituals {
         overflow: hidden;
     }
-    
-    /* Smooth gradient vignette */
+
+    /* Smooth gradient vignette - Subtle */
     .rituals-container::before,
     .rituals-container::after {
         content: '';
         position: absolute;
         top: 0;
         bottom: 0;
-        width: 200px;
+        width: 120px;
         z-index: 20;
         pointer-events: none;
     }
-    
+
     .rituals-container::before {
         left: 0;
         background: linear-gradient(
             90deg,
             var(--bg, #F7F6F2) 0%,
+            rgba(247, 246, 242, 0.7) 40%,
             transparent 100%
         );
     }
-    
+
     .rituals-container::after {
         right: 0;
         background: linear-gradient(
             270deg,
             var(--bg, #F7F6F2) 0%,
+            rgba(247, 246, 242, 0.7) 40%,
             transparent 100%
         );
     }
