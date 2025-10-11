@@ -18,7 +18,7 @@
 
 .header-minimal.scrolled {
     background: rgba(247, 246, 242, 0.95);
-    backdrop-filter: blur(12px);
+    
     box-shadow: var(--shadow-xs);
 }
 

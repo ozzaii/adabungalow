@@ -197,8 +197,8 @@ ul, ol {
   width: 100%;
   height: var(--header-height);
   background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  
+  -webkit-
   z-index: 1000;
   transition: all var(--transition-base);
   box-shadow: 0 1px 0 var(--color-border);

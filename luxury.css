@@ -241,7 +241,7 @@ a {
 }
 
 .nav-luxury.scrolled {
-  backdrop-filter: blur(20px);
+  
   background: rgba(255, 254, 247, 0.95);
   box-shadow: var(--shadow-soft);
 }
@@ -984,7 +984,7 @@ section {
   background: var(--midnight);
   padding: var(--space-md) var(--space-lg);
   border-radius: var(--radius-lg);
-  backdrop-filter: blur(10px);
+  
 }
 
 .stat-item {
@@ -1083,7 +1083,7 @@ section {
   padding: var(--space-xs) var(--space-md);
   background: var(--midnight);
   border-radius: var(--radius-xl);
-  backdrop-filter: blur(10px);
+  
 }
 
 .suite-category {

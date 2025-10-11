@@ -6,7 +6,7 @@
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    
     border-radius: 24px;
     font-size: 0.875rem;
     color: var(--bg, #F7F6F2);

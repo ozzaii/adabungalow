@@ -224,8 +224,8 @@ p {
 
 .header-minimal.scrolled {
     background: rgba(247, 246, 242, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    
+    -webkit-
     box-shadow: var(--shadow-xs);
 }
 
@@ -561,8 +561,8 @@ p {
     right: 0;
     z-index: 900;
     background: rgba(247, 246, 242, 0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    
+    -webkit-
     box-shadow: 0 -10px 24px rgba(20, 36, 32, 0.08);
     padding: 10px 12px;
     padding-bottom: calc(env(safe-area-inset-bottom) + 10px);

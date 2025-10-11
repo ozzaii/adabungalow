@@ -136,17 +136,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const image = villa.querySelector('.villa-image');
         const content = villa.querySelector('.villa-narrative');
         
-        // Image scale and blur effect
+        // Image scale effect (blur removed for performance)
         if (image && !prefersReducedMotion) {
-            gsap.fromTo(image, 
+            gsap.fromTo(image,
                 {
-                    scale: 1.15,
-                    filter: 'blur(8px)'
+                    scale: 1.08,
+                    opacity: 0.7
                 },
                 {
                     scale: 1,
-                    filter: 'blur(0px)',
-                    duration: 1.5,
+                    opacity: 1,
+                    duration: 1.2,
                     ease: 'power3.out',
                     scrollTrigger: {
                         trigger: villa,
