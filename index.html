@@ -121,6 +121,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://api.openweathermap.org">
+    <link rel="dns-prefetch" href="https://wa.me">
+    <link rel="dns-prefetch" href="https://web.whatsapp.com">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="images/bungalow-gallery/IMG_8723.JPG" as="image" fetchpriority="high">
+    <link rel="preload" href="styles.css?v=4" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     
     <!-- Critical inline styles to prevent FOUC -->
     <style>
@@ -1276,10 +1283,10 @@
     <script src="translations.js"></script>
     <script src="language-switcher.js"></script>
     <script src="main.js" defer></script>
-    <script src="animations.js"></script>
-    <script src="whatsapp-booking.js"></script>
-    <script src="lightbox-premium.js"></script>
-    <script src="booking-interactions.js"></script>
+    <script src="animations.js" defer></script>
+    <script src="whatsapp-booking.js" defer></script>
+    <script src="lightbox-premium.js" defer></script>
+    <script src="booking-interactions.js" defer></script>
     <!-- Optimized Script Loading -->
     <script>
         // Preload critical scripts
