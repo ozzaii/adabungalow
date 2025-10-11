@@ -163,6 +163,59 @@ html[lang="ar"] .line[data-lang-ar] {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   LANGUAGE BUTTONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--divider);
+    color: var(--evergreen);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.lang-btn:hover {
+    background: var(--moss-chip);
+    border-color: var(--brass);
+    color: var(--evergreen);
+    transform: translateY(-1px);
+}
+
+.lang-btn.active {
+    background: var(--brass);
+    border-color: var(--brass);
+    color: white;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.lang-btn:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 2px;
+}
+
+/* Header language buttons */
+.navbar-language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* Footer language buttons */
+.footer-languages {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    UTILITIES
    ───────────────────────────────────────────────────────────────────────────── */
 

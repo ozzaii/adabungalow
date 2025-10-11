@@ -38,23 +38,24 @@ class LanguageSwitcher {
     }
     
     setupLanguageButtons() {
-        // Header language selector (if exists)
-        const headerLangBtns = document.querySelectorAll('.header-languages .lang-btn');
-        headerLangBtns.forEach(btn => {
-            const lang = btn.textContent.toLowerCase();
-            btn.addEventListener('click', () => this.switchLanguage(lang));
-        });
-        
-        // Footer language buttons
-        const footerLangBtns = document.querySelectorAll('.footer-languages .lang-btn');
-        footerLangBtns.forEach(btn => {
-            const lang = btn.textContent.toLowerCase();
-            btn.addEventListener('click', () => this.switchLanguage(lang));
-            
-            // Set active state
+        // Get ALL language buttons (header, navbar, footer)
+        const allLangBtns = document.querySelectorAll('.lang-btn');
+
+        allLangBtns.forEach(btn => {
+            // Get language from data-lang attribute OR text content
+            const lang = btn.getAttribute('data-lang') || btn.textContent.toLowerCase().trim();
+
+            // Set initial active state
+            btn.classList.remove('active');
             if (lang === this.currentLang) {
                 btn.classList.add('active');
             }
+
+            // Add click handler
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.switchLanguage(lang);
+            });
         });
     }
     
@@ -323,8 +324,9 @@ class LanguageSwitcher {
         
         // Update active language buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
+            const btnLang = btn.getAttribute('data-lang') || btn.textContent.toLowerCase().trim();
             btn.classList.remove('active');
-            if (btn.textContent.toLowerCase() === lang) {
+            if (btnLang === lang) {
                 btn.classList.add('active');
             }
         });
