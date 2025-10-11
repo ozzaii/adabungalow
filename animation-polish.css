@@ -1,0 +1,668 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ANIMATION POLISH - Phase 6
+   Subtle micro-interactions and refined motion language
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOTION TOKENS - Aligned with CLAUDE.md Vision
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+    /* Easing curves - Consistent motion language */
+    --ease-primary: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Durations - Design system aligned */
+    --duration-instant: 120ms;
+    --duration-fast: 180ms;
+    --duration-ui: 220ms;
+    --duration-normal: 380ms;
+    --duration-reveal: 520ms;
+    --duration-slow: 720ms;
+
+    /* Transform depths */
+    --depth-subtle: 2px;
+    --depth-normal: 4px;
+    --depth-prominent: 8px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BUTTON MICRO-INTERACTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Primary buttons - confident press */
+.btn,
+.btn-primary,
+.btn-luxury {
+    position: relative;
+    transition:
+        transform var(--duration-ui) var(--ease-primary),
+        box-shadow var(--duration-ui) var(--ease-primary),
+        background-color var(--duration-fast) var(--ease-primary);
+    will-change: transform;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-luxury:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201, 162, 39, 0.15),
+                0 4px 12px rgba(27, 42, 36, 0.08);
+}
+
+.btn:active,
+.btn-primary:active,
+.btn-luxury:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: var(--duration-instant);
+}
+
+/* Supreme buttons - extra elegance */
+.btn-supreme {
+    transition:
+        transform var(--duration-normal) var(--ease-primary),
+        box-shadow var(--duration-normal) var(--ease-primary);
+}
+
+.btn-supreme:hover .btn-bg {
+    transform: scale(1.05);
+    opacity: 0.95;
+}
+
+.btn-supreme:hover .btn-arrow {
+    transform: translateX(4px);
+    transition: transform var(--duration-ui) var(--ease-primary);
+}
+
+/* Button shimmer effect */
+.btn-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform var(--duration-slow) var(--ease-primary);
+}
+
+.btn:hover .btn-shimmer {
+    transform: translateX(100%);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BADGE & CHIP INTERACTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.badge {
+    transition:
+        transform var(--duration-fast) var(--ease-primary),
+        box-shadow var(--duration-fast) var(--ease-primary),
+        background-color var(--duration-instant) var(--ease-primary);
+    will-change: transform;
+}
+
+.badge:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 12px rgba(201, 162, 39, 0.12);
+    background-color: rgba(239, 242, 237, 1);
+}
+
+.badge:active {
+    transform: scale(0.98);
+    transition-duration: var(--duration-instant);
+}
+
+/* Amenity chips - gentle float */
+.amenity-chips .badge {
+    cursor: default;
+}
+
+.amenity-chips .badge:hover {
+    transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LINK & NAVIGATION INTERACTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Footer links - smooth underline growth */
+.footer-link {
+    position: relative;
+    transition: color var(--duration-ui) var(--ease-primary);
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--brass);
+    transform: translateX(-50%);
+    transition: width var(--duration-ui) var(--ease-primary);
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+.footer-link:hover {
+    color: var(--alpine-white);
+}
+
+/* Villa CTA buttons - anticipation */
+.villa-cta .btn {
+    transform-origin: center center;
+}
+
+.villa-cta .btn:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CARD & PANEL INTERACTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Ritual panels - depth on hover */
+.ritual-panel {
+    transition:
+        transform var(--duration-normal) var(--ease-primary),
+        box-shadow var(--duration-normal) var(--ease-primary);
+    will-change: transform;
+}
+
+.ritual-panel:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 12px 40px rgba(27, 42, 36, 0.12),
+        0 4px 16px rgba(201, 162, 39, 0.08);
+}
+
+.ritual-panel:hover .ritual-image {
+    transform: scale(1.1);
+}
+
+.ritual-image {
+    transition: transform var(--duration-slow) var(--ease-primary);
+}
+
+/* Gallery items - subtle lift */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform var(--duration-ui) var(--ease-primary),
+        box-shadow var(--duration-ui) var(--ease-primary);
+    will-change: transform;
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(27, 42, 36, 0) 0%,
+        rgba(27, 42, 36, 0.3) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--duration-ui) var(--ease-primary);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.gallery-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27, 42, 36, 0.12);
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.08);
+}
+
+.gallery-image {
+    transition: transform var(--duration-slow) var(--ease-primary);
+}
+
+/* Detail cards - gentle emphasis */
+.detail-card {
+    transition:
+        transform var(--duration-ui) var(--ease-primary),
+        background-color var(--duration-fast) var(--ease-primary);
+}
+
+.detail-card:hover {
+    transform: translateX(4px);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.detail-card .detail-icon {
+    transition: transform var(--duration-ui) var(--ease-elastic);
+}
+
+.detail-card:hover .detail-icon {
+    transform: scale(1.15) rotate(5deg);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FORM FIELD INTERACTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.field-input {
+    transition:
+        border-color var(--duration-ui) var(--ease-primary),
+        box-shadow var(--duration-ui) var(--ease-primary);
+}
+
+.field-input:focus-within {
+    border-color: var(--brass);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+}
+
+.field-input:hover:not(:focus-within) {
+    border-color: rgba(27, 42, 36, 0.3);
+}
+
+/* Input field labels - subtle lift on focus */
+.field-label {
+    transition:
+        color var(--duration-fast) var(--ease-primary),
+        transform var(--duration-ui) var(--ease-primary);
+}
+
+.field-input:focus-within + .field-label,
+.booking-field:has(.field-input:focus-within) .field-label {
+    color: var(--brass);
+    transform: translateY(-1px);
+}
+
+/* Guest counter buttons */
+.guest-btn {
+    transition:
+        transform var(--duration-instant) var(--ease-primary),
+        background-color var(--duration-fast) var(--ease-primary);
+}
+
+.guest-btn:hover {
+    transform: scale(1.1);
+    background-color: rgba(201, 162, 39, 0.1);
+}
+
+.guest-btn:active {
+    transform: scale(0.95);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SCROLL INDICATORS & PROGRESS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Scroll indicator - refined animation */
+.scroll-indicator {
+    position: relative;
+    animation: scroll-bounce 2s var(--ease-primary) infinite;
+}
+
+@keyframes scroll-bounce {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 0.6;
+    }
+}
+
+.scroll-thumb {
+    animation: scroll-thumb-pulse 1.6s var(--ease-primary) infinite;
+}
+
+@keyframes scroll-thumb-pulse {
+    0%, 100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scaleY(0.8);
+        opacity: 0.6;
+    }
+}
+
+/* Scroll progress bar - smooth appearance */
+.scroll-progress {
+    transform-origin: left center;
+    transition: opacity var(--duration-fast) var(--ease-primary);
+}
+
+.scroll-progress:hover {
+    opacity: 1 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HEADER & NAVIGATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Header blur on scroll */
+.header-minimal {
+    transition:
+        background-color var(--duration-normal) var(--ease-primary),
+        box-shadow var(--duration-normal) var(--ease-primary),
+        backdrop-filter var(--duration-normal) var(--ease-primary);
+}
+
+/* Language switcher buttons */
+.lang-btn {
+    position: relative;
+    transition:
+        color var(--duration-fast) var(--ease-primary),
+        transform var(--duration-ui) var(--ease-primary);
+}
+
+.lang-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--brass);
+    transform: translateX(-50%);
+    transition: width var(--duration-ui) var(--ease-primary);
+}
+
+.lang-btn.active::after,
+.lang-btn:hover::after {
+    width: 80%;
+}
+
+.lang-btn:hover {
+    transform: translateY(-1px);
+}
+
+.lang-btn:active {
+    transform: scale(0.95);
+}
+
+/* Weather chip - subtle pulse */
+.weather-chip {
+    transition:
+        transform var(--duration-ui) var(--ease-primary),
+        box-shadow var(--duration-ui) var(--ease-primary);
+}
+
+.weather-chip:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(27, 42, 36, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TRUST BADGES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.trust-badge {
+    transition:
+        transform var(--duration-ui) var(--ease-primary),
+        background-color var(--duration-fast) var(--ease-primary);
+}
+
+.trust-badge:hover {
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.trust-badge svg {
+    transition: transform var(--duration-ui) var(--ease-elastic);
+}
+
+.trust-badge:hover svg {
+    transform: scale(1.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LIGHTBOX INTERACTIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.lightbox-close {
+    transition:
+        transform var(--duration-ui) var(--ease-primary),
+        background-color var(--duration-fast) var(--ease-primary),
+        border-color var(--duration-fast) var(--ease-primary);
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    background-color: var(--brass);
+    border-color: var(--brass);
+    color: var(--alpine-white);
+}
+
+.lightbox-close:active {
+    transform: rotate(90deg) scale(0.95);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PRELOADER REFINEMENT
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.preloader-svg {
+    animation: preloader-spin 2s linear infinite;
+}
+
+@keyframes preloader-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.preloader-path {
+    animation: preloader-dash 1.5s ease-in-out infinite;
+}
+
+@keyframes preloader-dash {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+    50% {
+        stroke-dashoffset: 500;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HERO CORNERS ANIMATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.hero-corners .corner {
+    transition: all var(--duration-slow) var(--ease-primary);
+    opacity: 0.3;
+}
+
+.hero-supreme:hover .corner {
+    opacity: 0.6;
+}
+
+.corner-tl { transform-origin: top left; }
+.corner-tr { transform-origin: top right; }
+.corner-bl { transform-origin: bottom left; }
+.corner-br { transform-origin: bottom right; }
+
+.hero-supreme:hover .corner {
+    transform: scale(1.2);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DIVIDER ANIMATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.hairline,
+.villa-divider,
+.footer-divider {
+    position: relative;
+    overflow: hidden;
+}
+
+.hairline::after,
+.villa-divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(201, 162, 39, 0.3) 50%,
+        transparent 100%
+    );
+    animation: shimmer 3s var(--ease-primary) infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MICRO-LABEL TRANSITIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.micro-label {
+    position: relative;
+    display: inline-block;
+    transition: letter-spacing var(--duration-ui) var(--ease-primary);
+}
+
+section:hover .micro-label {
+    letter-spacing: 0.16em;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE ANIMATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    /* Reduce animation intensity on mobile */
+    .btn:hover,
+    .badge:hover,
+    .gallery-item:hover {
+        transform: none;
+    }
+
+    /* Keep only tap feedback */
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Disable parallax effects */
+    .hero-image,
+    .villa-image {
+        will-change: auto !important;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ACCESSIBILITY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Focus indicators - keyboard navigation */
+*:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 3px;
+    transition: outline-offset var(--duration-instant) var(--ease-primary);
+}
+
+*:focus-visible:active {
+    outline-offset: 1px;
+}
+
+/* Reduced motion - respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .scroll-indicator,
+    .preloader-svg,
+    .shimmer {
+        animation: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .btn:hover,
+    .badge:hover {
+        box-shadow: 0 0 0 2px var(--brass);
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LOADING STATES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.btn[disabled],
+.btn.loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: button-spinner 0.8s linear infinite;
+}
+
+@keyframes button-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HOVER STATE PRESERVATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Ensure smooth transitions when exiting hover states */
+.btn,
+.badge,
+.gallery-item,
+.ritual-panel,
+.footer-link {
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
