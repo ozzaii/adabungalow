@@ -128,6 +128,41 @@ p {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   LANGUAGE VISIBILITY
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Hide all language variants by default */
+[data-lang-en],
+[data-lang-tr],
+[data-lang-ar] {
+    display: none !important;
+}
+
+/* Show only the active language */
+html[lang="tr"] [data-lang-tr],
+html[lang="en"] [data-lang-en],
+html[lang="ar"] [data-lang-ar] {
+    display: inline !important;
+}
+
+/* For block-level elements (p, div) */
+html[lang="tr"] p[data-lang-tr],
+html[lang="tr"] div[data-lang-tr],
+html[lang="en"] p[data-lang-en],
+html[lang="en"] div[data-lang-en],
+html[lang="ar"] p[data-lang-ar],
+html[lang="ar"] div[data-lang-ar] {
+    display: block !important;
+}
+
+/* For flex elements */
+html[lang="tr"] .line[data-lang-tr],
+html[lang="en"] .line[data-lang-en],
+html[lang="ar"] .line[data-lang-ar] {
+    display: flex !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    UTILITIES
    ───────────────────────────────────────────────────────────────────────────── */
 
