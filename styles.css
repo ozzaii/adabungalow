@@ -343,6 +343,12 @@ html[lang="ar"] .line[data-lang-ar] {
     margin: 0 auto;
 }
 
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 .logotype {
     display: flex;
     align-items: center;
@@ -380,6 +386,33 @@ html[lang="ar"] .line[data-lang-ar] {
     content: "·";
     opacity: 0.45;
     margin: 0 4px;
+}
+
+/* Mobile header adjustments */
+@media (max-width: 768px) {
+    .header-right {
+        gap: 0.75rem;
+    }
+
+    .weather-chip {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-right {
+        gap: 0.5rem;
+    }
+
+    .navbar-language-switcher {
+        gap: 0.25rem;
+    }
+
+    .lang-btn {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 360px) {
