@@ -200,45 +200,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // WhatsApp button with dynamic message
+    // WhatsApp button - populate data-wa attributes from form
     const whatsappBtn = document.getElementById('whatsapp-btn');
     if (whatsappBtn) {
-        whatsappBtn.addEventListener('click', () => {
+        // Update data-wa attributes before click propagates to whatsapp-booking.js
+        whatsappBtn.addEventListener('click', (e) => {
             // Gather form data
             const checkin = document.getElementById('checkin').value;
             const checkout = document.getElementById('checkout').value;
             const villa = document.getElementById('villa');
-            const villaText = villa.options[villa.selectedIndex].text;
+            const villaText = villa.value ? villa.options[villa.selectedIndex].text : '';
             const guests = document.getElementById('guests').value;
             const specialRequests = document.querySelector('.special-requests').value;
-            
-            // Format dates for display
+
+            // Format date range
             const formatDate = (dateStr) => {
-                if (!dateStr) return 'Not selected';
+                if (!dateStr) return '';
                 const date = new Date(dateStr);
-                const options = { day: 'numeric', month: 'long', year: 'numeric' };
-                return date.toLocaleDateString('en-US', options);
+                const options = { day: 'numeric', month: 'short' };
+                return date.toLocaleDateString('tr-TR', options);
             };
-            
-            // Build WhatsApp message
-            let message = `Hello! I would like to check availability for Ada Bungalow.\n\n`;
-            message += `📅 Check-in: ${formatDate(checkin)}\n`;
-            message += `📅 Check-out: ${formatDate(checkout)}\n`;
-            message += `🏡 Villa: ${villa.value ? villaText : 'Not selected'}\n`;
-            message += `👥 Guests: ${guests}\n`;
-            
-            if (specialRequests.trim()) {
-                message += `\n📝 Special Requests:\n${specialRequests}\n`;
-            }
-            
-            message += `\nPlease confirm availability and pricing. Thank you!`;
-            
-            // Encode message and open WhatsApp
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/905454174344?text=${encodedMessage}`;
-            window.open(whatsappURL, '_blank');
-        });
-        
+
+            const dateRange = checkin && checkout
+                ? `${formatDate(checkin)} - ${formatDate(checkout)}`
+                : '';
+
+            // Format guests
+            const guestText = guests ? `${guests} kişi` : '';
+
+            // Update data-wa attributes
+            whatsappBtn.dataset.waRange = dateRange;
+            whatsappBtn.dataset.waGuests = guestText;
+            whatsappBtn.dataset.waVilla = villaText;
+            whatsappBtn.dataset.waNote = specialRequests;
+
+            // whatsapp-booking.js will handle the rest via event propagation
+        }, true); // Use capture phase to run before whatsapp-booking.js
+
         // Button hover animation
         whatsappBtn.addEventListener('mouseenter', () => {
             gsap.to(whatsappBtn.querySelector('.btn-icon'), {
@@ -248,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ease: 'power2.out'
             });
         });
-        
+
         whatsappBtn.addEventListener('mouseleave', () => {
             gsap.to(whatsappBtn.querySelector('.btn-icon'), {
                 rotation: 0,
