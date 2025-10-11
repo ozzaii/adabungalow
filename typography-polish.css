@@ -1,0 +1,420 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY POLISH - Phase 5
+   Fine-tuned letter-spacing, line-heights, and optical alignments
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DISPLAY TYPOGRAPHY - Hero & Major Headings
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Hero headline - tighter tracking for dramatic impact */
+.hero-headline,
+.hero-supreme h1 {
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    font-variation-settings: 'opsz' 144;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1, 'ss01' 1, 'calt' 1;
+}
+
+/* Hero composition - optical balance */
+.hero-composition {
+    line-height: 0.95;
+}
+
+/* Hero serif accents - slightly wider tracking for elegance */
+.hero-serif {
+    letter-spacing: 0.02em;
+    font-variation-settings: 'opsz' 72;
+}
+
+/* Hero prose - refined readability */
+.hero-prose {
+    line-height: 1.75;
+    letter-spacing: 0.005em;
+    max-width: 42ch;
+}
+
+.prose-line {
+    display: block;
+    margin-bottom: 0.15em;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SECTION HEADINGS - Refined Hierarchy
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Section titles - consistent optical weight */
+.section-title,
+.availability-title,
+.map-title {
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+    font-variation-settings: 'opsz' 96;
+    margin-bottom: 0.75em;
+}
+
+/* Villa names - balanced elegance */
+.villa-name {
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    font-variation-settings: 'opsz' 72;
+    margin-top: 0.5em;
+    margin-bottom: 0.6em;
+}
+
+/* Ritual titles - warmth and approachability */
+.ritual-title {
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    font-variation-settings: 'opsz' 48;
+}
+
+/* Footer titles - sturdy and clear */
+.footer-title {
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    font-variation-settings: 'opsz' 36;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BODY COPY - Optimal Readability
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Villa prose - storytelling rhythm */
+.villa-prose {
+    line-height: 1.78;
+    letter-spacing: 0.008em;
+    max-width: 62ch;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+/* Ritual descriptions - concise and clear */
+.ritual-desc {
+    line-height: 1.65;
+    letter-spacing: 0.005em;
+    max-width: 48ch;
+}
+
+/* Availability subtitle - inviting tone */
+.availability-subtitle,
+.map-subtitle {
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    max-width: 56ch;
+    margin: 0 auto;
+}
+
+/* Footer tagline - confidence and quality */
+.footer-tagline {
+    line-height: 1.65;
+    letter-spacing: 0.015em;
+    max-width: 48ch;
+}
+
+/* General paragraph improvements */
+p {
+    max-width: 68ch;
+    line-height: 1.72;
+    letter-spacing: 0.006em;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MICRO-COPY - Precise Spacing
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Micro-labels - tight all-caps tracking */
+.micro-label {
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    font-weight: 600;
+    font-variant-caps: all-small-caps;
+    font-feature-settings: 'c2sc' 1, 'smcp' 1;
+}
+
+/* Badge text - readable chips */
+.badge {
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+    font-feature-settings: 'kern' 1;
+}
+
+/* Price whisper - subtle elegance */
+.price-whisper,
+.price-label,
+.price-note {
+    letter-spacing: 0.012em;
+    line-height: 1.5;
+}
+
+/* Field labels - clear and direct */
+.field-label {
+    letter-spacing: 0.015em;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+/* Field hints - gentle guidance */
+.field-hint {
+    letter-spacing: 0.008em;
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BUTTONS & INTERACTIVE ELEMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Primary buttons - confident action */
+.btn,
+.btn-primary,
+.btn-luxury {
+    letter-spacing: 0.025em;
+    line-height: 1.2;
+    font-weight: 600;
+    font-feature-settings: 'kern' 1;
+}
+
+/* Button text variations */
+.btn-text {
+    letter-spacing: 0.02em;
+}
+
+/* Supreme button labels */
+.btn-label {
+    letter-spacing: 0.03em;
+}
+
+/* Footer CTA - extra emphasis */
+.footer-cta {
+    letter-spacing: 0.03em;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NAVIGATION & HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Logo text - brand identity */
+.logo-text,
+.footer-logo {
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+/* Footer links - comfortable reading */
+.footer-link {
+    letter-spacing: 0.005em;
+    line-height: 1.6;
+}
+
+/* Link labels and values */
+.link-label {
+    letter-spacing: 0.01em;
+}
+
+.link-value {
+    letter-spacing: 0.005em;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   META INFORMATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Hero meta items - technical precision */
+.meta-label {
+    letter-spacing: 0.12em;
+    line-height: 1.3;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.meta-value {
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+/* Booking note - trustworthy tone */
+.booking-note {
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+}
+
+/* Trust badge text - reassuring clarity */
+.trust-badge .badge-text {
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SPECIAL CASES & FINE-TUNING
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Italic emphasis - optical adjustment */
+.italic,
+em,
+.hero-headline .italic {
+    letter-spacing: -0.01em;
+    font-style: italic;
+    font-variation-settings: 'opsz' 96, 'slnt' -10;
+}
+
+/* Detail card headings */
+.detail-card h4 {
+    letter-spacing: -0.012em;
+    line-height: 1.35;
+    margin-bottom: 0.4em;
+}
+
+.detail-card p {
+    letter-spacing: 0.008em;
+    line-height: 1.6;
+}
+
+/* Footer copyright and crafted text */
+.footer-copyright,
+.footer-crafted {
+    letter-spacing: 0.015em;
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+
+/* Weather chip - compact readability */
+.weather-chip {
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+}
+
+/* Scroll indicator label */
+.scroll-label {
+    letter-spacing: 0.12em;
+    line-height: 1.3;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MULTILINGUAL OPTIMIZATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Arabic text - adjust for RTL script aesthetics */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3 {
+    letter-spacing: 0;
+    line-height: 1.6;
+}
+
+html[lang="ar"] p,
+html[lang="ar"] .villa-prose,
+html[lang="ar"] .hero-prose {
+    line-height: 1.85;
+    letter-spacing: 0;
+}
+
+html[lang="ar"] .micro-label,
+html[lang="ar"] .badge {
+    letter-spacing: 0.02em;
+}
+
+/* Turkish - optimize for dotted i and special characters */
+html[lang="tr"] {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE TYPOGRAPHY ADJUSTMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    /* Tighter spacing on mobile for better fit */
+    .hero-headline {
+        letter-spacing: -0.025em;
+    }
+
+    .villa-prose {
+        max-width: 100%;
+        line-height: 1.72;
+    }
+
+    .micro-label {
+        letter-spacing: 0.12em;
+        font-size: 0.7rem;
+    }
+
+    /* Slightly more generous line-height for mobile reading */
+    p {
+        line-height: 1.75;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ultra-mobile: prioritize clarity over aesthetics */
+    .hero-headline {
+        letter-spacing: -0.02em;
+        line-height: 1.12;
+    }
+
+    .section-title {
+        letter-spacing: -0.02em;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   OPTICAL ALIGNMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Hanging punctuation for quotes */
+.ritual-desc::first-line,
+.villa-prose::first-line {
+    hanging-punctuation: first;
+}
+
+/* Optical margin adjustments for headings */
+h1, h2, h3, h4, h5, h6 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+/* Better vertical rhythm */
+.hero-headline + .hero-prose,
+.section-title + p,
+.villa-name + .villa-prose {
+    margin-top: 0.75em;
+}
+
+/* Optical centering for buttons */
+.btn,
+.btn-primary,
+.btn-luxury {
+    padding-top: 0.92rem;
+    padding-bottom: 0.88rem;
+}
+
+/* Fine-tune badge vertical alignment */
+.badge {
+    padding-top: 0.37rem;
+    padding-bottom: 0.33rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ACCESSIBILITY ENHANCEMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Ensure sufficient contrast with adjusted letter-spacing */
+@media (prefers-contrast: high) {
+    .micro-label,
+    .badge {
+        letter-spacing: 0.08em;
+    }
+}
+
+/* Larger text for better readability when requested */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        font-variation-settings: 'opsz' 48;
+    }
+}
