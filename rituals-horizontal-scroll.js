@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-// DAILY RITUALS - PREMIUM HORIZONTAL SCROLL
-// Vertical scroll transforms to horizontal scroll with cinematic precision
+// DAILY RITUALS - NATURAL HORIZONTAL SCROLL (NO PIN)
+// Smooth, natural scroll-based horizontal transform - no jarring pin/unpin
 // ═══════════════════════════════════════════════════════════════════════════════
 
 (function() {
@@ -40,72 +40,50 @@
             return trackWidth - windowWidth;
         };
 
-        // Premium easing for smooth, luxury feel
-        const premiumEase = "power2.inOut";
-
-        // Main horizontal scroll animation
-        const horizontalScroll = gsap.to(ritualsTrack, {
+        // NO PIN - Just smooth horizontal transform based on scroll position
+        gsap.to(ritualsTrack, {
             x: () => -getScrollAmount(),
-            ease: "none", // Linear for scrub control
+            ease: "none",
             scrollTrigger: {
                 trigger: ritualsSection,
-                start: "top top",
-                end: () => `+=${getScrollAmount()}`, // Match scroll distance exactly
-                pin: true,
-                scrub: 0.8, // Lower for more responsive feel
-                invalidateOnRefresh: true,
-                anticipatePin: 1
-                // Snap disabled - was causing jumpy behavior
+                start: "top bottom", // Start when section enters viewport
+                end: "bottom top", // End when section leaves viewport
+                scrub: 1, // Smooth scrub
+                invalidateOnRefresh: true
             }
         });
 
-        // Individual panel animations - scale and fade as they become active
+        // Subtle fade-in for panels as they come into view
         panels.forEach((panel, index) => {
-            // Set initial state
-            gsap.set(panel, {
-                opacity: 1,
-                scale: 1
-            });
-
-            // Subtle scale effect on scroll (optional - can be disabled)
-            ScrollTrigger.create({
-                trigger: ritualsSection,
-                start: "top top",
-                end: () => `+=${getScrollAmount()}`,
-                scrub: 0.5,
-                onUpdate: (self) => {
-                    const progress = self.progress;
-                    const panelProgress = progress * panels.length - index;
-
-                    // Calculate distance from center (0 = center)
-                    const distanceFromCenter = Math.abs(panelProgress - 0.5);
-
-                    // Subtle scale: only slightly smaller when not centered
-                    const scale = gsap.utils.interpolate(0.95, 1, 1 - distanceFromCenter * 1.5);
-
-                    // Opacity: minimal change
-                    const opacity = gsap.utils.interpolate(0.85, 1, 1 - distanceFromCenter * 1.5);
-
-                    // Apply transforms only when panel is in view
-                    if (panelProgress > -0.5 && panelProgress < 1.5) {
-                        gsap.to(panel, {
-                            scale: Math.max(0.95, Math.min(1, scale)),
-                            opacity: Math.max(0.85, Math.min(1, opacity)),
-                            duration: 0.2,
-                            ease: "power1.out",
-                            overwrite: "auto"
-                        });
+            gsap.fromTo(panel,
+                {
+                    opacity: 0.5,
+                    y: 20
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: panel,
+                        start: "left right", // When panel enters from right
+                        end: "right left", // When panel exits to left
+                        containerAnimation: ScrollTrigger.getById('rituals-scroll'),
+                        toggleActions: "play none none reverse"
                     }
                 }
-            });
+            );
+        });
 
-            // Image parallax on hover
+        // Image parallax on hover
+        panels.forEach(panel => {
             const image = panel.querySelector('.ritual-image');
             if (image) {
                 panel.addEventListener('mouseenter', () => {
                     gsap.to(image, {
-                        scale: 1.1,
-                        duration: 0.8,
+                        scale: 1.08,
+                        duration: 0.6,
                         ease: "power2.out"
                     });
                 });
@@ -113,15 +91,12 @@
                 panel.addEventListener('mouseleave', () => {
                     gsap.to(image, {
                         scale: 1,
-                        duration: 0.8,
+                        duration: 0.6,
                         ease: "power2.out"
                     });
                 });
             }
         });
-
-        // Progress indicator disabled - was causing performance issues
-        // Can be re-enabled by adding .rituals-progress element to HTML
 
         // Smooth refresh on window resize
         let resizeTimer;
@@ -132,18 +107,7 @@
             }, 250);
         });
 
-        // Reset on refresh
-        ScrollTrigger.addEventListener("refreshInit", () => {
-            gsap.set(ritualsTrack, { x: 0 });
-            panels.forEach(panel => {
-                gsap.set(panel, {
-                    opacity: 1,
-                    scale: 1
-                });
-            });
-        });
-
-        console.log('✨ Rituals horizontal scroll initialized');
+        console.log('✨ Rituals natural scroll initialized (no pin)');
     }
 
     // Initialize when DOM is ready
