@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
-   BOOKING FORM - ULTRA PREMIUM REDESIGN
-   Quiet luxury with purposeful interactions, no gimmicks
+   BOOKING FORM - ELEGANT PREMIUM DESIGN
+   Sophisticated luxury with refined interactions
+   Multi-language support: TR / EN / AR
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -12,20 +13,34 @@
     padding: 8rem 0;
     background: linear-gradient(
         180deg,
-        var(--bg, #F7F6F2) 0%,
-        rgba(239, 242, 237, 0.3) 50%,
-        var(--bg, #F7F6F2) 100%
+        #F9F8F6 0%,
+        #F5F4F0 50%,
+        #F9F8F6 100%
     );
     overflow: hidden;
 }
 
-/* Subtle grain texture */
+/* Elegant grain texture */
 .chapter-availability::before {
     content: '';
     position: absolute;
     inset: 0;
-    opacity: 0.02;
+    opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.65' /%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Subtle radial glow */
+.chapter-availability::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(201, 162, 39, 0.04) 0%, transparent 70%);
     pointer-events: none;
     z-index: 1;
 }
@@ -93,27 +108,48 @@
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   BOOKING CARD - Clean Premium Container
+   BOOKING CARD - Elegant Premium Container
    ──────────────────────────────────────────────────────────────────────────── */
 
 .booking-card {
     max-width: 800px;
     margin: 0 auto;
     padding: 3rem;
-    background: #FFFFFF;
-    border: 1px solid rgba(201, 162, 39, 0.15);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(27, 42, 36, 0.08);
+    position: relative;
+
+    /* Elegant layered background */
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95)),
+        linear-gradient(to bottom right, rgba(201, 162, 39, 0.02), transparent 50%);
+
+    /* Refined borders */
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    border-radius: 20px;
+
+    /* Sophisticated shadow layers */
+    box-shadow:
+        0 1px 2px rgba(27, 42, 36, 0.05),
+        0 4px 12px rgba(27, 42, 36, 0.08),
+        0 12px 40px rgba(27, 42, 36, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
     /* Entrance animation */
     opacity: 0;
     animation: fadeUp 400ms cubic-bezier(0.2, 0.8, 0.2, 1) 400ms forwards;
 }
 
-/* Remove old decorative pseudo-elements */
-.booking-card::before,
-.booking-card::after {
-    display: none;
+/* Elegant top accent line */
+.booking-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent, #C9A227), transparent);
+    border-radius: 0 0 3px 3px;
+    opacity: 0.5;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -147,67 +183,75 @@
 .field-label {
     font-family: var(--font-body, 'Inter', sans-serif);
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--ink, #1B2A24);
     letter-spacing: 0.01em;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   INPUT STYLING - Clean & Minimal
+   INPUT STYLING - Refined Elegant
    ──────────────────────────────────────────────────────────────────────────── */
 
 .field-input {
     position: relative;
     display: flex;
     align-items: center;
-    background: #FFFFFF;
-    border: 1.5px solid #E7E7E0;
-    border-radius: 10px;
+
+    /* Subtle gradient background */
+    background: linear-gradient(135deg, #FAFAF9, #FFFFFF);
+
+    /* Elegant double border effect */
+    border: 1.5px solid rgba(231, 231, 224, 0.6);
+    border-radius: 12px;
     padding: 0 1rem;
     height: 56px;
-    transition: all 200ms ease-out;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Refined shadow */
+    box-shadow:
+        0 1px 2px rgba(27, 42, 36, 0.04),
+        inset 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .field-input:hover {
-    border-color: rgba(201, 162, 39, 0.3);
+    background: #FFFFFF;
+    border-color: rgba(201, 162, 39, 0.35);
+    box-shadow:
+        0 2px 8px rgba(27, 42, 36, 0.06),
+        inset 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
 .field-input:focus-within {
+    background: #FFFFFF;
     border-color: var(--accent, #C9A227);
-    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+    box-shadow:
+        0 0 0 3px rgba(201, 162, 39, 0.12),
+        0 2px 12px rgba(201, 162, 39, 0.15),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
 }
 
-/* Remove old decorative pseudo-elements */
-.field-input::before,
-.field-input::after {
-    display: none;
-}
-
-/* Field Icon - Simple, not decorative */
+/* Field Icon - Elegant */
 .field-icon {
     width: 20px;
     height: 20px;
     margin-right: 0.75rem;
-    opacity: 0.6;
+    opacity: 0.5;
     stroke: var(--ink, #1B2A24);
     stroke-width: 2;
     fill: none;
     flex-shrink: 0;
-    transition: opacity 200ms ease-out;
-    /* Remove all floating/pulsing animations */
-    animation: none !important;
-}
-
-.field-input:focus-within .field-icon {
-    opacity: 0.8;
-    /* Remove rotation and scale animations */
-    transform: none !important;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .field-input:hover .field-icon {
     opacity: 0.7;
-    /* Remove hover animations */
-    transform: none !important;
+}
+
+.field-input:focus-within .field-icon {
+    opacity: 1;
+    color: var(--accent, #C9A227);
+    stroke: var(--accent, #C9A227);
 }
 
 /* Input Element */
@@ -218,6 +262,7 @@
     background: transparent;
     font-family: var(--font-body, 'Inter', sans-serif);
     font-size: 1rem;
+    font-weight: 450;
     color: var(--ink, #1B2A24);
     outline: none;
     width: 100%;
@@ -235,15 +280,16 @@
 }
 
 .date-input input[type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0.6;
+    opacity: 0.5;
     cursor: pointer;
+    transition: opacity 200ms ease;
 }
 
 .date-input input[type="date"]::-webkit-calendar-picker-indicator:hover {
     opacity: 1;
 }
 
-/* Select Dropdown */
+/* Select Dropdown - Refined */
 .select-input {
     cursor: pointer;
 }
@@ -254,7 +300,7 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%231B2A24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
-    background-size: 20px;
+    background-size: 18px;
     padding-right: 3rem;
 }
 
@@ -263,7 +309,7 @@
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   GUEST COUNTER - Clean Minimal Design
+   GUEST COUNTER - Elegant Minimal
    ──────────────────────────────────────────────────────────────────────────── */
 
 .guest-input {
@@ -271,36 +317,35 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
 }
 
 .guest-btn {
-    width: 40px;
-    height: 40px;
-    background: var(--chip, #EFF2ED);
-    border: 1px solid #E7E7E0;
-    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #F5F4F0, #FAFAF9);
+    border: 1.5px solid rgba(231, 231, 224, 0.6);
+    border-radius: 10px;
     font-size: 1.25rem;
     font-weight: 500;
     color: var(--ink, #1B2A24);
     cursor: pointer;
-    transition: all 200ms ease-out;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-/* Remove old decorative pseudo-elements */
-.guest-btn::before,
-.guest-btn::after {
-    display: none;
+    box-shadow:
+        0 1px 2px rgba(27, 42, 36, 0.04),
+        inset 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .guest-btn:hover {
     background: #FFFFFF;
     border-color: var(--accent, #C9A227);
-    /* Remove scale animation */
-    transform: none;
+    box-shadow:
+        0 2px 8px rgba(27, 42, 36, 0.08),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
 }
 
 .guest-btn:active {
@@ -316,9 +361,6 @@
 .guest-btn svg {
     width: 14px;
     height: 14px;
-    /* Remove bounce animations */
-    transform: none !important;
-    transition: none;
 }
 
 .guest-input input[type="number"] {
@@ -351,14 +393,17 @@
     width: 100%;
     min-height: 100px;
     padding: 1rem;
-    background: #FFFFFF;
-    border: 1.5px solid #E7E7E0;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #FAFAF9, #FFFFFF);
+    border: 1.5px solid rgba(231, 231, 224, 0.6);
+    border-radius: 12px;
     font-family: var(--font-body, 'Inter', sans-serif);
     font-size: 1rem;
     color: var(--ink, #1B2A24);
     resize: vertical;
-    transition: all 200ms ease-out;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 1px 2px rgba(27, 42, 36, 0.04),
+        inset 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .special-requests::placeholder {
@@ -367,13 +412,22 @@
 }
 
 .special-requests:hover {
-    border-color: rgba(201, 162, 39, 0.3);
+    background: #FFFFFF;
+    border-color: rgba(201, 162, 39, 0.35);
+    box-shadow:
+        0 2px 8px rgba(27, 42, 36, 0.06),
+        inset 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
 .special-requests:focus {
     outline: none;
+    background: #FFFFFF;
     border-color: var(--accent, #C9A227);
-    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+    box-shadow:
+        0 0 0 3px rgba(201, 162, 39, 0.12),
+        0 2px 12px rgba(201, 162, 39, 0.15),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -381,11 +435,12 @@
    ──────────────────────────────────────────────────────────────────────────── */
 
 .price-preview {
-    background: var(--bg, #F7F6F2);
-    border-radius: 12px;
+    background: linear-gradient(135deg, #F9F8F6, #F5F4F0);
+    border-radius: 14px;
     padding: 1.5rem;
     margin: 2rem 0;
-    border-top: 1px solid rgba(201, 162, 39, 0.1);
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    box-shadow: inset 0 1px 2px rgba(201, 162, 39, 0.05);
 }
 
 .price-row {
@@ -397,6 +452,7 @@
 .price-row span:first-child,
 .price-label {
     font-size: 0.875rem;
+    font-weight: 500;
     color: var(--ink, #1B2A24);
     opacity: 0.7;
 }
@@ -404,7 +460,7 @@
 .price-row span:last-child,
 .price-value {
     font-size: 1.125rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--ink, #1B2A24);
 }
 
@@ -416,7 +472,7 @@
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   PRIMARY CTA BUTTON - Clean Premium
+   PRIMARY CTA BUTTON - Refined Premium
    ──────────────────────────────────────────────────────────────────────────── */
 
 .booking-actions {
@@ -426,35 +482,55 @@
 .btn-luxury {
     width: 100%;
     padding: 1.25rem 2.5rem;
-    background: var(--accent, #C9A227);
+    position: relative;
+
+    /* Refined gold gradient */
+    background: linear-gradient(135deg, #D4A82A, var(--accent, #C9A227));
     color: #FFFFFF;
     border: none;
-    border-radius: 12px;
+    border-radius: 14px;
+
     font-family: var(--font-body, 'Inter', sans-serif);
     font-size: 1.125rem;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(201, 162, 39, 0.25);
-    transition: all 200ms ease-out;
+
+    /* Elegant shadow */
+    box-shadow:
+        0 1px 2px rgba(201, 162, 39, 0.2),
+        0 4px 12px rgba(201, 162, 39, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    position: relative;
-    overflow: visible;
+    overflow: hidden;
 }
 
-/* Remove old decorative pseudo-elements */
-.btn-luxury::before,
-.btn-luxury::after {
-    display: none;
+/* Subtle top highlight */
+.btn-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), transparent);
+    pointer-events: none;
 }
 
 .btn-luxury:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(201, 162, 39, 0.35);
-    /* Remove gradient color change */
-    background: var(--accent, #C9A227);
+    box-shadow:
+        0 2px 4px rgba(201, 162, 39, 0.25),
+        0 8px 20px rgba(201, 162, 39, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    background: linear-gradient(135deg, #DDB12F, #D4A82A);
 }
 
 .btn-luxury:active {
@@ -481,26 +557,21 @@
     stroke: currentColor;
     stroke-width: 2;
     fill: none;
-    /* Remove rotation animations */
-    transform: none !important;
-    transition: none;
 }
 
 .btn-text {
     font-size: 1.125rem;
-    font-weight: 500;
-    /* Remove letter-spacing animations */
-    letter-spacing: 0.02em;
-    transition: none;
+    font-weight: 600;
+    letter-spacing: 0.01em;
 }
 
-/* Remove shimmer effect completely - too gimmicky */
+/* Remove shimmer - already removed */
 .btn-shimmer {
     display: none !important;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   TRUST BADGES - Subtle Professional
+   TRUST BADGES - Refined Professional
    ──────────────────────────────────────────────────────────────────────────── */
 
 .trust-badges {
@@ -519,44 +590,28 @@
     gap: 0.5rem;
     text-align: center;
     opacity: 0.7;
-    transition: opacity 200ms ease-out;
-    /* Remove old styling */
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    border-radius: 0;
-}
-
-/* Remove old decorative pseudo-elements */
-.trust-badge::before,
-.trust-badge::after {
-    display: none;
+    transition: opacity 250ms ease-out;
 }
 
 .trust-badge:hover {
     opacity: 1;
-    /* Remove lift animation */
-    transform: none;
 }
 
 .trust-badge svg,
 .badge-icon-svg {
-    width: 20px;
-    height: 20px;
-    stroke: var(--ink, #1B2A24);
+    width: 22px;
+    height: 22px;
+    stroke: var(--accent, #C9A227);
     stroke-width: 2;
     fill: none;
     margin-bottom: 0.25rem;
-    /* Remove all animations */
-    animation: none !important;
-    transform: none !important;
-    transition: none;
 }
 
-.trust-badge span {
+.trust-badge span,
+.badge-text {
     font-family: var(--font-body, 'Inter', sans-serif);
     font-size: 0.875rem;
+    font-weight: 500;
     color: var(--ink, #1B2A24);
 }
 
@@ -580,12 +635,42 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 0.5px;
+    width: 50px;
+    height: 1px;
     background: linear-gradient(90deg,
         transparent,
-        rgba(201, 162, 39, 0.3),
+        rgba(201, 162, 39, 0.4),
         transparent);
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   LANGUAGE-SPECIFIC STYLES
+   ──────────────────────────────────────────────────────────────────────────── */
+
+/* Hide inactive language spans */
+[data-lang-en],
+[data-lang-tr],
+[data-lang-ar] {
+    display: none;
+}
+
+/* Show active language */
+html[lang="tr"] [data-lang-tr],
+html[lang="en"] [data-lang-en],
+html[lang="ar"] [data-lang-ar] {
+    display: inline;
+}
+
+/* RTL support for Arabic */
+html[lang="ar"] .booking-card,
+html[dir="rtl"] .booking-card {
+    direction: rtl;
+}
+
+html[lang="ar"] .field-icon,
+html[dir="rtl"] .field-icon {
+    margin-right: 0;
+    margin-left: 0.75rem;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -594,6 +679,7 @@
 
 .field-input.error {
     border-color: #DC2626;
+    background: rgba(220, 38, 38, 0.02);
 }
 
 .field-input.error:focus-within {
@@ -668,6 +754,7 @@
 
     .booking-card {
         padding: 2rem;
+        border-radius: 16px;
     }
 
     /* Stack all fields in single column */
@@ -714,7 +801,11 @@
         transition: none;
     }
 
-    .btn-luxury:hover {
+    .btn-luxury:hover,
+    .guest-btn:hover,
+    .field-input:hover,
+    .field-input:focus-within,
+    .special-requests:focus {
         transform: none;
     }
 }
