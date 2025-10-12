@@ -258,81 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
         end: 'bottom 15%'
     });
 
-    // Horizontal Rituals Section - TEMPORARILY DISABLED (causing gallery slide bug)
-    const ritualsTrack = document.querySelector('.rituals-track');
-    const ritualPanels = gsap.utils.toArray('.ritual-panel');
+    // Horizontal Rituals Section - DELETED (was causing gallery slide bug)
+    // Will re-implement properly with correct pin boundaries later.
 
-    if (false && ritualsTrack && ritualPanels.length > 0 && !prefersReducedMotion) {
-        // Calculate total scroll width
-        const getScrollAmount = () => {
-            let trackWidth = ritualsTrack.scrollWidth;
-            return -(trackWidth - window.innerWidth);
-        };
-        
-        // Pin the section and scroll horizontally
-        const horizontalScroll = gsap.to(ritualsTrack, {
-            x: getScrollAmount,
-            duration: 3,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.chapter-rituals',
-                start: 'top top',
-                end: () => `+=${ritualsTrack.scrollWidth - window.innerWidth}`,
-                scrub: 1.5,
-                pin: true,
-                anticipatePin: 1,
-                invalidateOnRefresh: true
-            }
-        });
-        
-        // Pin the header during horizontal scroll
-        gsap.to('.rituals-header', {
-            scrollTrigger: {
-                trigger: '.chapter-rituals',
-                start: 'top top',
-                end: () => `+=${ritualsTrack.scrollWidth - window.innerWidth}`,
-                pin: '.rituals-header',
-                pinSpacing: false,
-                scrub: true
-            }
-        });
-        
-        // Parallax effect on ritual panels
-        ritualPanels.forEach((panel, i) => {
-            gsap.from(panel, {
-                scale: 0.9,
-                opacity: 0.7,
-                duration: 1,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: panel,
-                    containerAnimation: horizontalScroll,
-                    start: 'left 80%',
-                    end: 'right 20%',
-                    scrub: 1,
-                    toggleActions: 'play reverse play reverse'
-                }
-            });
-            
-            // Staggered content reveal
-            const content = panel.querySelector('.ritual-content');
-            if (content) {
-                gsap.from(content, {
-                    y: 30,
-                    opacity: 0,
-                    duration: 0.8,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: panel,
-                        containerAnimation: horizontalScroll,
-                        start: 'left 60%',
-                        toggleActions: 'play none none reverse'
-                    }
-                });
-            }
-        });
-    }
-    
     // Gallery header animation
     gsap.from('.gallery-header', {
         y: 40,
