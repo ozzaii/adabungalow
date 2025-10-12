@@ -1,0 +1,142 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   STONE TEXTURE BACKGROUND
+   Modern and cozy stone texture overlay for premium feel
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Base body styling with stone texture */
+body {
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--alpine-white, #F7F6F2);
+    background-image:
+        /* Subtle stone grain texture */
+        url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E"),
+        /* Organic stone shapes - subtle */
+        radial-gradient(circle at 20% 30%, rgba(27, 42, 36, 0.015) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(27, 42, 36, 0.012) 0%, transparent 20%),
+        radial-gradient(circle at 40% 80%, rgba(201, 161, 39, 0.008) 0%, transparent 15%),
+        radial-gradient(circle at 70% 20%, rgba(27, 42, 36, 0.01) 0%, transparent 18%),
+        /* Base gradient for warmth */
+        linear-gradient(135deg,
+            #F7F6F2 0%,
+            #F9F8F4 25%,
+            #F7F6F2 50%,
+            #F8F7F3 75%,
+            #F7F6F2 100%);
+    background-size:
+        200px 200px,
+        400px 400px,
+        350px 350px,
+        300px 300px,
+        450px 450px,
+        100% 100%;
+    background-position:
+        0 0,
+        0 0,
+        100px 100px,
+        200px 50px,
+        50px 150px,
+        center;
+    pointer-events: none;
+}
+
+/* Add subtle texture to main sections */
+.hero-supreme,
+.chapter-villas,
+.chapter-availability {
+    position: relative;
+}
+
+/* Enhanced texture on dark sections */
+.footer-luxury,
+.map-container {
+    position: relative;
+}
+
+.footer-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image:
+        url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise-dark'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise-dark)' opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 150px 150px;
+    opacity: 0.4;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+}
+
+/* Ensure content stays above texture */
+.footer-content,
+.map-overlay {
+    position: relative;
+    z-index: 1;
+}
+
+/* Subtle texture animation on hover for interactive elements */
+@media (prefers-reduced-motion: no-preference) {
+    body::before {
+        animation: subtle-shift 60s ease-in-out infinite;
+    }
+}
+
+@keyframes subtle-shift {
+    0%, 100% {
+        background-position:
+            0 0,
+            0 0,
+            100px 100px,
+            200px 50px,
+            50px 150px,
+            center;
+    }
+    50% {
+        background-position:
+            10px 10px,
+            -20px -20px,
+            110px 90px,
+            190px 60px,
+            60px 140px,
+            center;
+    }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    body::before {
+        background-size:
+            150px 150px,
+            300px 300px,
+            250px 250px,
+            200px 200px,
+            300px 300px,
+            100% 100%;
+    }
+}
+
+/* High-performance mode for older devices */
+@media (prefers-reduced-motion: reduce) {
+    body::before {
+        animation: none;
+        background-image:
+            url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"),
+            linear-gradient(135deg, #F7F6F2 0%, #F8F7F3 100%);
+        background-size: 200px 200px, 100% 100%;
+    }
+
+    .footer-luxury::before {
+        animation: none;
+    }
+}
