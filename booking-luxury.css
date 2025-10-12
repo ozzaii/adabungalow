@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
-   BOOKING FORM - ELEGANT PREMIUM DESIGN
-   Sophisticated luxury with refined interactions
+   BOOKING FORM - MISTY MOUNTAIN AESTHETIC 🌫️
+   "Sisli dağ sabahı" — frosted glass, soft shadows, cream tones
    Multi-language support: TR / EN / AR
    ═══════════════════════════════════════════════════════════════════════════════ */
 
@@ -13,34 +13,34 @@
     padding: 8rem 0;
     background: linear-gradient(
         180deg,
-        #F9F8F6 0%,
-        #F5F4F0 50%,
-        #F9F8F6 100%
+        #FAF9F7 0%,
+        #F7F5F2 50%,
+        #FAF9F7 100%
     );
     overflow: hidden;
 }
 
-/* Elegant grain texture */
+/* Subtle mist texture */
 .chapter-availability::before {
     content: '';
     position: absolute;
     inset: 0;
-    opacity: 0.03;
+    opacity: 0.04;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.65' /%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 1;
 }
 
-/* Subtle radial glow */
+/* Soft radial glow - cream tone */
 .chapter-availability::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(201, 162, 39, 0.04) 0%, transparent 70%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(220, 200, 160, 0.06) 0%, transparent 70%);
     pointer-events: none;
     z-index: 1;
 }
@@ -62,15 +62,15 @@
     max-width: 600px;
     margin: 0 auto 4rem;
 
-    /* Entrance animation */
+    /* Soft entrance */
     opacity: 0;
-    animation: fadeUp 400ms cubic-bezier(0.2, 0.8, 0.2, 1) 200ms forwards;
+    animation: mistFadeUp 500ms ease-out 200ms forwards;
 }
 
-@keyframes fadeUp {
+@keyframes mistFadeUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(24px);
     }
     to {
         opacity: 1;
@@ -79,36 +79,36 @@
 }
 
 .availability-header .micro-label {
-    font-family: var(--font-body, 'Inter', sans-serif);
+    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
     font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
-    color: var(--accent, #C9A227);
+    color: #A58C5F;
     margin-bottom: 1rem;
     display: block;
 }
 
 .availability-header .availability-title {
-    font-family: var(--font-display, 'Fraunces', serif);
+    font-family: var(--font-display, 'Fraunces', 'Poppins', serif);
     font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 400;
-    color: var(--ink, #1B2A24);
+    font-weight: 500;
+    color: #2D2D2D;
     line-height: 1.2;
     margin: 0 0 1rem 0;
 }
 
 .availability-header .availability-subtitle {
-    font-family: var(--font-body, 'Inter', sans-serif);
+    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
     font-size: 1.125rem;
-    color: var(--ink, #1B2A24);
-    opacity: 0.7;
+    font-weight: 400;
+    color: #7D7D7D;
     line-height: 1.6;
     margin: 0;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   BOOKING CARD - Elegant Premium Container
+   BOOKING CARD - FROSTED GLASS AESTHETIC 🌫️
    ──────────────────────────────────────────────────────────────────────────── */
 
 .booking-card {
@@ -117,39 +117,44 @@
     padding: 3rem;
     position: relative;
 
-    /* Elegant layered background */
+    /* FROSTED GLASS BACKGROUND */
     background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95)),
-        linear-gradient(to bottom right, rgba(201, 162, 39, 0.02), transparent 50%);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 238, 0.6)),
+        rgba(255, 255, 255, 0.75);
 
-    /* Refined borders */
-    border: 1px solid rgba(201, 162, 39, 0.2);
-    border-radius: 20px;
+    /* Frosted blur effect */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
-    /* Sophisticated shadow layers */
+    /* Soft edges */
+    border: 1px solid rgba(220, 200, 160, 0.25);
+    border-radius: 1.4rem;
+
+    /* SOFT LAYERED SHADOWS - Cream tones */
     box-shadow:
-        0 1px 2px rgba(27, 42, 36, 0.05),
-        0 4px 12px rgba(27, 42, 36, 0.08),
-        0 12px 40px rgba(27, 42, 36, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        0 2px 4px rgba(220, 200, 160, 0.08),
+        0 8px 16px rgba(0, 0, 0, 0.04),
+        0 16px 40px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 0 1px rgba(220, 200, 160, 0.1);
 
-    /* Entrance animation */
+    /* Soft entrance animation */
     opacity: 0;
-    animation: fadeUp 400ms cubic-bezier(0.2, 0.8, 0.2, 1) 400ms forwards;
+    animation: mistFadeUp 500ms ease-out 300ms forwards;
 }
 
-/* Elegant top accent line */
+/* Subtle top glow - cream tone */
 .booking-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--accent, #C9A227), transparent);
-    border-radius: 0 0 3px 3px;
-    opacity: 0.5;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(220, 200, 160, 0.4), transparent);
+    border-radius: 0 0 2px 2px;
+    filter: blur(0.5px);
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -181,15 +186,15 @@
 
 .booking-field label,
 .field-label {
-    font-family: var(--font-body, 'Inter', sans-serif);
+    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
     font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--ink, #1B2A24);
-    letter-spacing: 0.01em;
+    font-weight: 500;
+    color: #2D2D2D;
+    letter-spacing: 0.3px;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   INPUT STYLING - Refined Elegant
+   INPUT STYLING - FROSTED GLASS FIELDS
    ──────────────────────────────────────────────────────────────────────────── */
 
 .field-input {
@@ -197,61 +202,64 @@
     display: flex;
     align-items: center;
 
-    /* Subtle gradient background */
-    background: linear-gradient(135deg, #FAFAF9, #FFFFFF);
+    /* Glass background */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(250, 248, 245, 0.5));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 
-    /* Elegant double border effect */
-    border: 1.5px solid rgba(231, 231, 224, 0.6);
-    border-radius: 12px;
+    /* Soft border */
+    border: 1.5px solid rgba(220, 200, 160, 0.2);
+    border-radius: 0.9rem;
     padding: 0 1rem;
     height: 56px;
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* Refined shadow */
+    /* Smooth transition - 300ms */
+    transition: all 300ms ease-out;
+
+    /* Soft shadow */
     box-shadow:
-        0 1px 2px rgba(27, 42, 36, 0.04),
-        inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        0 1px 3px rgba(0, 0, 0, 0.03),
+        inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 
 .field-input:hover {
-    background: #FFFFFF;
-    border-color: rgba(201, 162, 39, 0.35);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(220, 200, 160, 0.35);
     box-shadow:
-        0 2px 8px rgba(27, 42, 36, 0.06),
-        inset 0 1px 1px rgba(255, 255, 255, 0.7);
+        0 2px 6px rgba(220, 200, 160, 0.08),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .field-input:focus-within {
-    background: #FFFFFF;
-    border-color: var(--accent, #C9A227);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: #C9B382;
     box-shadow:
-        0 0 0 3px rgba(201, 162, 39, 0.12),
-        0 2px 12px rgba(201, 162, 39, 0.15),
-        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+        0 0 0 3px rgba(220, 200, 160, 0.15),
+        0 4px 12px rgba(220, 200, 160, 0.12),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
     transform: translateY(-1px);
 }
 
-/* Field Icon - Elegant */
+/* Field Icon - Soft outline style */
 .field-icon {
     width: 20px;
     height: 20px;
     margin-right: 0.75rem;
-    opacity: 0.5;
-    stroke: var(--ink, #1B2A24);
-    stroke-width: 2;
+    opacity: 0.45;
+    stroke: #7D7D7D;
+    stroke-width: 1.5;
     fill: none;
     flex-shrink: 0;
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 300ms ease-out;
 }
 
 .field-input:hover .field-icon {
-    opacity: 0.7;
+    opacity: 0.65;
 }
 
 .field-input:focus-within .field-icon {
     opacity: 1;
-    color: var(--accent, #C9A227);
-    stroke: var(--accent, #C9A227);
+    stroke: #A58C5F;
 }
 
 /* Input Element */
@@ -260,18 +268,18 @@
     flex: 1;
     border: none;
     background: transparent;
-    font-family: var(--font-body, 'Inter', sans-serif);
+    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
     font-size: 1rem;
-    font-weight: 450;
-    color: var(--ink, #1B2A24);
+    font-weight: 400;
+    color: #2D2D2D;
     outline: none;
     width: 100%;
 }
 
 .field-input input::placeholder,
 .field-input select::placeholder {
-    color: var(--ink, #1B2A24);
-    opacity: 0.4;
+    color: #7D7D7D;
+    opacity: 0.5;
 }
 
 /* Date Input Specific */
@@ -280,13 +288,13 @@
 }
 
 .date-input input[type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: pointer;
-    transition: opacity 200ms ease;
+    transition: opacity 300ms ease;
 }
 
 .date-input input[type="date"]::-webkit-calendar-picker-indicator:hover {
-    opacity: 1;
+    opacity: 0.8;
 }
 
 /* Select Dropdown - Refined */
@@ -297,7 +305,7 @@
 .select-input select {
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%231B2A24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%237D7D7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 18px;
@@ -309,7 +317,7 @@
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   GUEST COUNTER - Elegant Minimal
+   GUEST COUNTER - SOFT BUTTONS
    ──────────────────────────────────────────────────────────────────────────── */
 
 .guest-input {
@@ -323,38 +331,40 @@
 .guest-btn {
     width: 44px;
     height: 44px;
-    background: linear-gradient(135deg, #F5F4F0, #FAFAF9);
-    border: 1.5px solid rgba(231, 231, 224, 0.6);
-    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(250, 248, 245, 0.6));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1.5px solid rgba(220, 200, 160, 0.25);
+    border-radius: 0.75rem;
     font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--ink, #1B2A24);
+    font-weight: 400;
+    color: #2D2D2D;
     cursor: pointer;
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 300ms ease-out;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow:
-        0 1px 2px rgba(27, 42, 36, 0.04),
-        inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        0 1px 3px rgba(220, 200, 160, 0.08),
+        inset 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
 .guest-btn:hover {
-    background: #FFFFFF;
-    border-color: var(--accent, #C9A227);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: #C9B382;
     box-shadow:
-        0 2px 8px rgba(27, 42, 36, 0.08),
+        0 2px 6px rgba(220, 200, 160, 0.12),
         inset 0 1px 1px rgba(255, 255, 255, 0.9);
     transform: translateY(-1px);
 }
 
 .guest-btn:active {
     transform: scale(0.96);
-    transition: transform 100ms ease-out;
+    transition: transform 150ms ease-out;
 }
 
 .guest-btn:disabled {
-    opacity: 0.3;
+    opacity: 0.35;
     cursor: not-allowed;
 }
 
@@ -368,7 +378,7 @@
     text-align: center;
     font-size: 1.5rem;
     font-weight: 500;
-    color: var(--ink, #1B2A24);
+    color: #2D2D2D;
     border: none;
     background: transparent;
     outline: none;
@@ -393,54 +403,61 @@
     width: 100%;
     min-height: 100px;
     padding: 1rem;
-    background: linear-gradient(135deg, #FAFAF9, #FFFFFF);
-    border: 1.5px solid rgba(231, 231, 224, 0.6);
-    border-radius: 12px;
-    font-family: var(--font-body, 'Inter', sans-serif);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(250, 248, 245, 0.5));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(220, 200, 160, 0.2);
+    border-radius: 0.9rem;
+    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
     font-size: 1rem;
-    color: var(--ink, #1B2A24);
+    font-weight: 400;
+    color: #2D2D2D;
     resize: vertical;
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 300ms ease-out;
     box-shadow:
-        0 1px 2px rgba(27, 42, 36, 0.04),
-        inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        0 1px 3px rgba(0, 0, 0, 0.03),
+        inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 
 .special-requests::placeholder {
-    color: var(--ink, #1B2A24);
-    opacity: 0.4;
+    color: #7D7D7D;
+    opacity: 0.5;
 }
 
 .special-requests:hover {
-    background: #FFFFFF;
-    border-color: rgba(201, 162, 39, 0.35);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(220, 200, 160, 0.35);
     box-shadow:
-        0 2px 8px rgba(27, 42, 36, 0.06),
-        inset 0 1px 1px rgba(255, 255, 255, 0.7);
+        0 2px 6px rgba(220, 200, 160, 0.08),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .special-requests:focus {
     outline: none;
-    background: #FFFFFF;
-    border-color: var(--accent, #C9A227);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: #C9B382;
     box-shadow:
-        0 0 0 3px rgba(201, 162, 39, 0.12),
-        0 2px 12px rgba(201, 162, 39, 0.15),
-        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+        0 0 0 3px rgba(220, 200, 160, 0.15),
+        0 4px 12px rgba(220, 200, 160, 0.12),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
     transform: translateY(-1px);
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   PRICE PREVIEW
+   PRICE PREVIEW - CREAM SHADOW
    ──────────────────────────────────────────────────────────────────────────── */
 
 .price-preview {
-    background: linear-gradient(135deg, #F9F8F6, #F5F4F0);
-    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(250, 248, 245, 0.8), rgba(245, 242, 238, 0.6));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 1rem;
     padding: 1.5rem;
     margin: 2rem 0;
-    border: 1px solid rgba(201, 162, 39, 0.15);
-    box-shadow: inset 0 1px 2px rgba(201, 162, 39, 0.05);
+    border: 1px solid rgba(220, 200, 160, 0.2);
+    box-shadow:
+        0 2px 6px rgba(220, 200, 160, 0.1),
+        inset 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .price-row {
@@ -452,27 +469,26 @@
 .price-row span:first-child,
 .price-label {
     font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--ink, #1B2A24);
-    opacity: 0.7;
+    font-weight: 400;
+    color: #7D7D7D;
 }
 
 .price-row span:last-child,
 .price-value {
     font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--ink, #1B2A24);
+    font-weight: 500;
+    color: #2D2D2D;
 }
 
 .price-note {
     font-size: 0.875rem;
-    color: var(--ink, #1B2A24);
-    opacity: 0.6;
+    color: #7D7D7D;
+    opacity: 0.7;
     margin-top: 0.5rem;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   PRIMARY CTA BUTTON - Refined Premium
+   PRIMARY CTA BUTTON - SOFT CREAM GRADIENT
    ──────────────────────────────────────────────────────────────────────────── */
 
 .booking-actions {
@@ -484,26 +500,26 @@
     padding: 1.25rem 2.5rem;
     position: relative;
 
-    /* Refined gold gradient */
-    background: linear-gradient(135deg, #D4A82A, var(--accent, #C9A227));
+    /* Soft cream/beige gradient (not pure gold) */
+    background: linear-gradient(135deg, #D4C5A0, #C9B382);
     color: #FFFFFF;
     border: none;
-    border-radius: 14px;
+    border-radius: 1rem;
 
-    font-family: var(--font-body, 'Inter', sans-serif);
+    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
     font-size: 1.125rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+    font-weight: 500;
+    letter-spacing: 0.3px;
 
     cursor: pointer;
 
-    /* Elegant shadow */
+    /* Soft cream shadow */
     box-shadow:
-        0 1px 2px rgba(201, 162, 39, 0.2),
-        0 4px 12px rgba(201, 162, 39, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        0 2px 4px rgba(220, 200, 160, 0.2),
+        0 6px 14px rgba(220, 200, 160, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
 
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 300ms ease-out;
 
     display: flex;
     align-items: center;
@@ -512,7 +528,7 @@
     overflow: hidden;
 }
 
-/* Subtle top highlight */
+/* Soft light reflection */
 .btn-luxury::before {
     content: '';
     position: absolute;
@@ -520,26 +536,26 @@
     left: 0;
     right: 0;
     height: 50%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), transparent);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
     pointer-events: none;
 }
 
 .btn-luxury:hover {
     transform: translateY(-2px);
     box-shadow:
-        0 2px 4px rgba(201, 162, 39, 0.25),
-        0 8px 20px rgba(201, 162, 39, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    background: linear-gradient(135deg, #DDB12F, #D4A82A);
+        0 4px 8px rgba(220, 200, 160, 0.25),
+        0 10px 20px rgba(220, 200, 160, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #DDD1AB, #D4C5A0);
 }
 
 .btn-luxury:active {
     transform: scale(0.98);
-    transition: transform 100ms ease-out;
+    transition: transform 150ms ease-out;
 }
 
 .btn-luxury:disabled {
-    opacity: 0.7;
+    opacity: 0.6;
     cursor: wait;
 }
 
@@ -561,17 +577,17 @@
 
 .btn-text {
     font-size: 1.125rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+    font-weight: 500;
+    letter-spacing: 0.3px;
 }
 
-/* Remove shimmer - already removed */
+/* Remove shimmer */
 .btn-shimmer {
     display: none !important;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
-   TRUST BADGES - Refined Professional
+   TRUST BADGES - SUBTLE GLOW
    ──────────────────────────────────────────────────────────────────────────── */
 
 .trust-badges {
@@ -589,8 +605,8 @@
     align-items: center;
     gap: 0.5rem;
     text-align: center;
-    opacity: 0.7;
-    transition: opacity 250ms ease-out;
+    opacity: 0.65;
+    transition: all 300ms ease-out;
 }
 
 .trust-badge:hover {
@@ -601,18 +617,19 @@
 .badge-icon-svg {
     width: 22px;
     height: 22px;
-    stroke: var(--accent, #C9A227);
-    stroke-width: 2;
+    stroke: #C9B382;
+    stroke-width: 1.5;
     fill: none;
     margin-bottom: 0.25rem;
+    filter: drop-shadow(0 1px 2px rgba(220, 200, 160, 0.15));
 }
 
 .trust-badge span,
 .badge-text {
-    font-family: var(--font-body, 'Inter', sans-serif);
+    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
     font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--ink, #1B2A24);
+    font-weight: 400;
+    color: #7D7D7D;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -625,8 +642,8 @@
     margin-top: 20px;
     text-align: center;
     font-size: 0.875rem;
-    color: var(--ink, #1B2A24);
-    opacity: 0.6;
+    color: #7D7D7D;
+    opacity: 0.7;
 }
 
 .booking-note::before {
@@ -635,11 +652,11 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
+    width: 60px;
     height: 1px;
     background: linear-gradient(90deg,
         transparent,
-        rgba(201, 162, 39, 0.4),
+        rgba(220, 200, 160, 0.3),
         transparent);
 }
 
@@ -679,11 +696,11 @@ html[dir="rtl"] .field-icon {
 
 .field-input.error {
     border-color: #DC2626;
-    background: rgba(220, 38, 38, 0.02);
+    background: rgba(220, 38, 38, 0.03);
 }
 
 .field-input.error:focus-within {
-    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
 }
 
 .error-message {
@@ -691,15 +708,17 @@ html[dir="rtl"] .field-icon {
     color: #DC2626;
     margin-top: 0.25rem;
     opacity: 0;
-    animation: fadeIn 200ms ease-out forwards;
+    animation: softFadeIn 300ms ease-out forwards;
 }
 
-@keyframes fadeIn {
+@keyframes softFadeIn {
     from {
         opacity: 0;
+        transform: translateY(4px);
     }
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -709,7 +728,7 @@ html[dir="rtl"] .field-icon {
 
 .btn-luxury:focus-visible,
 .guest-btn:focus-visible {
-    outline: 2px solid var(--accent, #C9A227);
+    outline: 2px solid #C9B382;
     outline-offset: 4px;
 }
 
@@ -754,7 +773,10 @@ html[dir="rtl"] .field-icon {
 
     .booking-card {
         padding: 2rem;
-        border-radius: 16px;
+        border-radius: 1.2rem;
+        /* Reduce blur on mobile for performance */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
 
     /* Stack all fields in single column */
@@ -820,6 +842,7 @@ html[dir="rtl"] .field-icon {
     }
 
     .booking-card {
+        backdrop-filter: none;
         box-shadow: none;
         border: 1px solid #E7E7E0;
     }
