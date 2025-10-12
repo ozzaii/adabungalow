@@ -9,6 +9,9 @@
 
 .rituals-container {
     position: relative;
+    width: 100%;
+    max-width: 100vw;
+    overflow: visible;
 }
 
 .rituals-header {
@@ -36,12 +39,12 @@
 .rituals-track {
     display: flex;
     gap: 2rem;
-    padding: 0 2rem;
-    /* Desktop: No overflow, GSAP handles scroll */
-    overflow-x: visible;
-    overflow-y: hidden;
+    padding: 0 max(2rem, calc((100vw - 1400px) / 2));
+    /* No overflow, GSAP handles transform */
+    overflow: visible;
     position: relative;
     width: max-content;
+    will-change: transform;
 }
 
 /* Mobile: Also use GSAP scroll - no regular scroll */

@@ -1,7 +1,7 @@
 /* Daily Rituals - Luxury Enhancements */
 
 .chapter-rituals {
-    min-height: 150vh; /* More height for smooth horizontal scroll */
+    min-height: 100vh; /* Full viewport for clean pin */
     position: relative;
     background: linear-gradient(
         180deg,
@@ -11,6 +11,7 @@
     );
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 /* Add subtle grain texture */
@@ -156,7 +157,7 @@
 /* Mobile - keep luxury effects but optimize */
 @media (max-width: 767px) {
     .chapter-rituals {
-        min-height: 120vh; /* Less height on mobile */
+        min-height: 100vh;
         overflow: hidden;
     }
 

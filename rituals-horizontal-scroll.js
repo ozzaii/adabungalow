@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-// DAILY RITUALS - NATURAL HORIZONTAL SCROLL (NO PIN)
-// Smooth, natural scroll-based horizontal transform - no jarring pin/unpin
+// DAILY RITUALS - SMOOTH PIN + HORIZONTAL SCROLL
+// Cohesive experience: section pins, only horizontal movement visible
 // ═══════════════════════════════════════════════════════════════════════════════
 
 (function() {
@@ -40,55 +40,47 @@
             return trackWidth - windowWidth;
         };
 
-        // NO PIN - Just smooth horizontal transform based on scroll position
+        // SMOOTH PIN with generous scroll space
         gsap.to(ritualsTrack, {
             x: () => -getScrollAmount(),
             ease: "none",
             scrollTrigger: {
                 trigger: ritualsSection,
-                start: "top bottom", // Start when section enters viewport
-                end: "bottom top", // End when section leaves viewport
-                scrub: 1, // Smooth scrub
-                invalidateOnRefresh: true
+                start: "center center", // Pin when section is centered
+                end: () => `+=${getScrollAmount() + window.innerHeight}`, // Extra space for smooth exit
+                pin: true,
+                scrub: 0.5, // Very smooth scrub
+                invalidateOnRefresh: true,
+                anticipatePin: 1, // Smooth pin anticipation
+                // Add pinSpacing to prevent layout jump
+                pinSpacing: true
             }
         });
 
-        // Subtle fade-in for panels as they come into view
-        panels.forEach((panel, index) => {
-            gsap.fromTo(panel,
-                {
-                    opacity: 0.5,
-                    y: 20
-                },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.6,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: panel,
-                        start: "left right", // When panel enters from right
-                        end: "right left", // When panel exits to left
-                        containerAnimation: ScrollTrigger.getById('rituals-scroll'),
-                        toggleActions: "play none none reverse"
-                    }
-                }
-            );
-        });
-
-        // Image parallax on hover
+        // Subtle hover effect for panels
         panels.forEach(panel => {
             const image = panel.querySelector('.ritual-image');
+
             if (image) {
                 panel.addEventListener('mouseenter', () => {
+                    gsap.to(panel, {
+                        y: -8,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
                     gsap.to(image, {
-                        scale: 1.08,
+                        scale: 1.05,
                         duration: 0.6,
                         ease: "power2.out"
                     });
                 });
 
                 panel.addEventListener('mouseleave', () => {
+                    gsap.to(panel, {
+                        y: 0,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
                     gsap.to(image, {
                         scale: 1,
                         duration: 0.6,
@@ -107,7 +99,12 @@
             }, 250);
         });
 
-        console.log('✨ Rituals natural scroll initialized (no pin)');
+        // Clean reset on refresh
+        ScrollTrigger.addEventListener("refreshInit", () => {
+            gsap.set(ritualsTrack, { x: 0 });
+        });
+
+        console.log('✨ Rituals smooth pin scroll initialized');
     }
 
     // Initialize when DOM is ready
