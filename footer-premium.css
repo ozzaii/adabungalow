@@ -10,20 +10,23 @@
 .map-container {
     position: relative;
     width: 100%;
-    height: 600px;
-    margin-top: var(--s-24);
     background: var(--evergreen);
     overflow: hidden;
+    padding: 6rem 0 4rem;
 }
 
 .map-frame {
     position: relative;
     width: calc(100% - 120px);
-    height: calc(100% - 160px);
-    margin: 80px auto;
-    border-radius: var(--r-24);
+    height: 500px;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    border-radius: 1.5rem;
     overflow: hidden;
-    box-shadow: 0 24px 80px rgba(27, 42, 36, 0.4);
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        0 16px 48px rgba(0, 0, 0, 0.2),
+        0 0 0 1.5px rgba(184, 147, 42, 0.25);
 }
 
 .map-frame iframe {
@@ -40,62 +43,69 @@
 .map-border {
     position: absolute;
     inset: 0;
-    border: 1px solid var(--brass);
-    border-radius: var(--r-24);
-    opacity: 0.3;
+    border: 2px solid rgba(184, 147, 42, 0.3);
+    border-radius: 1.5rem;
+    opacity: 1;
     pointer-events: none;
     background: linear-gradient(135deg,
-        transparent 30%,
-        rgba(201, 162, 39, 0.05));
+        transparent 40%,
+        rgba(184, 147, 42, 0.08) 100%);
+    box-shadow: inset 0 0 80px rgba(184, 147, 42, 0.1);
 }
 
 .map-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: var(--s-12) 0 var(--s-8);
-    background: linear-gradient(180deg,
-        var(--evergreen) 0%,
-        rgba(27, 42, 36, 0.95) 50%,
-        transparent 100%);
-    z-index: 2;
-    pointer-events: none;
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--s-8) 4rem;
+    z-index: 1;
 }
 
 .map-header {
     text-align: center;
     color: var(--alpine-white);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.map-header .micro-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #B8932A;
+    margin-bottom: 1rem;
+    display: block;
+    text-shadow: 0 2px 4px rgba(184, 147, 42, 0.3);
 }
 
 .map-title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
     font-weight: 400;
-    margin: var(--s-2) 0 var(--s-3);
-    opacity: 0.95;
+    margin: 0 0 1rem;
+    color: var(--alpine-white);
+    letter-spacing: -0.5px;
+    line-height: 1.15;
 }
 
 .map-subtitle {
-    font-size: 0.95rem;
-    opacity: 0.6;
+    font-size: 1.0625rem;
+    opacity: 0.75;
     font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
 }
 
 .map-details {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--s-8);
-    background: linear-gradient(180deg,
-        transparent,
-        rgba(27, 42, 36, 0.95) 30%,
-        var(--evergreen));
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
     display: flex;
     justify-content: center;
-    gap: var(--s-12);
-    z-index: 2;
+    gap: 3rem;
+    z-index: 1;
 }
 
 .detail-card {
@@ -118,17 +128,20 @@
 }
 
 .detail-card h4 {
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    opacity: 0.7;
-    margin-bottom: 2px;
+    letter-spacing: 1.5px;
+    color: #B8932A;
+    margin-bottom: 4px;
+    text-shadow: 0 1px 2px rgba(184, 147, 42, 0.2);
 }
 
 .detail-card p {
-    font-size: 0.95rem;
+    font-size: 0.9375rem;
     font-weight: 400;
+    opacity: 0.95;
+    line-height: 1.5;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -149,9 +162,9 @@
     left: 0;
     right: 0;
     height: 100%;
-    background: radial-gradient(circle at 30% 0%,
-        rgba(201, 162, 39, 0.03),
-        transparent 40%);
+    background: radial-gradient(circle at 50% 0%,
+        rgba(184, 147, 42, 0.06) 0%,
+        transparent 50%);
     pointer-events: none;
 }
 
@@ -182,15 +195,16 @@
     font-family: var(--font-display);
     font-size: 2rem;
     font-weight: 300;
-    color: var(--brass);
-    opacity: 0.8;
+    color: #B8932A;
+    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(184, 147, 42, 0.2);
 }
 
 .logo-divider {
     width: 1px;
     height: 24px;
-    background: var(--brass);
-    opacity: 0.3;
+    background: #B8932A;
+    opacity: 0.5;
 }
 
 .footer-logo {
@@ -221,15 +235,15 @@
 }
 
 .footer-title {
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
-    letter-spacing: 0.15em;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--brass);
-    opacity: 0.7;
+    color: #B8932A;
     margin-bottom: var(--s-4);
     position: relative;
     padding-bottom: var(--s-2);
+    text-shadow: 0 1px 2px rgba(184, 147, 42, 0.2);
 }
 
 .footer-title::after {
@@ -237,10 +251,11 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 20px;
-    height: 0.5px;
-    background: var(--brass);
-    opacity: 0.3;
+    width: 24px;
+    height: 1px;
+    background: #B8932A;
+    opacity: 0.6;
+    box-shadow: 0 1px 3px rgba(184, 147, 42, 0.3);
 }
 
 .footer-list {
@@ -299,29 +314,41 @@
 }
 
 .footer-cta {
-    background: var(--brass);
-    color: var(--evergreen);
-    padding: var(--s-3) var(--s-6);
-    border-radius: var(--r-full);
-    font-weight: 500;
+    background: linear-gradient(135deg, #C9A127 0%, #B8932A 50%, #A67C24 100%);
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    box-shadow:
+        0 4px 12px rgba(184, 147, 42, 0.3),
+        0 2px 6px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
     transition: all 0.3s var(--ease);
 }
 
 .footer-cta:hover {
-    background: var(--alpine-white);
+    background: linear-gradient(135deg, #D4AD2E 0%, #C9A127 50%, #B8932A 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201, 162, 39, 0.3);
+    box-shadow:
+        0 6px 16px rgba(184, 147, 42, 0.4),
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Footer Divider */
 .footer-divider {
-    height: 0.5px;
+    height: 1px;
     background: linear-gradient(90deg,
         transparent,
-        rgba(201, 162, 39, 0.2) 20%,
-        rgba(201, 162, 39, 0.2) 80%,
+        rgba(184, 147, 42, 0.3) 20%,
+        rgba(184, 147, 42, 0.4) 50%,
+        rgba(184, 147, 42, 0.3) 80%,
         transparent);
     margin: var(--s-12) 0 var(--s-6);
+    box-shadow: 0 1px 2px rgba(184, 147, 42, 0.1);
 }
 
 /* Footer Bottom */
@@ -351,10 +378,10 @@
 
 .lang-btn {
     background: transparent;
-    border: 1px solid rgba(201, 162, 39, 0.3);
+    border: 1.5px solid rgba(184, 147, 42, 0.3);
     color: var(--alpine-white);
-    padding: 4px 12px;
-    border-radius: var(--r-full);
+    padding: 6px 14px;
+    border-radius: 2rem;
     font-size: 0.75rem;
     font-weight: 500;
     cursor: pointer;
@@ -363,9 +390,10 @@
 
 .lang-btn:hover,
 .lang-btn.active {
-    background: rgba(201, 162, 39, 0.1);
-    border-color: var(--brass);
-    color: var(--brass);
+    background: rgba(184, 147, 42, 0.15);
+    border-color: #B8932A;
+    color: #B8932A;
+    box-shadow: 0 2px 8px rgba(184, 147, 42, 0.2);
 }
 
 .lang-sep {
@@ -378,15 +406,20 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 @media (max-width: 968px) {
+    .map-container {
+        padding: 4rem 0 3rem;
+    }
+
     .map-frame {
         width: calc(100% - 60px);
-        margin: 40px auto;
+        height: 400px;
     }
-    
+
     .map-details {
         flex-direction: column;
         align-items: center;
-        gap: var(--s-4);
+        gap: 2rem;
+        margin-top: 2rem;
     }
     
     .footer-main {
@@ -413,13 +446,16 @@
 
 @media (max-width: 640px) {
     .map-container {
-        height: 500px;
+        padding: 3rem 0 2rem;
     }
-    
+
+    .map-overlay {
+        padding: 0 1rem 2rem;
+    }
+
     .map-frame {
         width: calc(100% - 32px);
-        height: calc(100% - 120px);
-        margin: 60px auto;
+        height: 350px;
     }
     
     .map-details {
