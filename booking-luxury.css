@@ -80,31 +80,35 @@
 
 .availability-header .micro-label {
     font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
-    letter-spacing: 0.3px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: #A58C5F;
+    color: #B8932A;
     margin-bottom: 1rem;
     display: block;
+    text-shadow: 0 1px 2px rgba(184, 147, 42, 0.15);
 }
 
 .availability-header .availability-title {
-    font-family: var(--font-display, 'Fraunces', 'Poppins', serif);
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 500;
-    color: #2D2D2D;
-    line-height: 1.2;
+    font-family: var(--font-display, 'Fraunces', 'Cormorant Garamond', serif);
+    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+    font-weight: 400;
+    color: #1B2A24;
+    line-height: 1.15;
     margin: 0 0 1rem 0;
+    letter-spacing: -0.5px;
+    font-optical-sizing: auto;
 }
 
 .availability-header .availability-subtitle {
-    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
+    font-family: var(--font-body, 'Inter', sans-serif);
     font-size: 1.125rem;
-    font-weight: 400;
-    color: #7D7D7D;
-    line-height: 1.6;
+    font-weight: 300;
+    color: #6B7280;
+    line-height: 1.7;
     margin: 0;
+    letter-spacing: 0.2px;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -126,8 +130,9 @@
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
-    /* Soft edges */
-    border: 1px solid rgba(220, 200, 160, 0.25);
+    /* Defined gold border */
+    border: 1.5px solid rgba(184, 147, 42, 0.25);
+    border-top: 2px solid rgba(184, 147, 42, 0.4);
     border-radius: 1.4rem;
 
     /* SOFT LAYERED SHADOWS - Cream tones */
@@ -143,18 +148,24 @@
     animation: mistFadeUp 500ms ease-out 300ms forwards;
 }
 
-/* Subtle top glow - cream tone */
+/* Defined gold top accent */
 .booking-card::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -1px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(220, 200, 160, 0.4), transparent);
-    border-radius: 0 0 2px 2px;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(184, 147, 42, 0.6),
+        rgba(201, 161, 39, 0.8),
+        rgba(184, 147, 42, 0.6),
+        transparent);
+    border-radius: 0 0 3px 3px;
     filter: blur(0.5px);
+    box-shadow: 0 2px 6px rgba(184, 147, 42, 0.25);
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -186,11 +197,13 @@
 
 .booking-field label,
 .field-label {
-    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
-    font-size: 0.875rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.8125rem;
     font-weight: 500;
-    color: #2D2D2D;
-    letter-spacing: 0.3px;
+    color: #1B2A24;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -232,10 +245,11 @@
 
 .field-input:focus-within {
     background: rgba(255, 255, 255, 0.95);
-    border-color: #C9B382;
+    border-color: #B8932A;
     box-shadow:
-        0 0 0 3px rgba(220, 200, 160, 0.15),
-        0 4px 12px rgba(220, 200, 160, 0.12),
+        0 0 0 3px rgba(184, 147, 42, 0.2),
+        0 4px 12px rgba(184, 147, 42, 0.18),
+        0 1px 3px rgba(184, 147, 42, 0.25),
         inset 0 1px 2px rgba(255, 255, 255, 0.9);
     transform: translateY(-1px);
 }
@@ -259,7 +273,8 @@
 
 .field-input:focus-within .field-icon {
     opacity: 1;
-    stroke: #A58C5F;
+    stroke: #B8932A;
+    filter: drop-shadow(0 1px 2px rgba(184, 147, 42, 0.3));
 }
 
 /* Input Element */
@@ -268,12 +283,13 @@
     flex: 1;
     border: none;
     background: transparent;
-    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
+    font-family: var(--font-body, 'Inter', sans-serif);
     font-size: 1rem;
     font-weight: 400;
-    color: #2D2D2D;
+    color: #1B2A24;
     outline: none;
     width: 100%;
+    letter-spacing: 0.2px;
 }
 
 .field-input input::placeholder,
@@ -351,9 +367,10 @@
 
 .guest-btn:hover {
     background: rgba(255, 255, 255, 0.95);
-    border-color: #C9B382;
+    border-color: #B8932A;
     box-shadow:
-        0 2px 6px rgba(220, 200, 160, 0.12),
+        0 2px 6px rgba(184, 147, 42, 0.15),
+        0 0 0 2px rgba(184, 147, 42, 0.1),
         inset 0 1px 1px rgba(255, 255, 255, 0.9);
     transform: translateY(-1px);
 }
@@ -408,12 +425,14 @@
     -webkit-backdrop-filter: blur(8px);
     border: 1.5px solid rgba(220, 200, 160, 0.2);
     border-radius: 0.9rem;
-    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
-    font-size: 1rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.9375rem;
     font-weight: 400;
-    color: #2D2D2D;
+    color: #1B2A24;
     resize: vertical;
     transition: all 300ms ease-out;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
     box-shadow:
         0 1px 3px rgba(0, 0, 0, 0.03),
         inset 0 1px 2px rgba(255, 255, 255, 0.6);
@@ -435,10 +454,11 @@
 .special-requests:focus {
     outline: none;
     background: rgba(255, 255, 255, 0.95);
-    border-color: #C9B382;
+    border-color: #B8932A;
     box-shadow:
-        0 0 0 3px rgba(220, 200, 160, 0.15),
-        0 4px 12px rgba(220, 200, 160, 0.12),
+        0 0 0 3px rgba(184, 147, 42, 0.2),
+        0 4px 12px rgba(184, 147, 42, 0.18),
+        0 1px 3px rgba(184, 147, 42, 0.25),
         inset 0 1px 2px rgba(255, 255, 255, 0.9);
     transform: translateY(-1px);
 }
@@ -497,27 +517,30 @@
 
 .btn-luxury {
     width: 100%;
-    padding: 1.25rem 2.5rem;
+    padding: 1.4rem 2.5rem;
     position: relative;
 
-    /* Soft cream/beige gradient (not pure gold) */
-    background: linear-gradient(135deg, #D4C5A0, #C9B382);
+    /* Defined gold gradient */
+    background: linear-gradient(135deg, #C9A127 0%, #B8932A 50%, #A67C24 100%);
     color: #FFFFFF;
     border: none;
     border-radius: 1rem;
 
-    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
-    font-size: 1.125rem;
-    font-weight: 500;
-    letter-spacing: 0.3px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 
     cursor: pointer;
 
-    /* Soft cream shadow */
+    /* Defined gold shadow */
     box-shadow:
-        0 2px 4px rgba(220, 200, 160, 0.2),
-        0 6px 14px rgba(220, 200, 160, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        0 4px 8px rgba(184, 147, 42, 0.25),
+        0 8px 20px rgba(184, 147, 42, 0.2),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 
     transition: all 300ms ease-out;
 
@@ -543,10 +566,11 @@
 .btn-luxury:hover {
     transform: translateY(-2px);
     box-shadow:
-        0 4px 8px rgba(220, 200, 160, 0.25),
-        0 10px 20px rgba(220, 200, 160, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    background: linear-gradient(135deg, #DDD1AB, #D4C5A0);
+        0 6px 12px rgba(184, 147, 42, 0.35),
+        0 12px 28px rgba(184, 147, 42, 0.25),
+        0 2px 6px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, #D4AD2E 0%, #C9A127 50%, #B8932A 100%);
 }
 
 .btn-luxury:active {
@@ -576,9 +600,10 @@
 }
 
 .btn-text {
-    font-size: 1.125rem;
-    font-weight: 500;
-    letter-spacing: 0.3px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Remove shimmer */
@@ -615,21 +640,22 @@
 
 .trust-badge svg,
 .badge-icon-svg {
-    width: 22px;
-    height: 22px;
-    stroke: #C9B382;
-    stroke-width: 1.5;
+    width: 24px;
+    height: 24px;
+    stroke: #B8932A;
+    stroke-width: 1.75;
     fill: none;
     margin-bottom: 0.25rem;
-    filter: drop-shadow(0 1px 2px rgba(220, 200, 160, 0.15));
+    filter: drop-shadow(0 2px 4px rgba(184, 147, 42, 0.25));
 }
 
 .trust-badge span,
 .badge-text {
-    font-family: var(--font-body, 'Inter', 'Poppins', sans-serif);
-    font-size: 0.875rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.8125rem;
     font-weight: 400;
-    color: #7D7D7D;
+    color: #6B7280;
+    letter-spacing: 0.2px;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -728,7 +754,7 @@ html[dir="rtl"] .field-icon {
 
 .btn-luxury:focus-visible,
 .guest-btn:focus-visible {
-    outline: 2px solid #C9B382;
+    outline: 2px solid #B8932A;
     outline-offset: 4px;
 }
 
