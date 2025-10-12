@@ -217,62 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, '-=0.2');
     });
 
-    // Gallery items - sexy grid reveal
-    const galleryItems = gsap.utils.toArray('.gallery-item');
-    
-    ScrollTrigger.batch(galleryItems, {
-        onEnter: (elements) => {
-            gsap.from(elements, {
-                scale: 0.85,
-                opacity: 0,
-                duration: 0.8,
-                stagger: {
-                    each: 0.1,
-                    from: 'start'
-                },
-                ease: 'power3.out',
-                overwrite: true
-            });
-        },
-        onLeave: (elements) => {
-            if (!prefersReducedMotion) {
-                gsap.to(elements, {
-                    scale: 0.95,
-                    opacity: 0.7,
-                    duration: 0.5,
-                    stagger: 0.05,
-                    overwrite: true
-                });
-            }
-        },
-        onEnterBack: (elements) => {
-            gsap.to(elements, {
-                scale: 1,
-                opacity: 1,
-                duration: 0.5,
-                stagger: 0.05,
-                overwrite: true
-            });
-        },
-        start: 'top 85%',
-        end: 'bottom 15%'
-    });
-
-    // Horizontal Rituals Section - DELETED (was causing gallery slide bug)
-    // Will re-implement properly with correct pin boundaries later.
-
-    // Gallery header animation
-    gsap.from('.gallery-header', {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: '.chapter-gallery',
-            start: 'top 70%',
-            toggleActions: 'play none none none'
-        }
-    });
+    // ═══════════════════════════════════════════════════════════════════
+    // GALLERY SECTION - NO GSAP (Pure CSS animations only)
+    // All gallery animations handled via CSS in gallery-quiet.css
+    // This prevents any ScrollTrigger conflicts or horizontal transforms
+    // ═══════════════════════════════════════════════════════════════════
 
     // Map Section Animations
     const mapContainer = document.querySelector('.map-container');
