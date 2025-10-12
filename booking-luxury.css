@@ -1,367 +1,577 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
-   ULTRA-LUXURY BOOKING ENHANCEMENTS
-   Premium icons, buttons, and refinements
+   BOOKING FORM - ULTRA PREMIUM REDESIGN
+   Quiet luxury with purposeful interactions, no gimmicks
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   LUXURY SVG ICONS
-   ───────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────
+   SECTION CONTAINER
+   ──────────────────────────────────────────────────────────────────────────── */
 
+.chapter-availability {
+    position: relative;
+    padding: 8rem 0;
+    background: linear-gradient(
+        180deg,
+        var(--bg, #F7F6F2) 0%,
+        rgba(239, 242, 237, 0.3) 50%,
+        var(--bg, #F7F6F2) 100%
+    );
+    overflow: hidden;
+}
+
+/* Subtle grain texture */
+.chapter-availability::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.65' /%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+}
+
+.availability-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   HEADER
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.availability-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+
+    /* Entrance animation */
+    opacity: 0;
+    animation: fadeUp 400ms cubic-bezier(0.2, 0.8, 0.2, 1) 200ms forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.availability-header .micro-label {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent, #C9A227);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.availability-header .availability-title {
+    font-family: var(--font-display, 'Fraunces', serif);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 400;
+    color: var(--ink, #1B2A24);
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+}
+
+.availability-header .availability-subtitle {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1.125rem;
+    color: var(--ink, #1B2A24);
+    opacity: 0.7;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   BOOKING CARD - Clean Premium Container
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.booking-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+    background: #FFFFFF;
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(27, 42, 36, 0.08);
+
+    /* Entrance animation */
+    opacity: 0;
+    animation: fadeUp 400ms cubic-bezier(0.2, 0.8, 0.2, 1) 400ms forwards;
+}
+
+/* Remove old decorative pseudo-elements */
+.booking-card::before,
+.booking-card::after {
+    display: none;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   FORM GRID
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Villa and Guests span full width */
+.booking-field:nth-child(3),
+.booking-field:nth-child(4) {
+    grid-column: 1 / -1;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   FORM FIELDS
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.booking-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.booking-field label,
+.field-label {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink, #1B2A24);
+    letter-spacing: 0.01em;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   INPUT STYLING - Clean & Minimal
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.field-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    border: 1.5px solid #E7E7E0;
+    border-radius: 10px;
+    padding: 0 1rem;
+    height: 56px;
+    transition: all 200ms ease-out;
+}
+
+.field-input:hover {
+    border-color: rgba(201, 162, 39, 0.3);
+}
+
+.field-input:focus-within {
+    border-color: var(--accent, #C9A227);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+}
+
+/* Remove old decorative pseudo-elements */
+.field-input::before,
+.field-input::after {
+    display: none;
+}
+
+/* Field Icon - Simple, not decorative */
 .field-icon {
     width: 20px;
     height: 20px;
-    color: var(--brass);
-    opacity: 0.5;
-    margin-right: var(--s-3);
-    transition: all 0.3s var(--ease);
+    margin-right: 0.75rem;
+    opacity: 0.6;
+    stroke: var(--ink, #1B2A24);
+    stroke-width: 2;
+    fill: none;
+    flex-shrink: 0;
+    transition: opacity 200ms ease-out;
+    /* Remove all floating/pulsing animations */
+    animation: none !important;
+}
+
+.field-input:focus-within .field-icon {
+    opacity: 0.8;
+    /* Remove rotation and scale animations */
+    transform: none !important;
 }
 
 .field-input:hover .field-icon {
     opacity: 0.7;
-    transform: translateY(-1px);
+    /* Remove hover animations */
+    transform: none !important;
 }
 
-.field-input:focus-within .field-icon {
+/* Input Element */
+.field-input input,
+.field-input select {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1rem;
+    color: var(--ink, #1B2A24);
+    outline: none;
+    width: 100%;
+}
+
+.field-input input::placeholder,
+.field-input select::placeholder {
+    color: var(--ink, #1B2A24);
+    opacity: 0.4;
+}
+
+/* Date Input Specific */
+.date-input input[type="date"] {
+    min-width: 0;
+}
+
+.date-input input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.date-input input[type="date"]::-webkit-calendar-picker-indicator:hover {
     opacity: 1;
-    color: var(--brass);
-    transform: rotate(5deg) scale(1.1);
 }
 
-/* Calendar icon animation */
-.date-input .field-icon {
-    animation: calendar-float 4s ease-in-out infinite;
+/* Select Dropdown */
+.select-input {
+    cursor: pointer;
 }
 
-@keyframes calendar-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-2px); }
+.select-input select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%231B2A24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 20px;
+    padding-right: 3rem;
 }
 
-/* Home icon pulse */
-.select-input:hover .field-icon {
-    animation: home-pulse 1.5s ease-in-out;
+.select-input select option {
+    padding: 0.75rem;
 }
 
-@keyframes home-pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-}
+/* ────────────────────────────────────────────────────────────────────────────
+   GUEST COUNTER - Clean Minimal Design
+   ──────────────────────────────────────────────────────────────────────────── */
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   ULTRA-LUXURY BUTTON
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.btn-luxury {
-    position: relative;
+.guest-input {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 20px 56px;
-    background: linear-gradient(135deg, var(--brass), #B8921F);
-    color: white;
-    font-size: 1.125rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-decoration: none;
-    border: none;
-    border-radius: 60px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-    box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3),
-                0 1px 3px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    gap: 2rem;
+    padding: 0.5rem 1rem;
 }
-
-.btn-luxury::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(to bottom, 
-        rgba(255, 255, 255, 0.15), 
-        transparent);
-    pointer-events: none;
-}
-
-.btn-content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    z-index: 2;
-}
-
-.btn-icon {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.btn-text {
-    font-family: var(--font-body);
-    transition: letter-spacing 0.3s var(--ease);
-}
-
-/* Shimmer effect */
-.btn-shimmer {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        105deg,
-        transparent 40%,
-        rgba(255, 255, 255, 0.3) 50%,
-        transparent 60%
-    );
-    transform: rotate(45deg) translate(-100%, -100%);
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.btn-luxury:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4),
-                0 2px 8px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    background: linear-gradient(135deg, #D4A82A, var(--brass));
-}
-
-.btn-luxury:hover .btn-shimmer {
-    transform: rotate(45deg) translate(100%, 100%);
-}
-
-.btn-luxury:hover .btn-icon {
-    transform: rotate(10deg) scale(1.1);
-}
-
-.btn-luxury:hover .btn-text {
-    letter-spacing: 0.04em;
-}
-
-.btn-luxury:active {
-    transform: translateY(0) scale(0.98);
-    box-shadow: 0 2px 8px rgba(201, 162, 39, 0.3),
-                0 1px 2px rgba(0, 0, 0, 0.1),
-                inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   PREMIUM GUEST COUNTER BUTTONS
-   ───────────────────────────────────────────────────────────────────────────── */
 
 .guest-btn {
-    position: relative;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(201, 162, 39, 0.2);
-    background: linear-gradient(145deg, #FFFFFF, #F9F8F6);
-    color: var(--evergreen);
+    width: 40px;
+    height: 40px;
+    background: var(--chip, #EFF2ED);
+    border: 1px solid #E7E7E0;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--ink, #1B2A24);
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05),
-                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    transition: all 200ms ease-out;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Remove old decorative pseudo-elements */
+.guest-btn::before,
+.guest-btn::after {
+    display: none;
+}
+
+.guest-btn:hover {
+    background: #FFFFFF;
+    border-color: var(--accent, #C9A227);
+    /* Remove scale animation */
+    transform: none;
+}
+
+.guest-btn:active {
+    transform: scale(0.96);
+    transition: transform 100ms ease-out;
+}
+
+.guest-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
 .guest-btn svg {
     width: 14px;
     height: 14px;
-    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Remove bounce animations */
+    transform: none !important;
+    transition: none;
 }
 
-.guest-btn::after {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    border: 1px solid var(--brass);
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 0.3s var(--ease);
+.guest-input input[type="number"] {
+    width: 60px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--ink, #1B2A24);
+    border: none;
+    background: transparent;
+    outline: none;
+    -moz-appearance: textfield;
 }
 
-.guest-btn:hover {
-    background: var(--brass);
-    border-color: var(--brass);
-    color: white;
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3),
-                inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+.guest-input input[type="number"]::-webkit-inner-spin-button,
+.guest-input input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-.guest-btn:hover::after {
-    opacity: 0.3;
-    transform: scale(1);
+/* ────────────────────────────────────────────────────────────────────────────
+   SPECIAL REQUESTS TEXTAREA
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.booking-extras {
+    margin: 2rem 0;
 }
 
-.guest-btn:hover svg {
-    transform: scale(1.2);
+.special-requests {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    background: #FFFFFF;
+    border: 1.5px solid #E7E7E0;
+    border-radius: 10px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1rem;
+    color: var(--ink, #1B2A24);
+    resize: vertical;
+    transition: all 200ms ease-out;
 }
 
-.guest-btn:active {
-    transform: scale(0.95);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+.special-requests::placeholder {
+    color: var(--ink, #1B2A24);
+    opacity: 0.4;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   TRUST BADGES LUXURY STYLING
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.badge-icon-svg {
-    width: 22px;
-    height: 22px;
-    color: var(--brass);
-    stroke-width: 1.5;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.trust-badge {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 16px;
-    background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.9),
-        rgba(255, 255, 255, 0.7));
-    border-radius: 30px;
-    
-    border: 0.5px solid rgba(201, 162, 39, 0.1);
-    transition: all 0.3s var(--ease);
-}
-
-.trust-badge::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(135deg,
-        transparent,
-        rgba(201, 162, 39, 0.05));
-    opacity: 0;
-    transition: opacity 0.3s var(--ease);
-}
-
-.trust-badge:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(201, 162, 39, 0.15);
+.special-requests:hover {
     border-color: rgba(201, 162, 39, 0.3);
 }
 
-.trust-badge:hover::before {
-    opacity: 1;
+.special-requests:focus {
+    outline: none;
+    border-color: var(--accent, #C9A227);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
 }
 
-.trust-badge:hover .badge-icon-svg {
-    transform: rotate(5deg) scale(1.15);
-    color: var(--evergreen);
+/* ────────────────────────────────────────────────────────────────────────────
+   PRICE PREVIEW
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.price-preview {
+    background: var(--bg, #F7F6F2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-top: 1px solid rgba(201, 162, 39, 0.1);
 }
 
-/* Star animation */
-.trust-badge:nth-child(3) .badge-icon-svg {
-    animation: star-twinkle 3s ease-in-out infinite;
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-@keyframes star-twinkle {
-    0%, 100% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.1) rotate(5deg); }
+.price-row span:first-child,
+.price-label {
+    font-size: 0.875rem;
+    color: var(--ink, #1B2A24);
+    opacity: 0.7;
 }
 
-/* Shield pulse */
-.trust-badge:nth-child(2):hover .badge-icon-svg {
-    animation: shield-pulse 1s ease-in-out;
+.price-row span:last-child,
+.price-value {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--ink, #1B2A24);
 }
 
-@keyframes shield-pulse {
-    0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.1); }
-    50% { transform: scale(0.95); }
-    75% { transform: scale(1.05); }
+.price-note {
+    font-size: 0.875rem;
+    color: var(--ink, #1B2A24);
+    opacity: 0.6;
+    margin-top: 0.5rem;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   ENHANCED FIELD INPUTS
-   ───────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────
+   PRIMARY CTA BUTTON - Clean Premium
+   ──────────────────────────────────────────────────────────────────────────── */
 
-.field-input {
+.booking-actions {
+    margin-top: 2rem;
+}
+
+.btn-luxury {
+    width: 100%;
+    padding: 1.25rem 2.5rem;
+    background: var(--accent, #C9A227);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1.125rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(201, 162, 39, 0.25);
+    transition: all 200ms ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
     position: relative;
-    background: linear-gradient(135deg, #FAFAF8, #F7F6F2);
-    border: 1.5px solid rgba(231, 231, 224, 0.5);
-    border-radius: 14px;
-    padding: 14px 16px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02),
-                inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    overflow: visible;
 }
 
-.field-input::after {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 16px;
-    background: linear-gradient(135deg,
-        var(--brass),
-        rgba(201, 162, 39, 0.5));
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 0.3s var(--ease);
+/* Remove old decorative pseudo-elements */
+.btn-luxury::before,
+.btn-luxury::after {
+    display: none;
 }
 
-.field-input:hover {
-    background: white;
-    border-color: rgba(201, 162, 39, 0.2);
-    box-shadow: 0 4px 12px rgba(27, 42, 36, 0.05),
-                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+.btn-luxury:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(201, 162, 39, 0.35);
+    /* Remove gradient color change */
+    background: var(--accent, #C9A227);
 }
 
-.field-input:focus-within {
-    background: white;
-    border-color: transparent;
-    box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.15),
-                0 8px 24px rgba(201, 162, 39, 0.1);
+.btn-luxury:active {
+    transform: scale(0.98);
+    transition: transform 100ms ease-out;
 }
 
-.field-input:focus-within::after {
-    opacity: 0.1;
+.btn-luxury:disabled {
+    opacity: 0.7;
+    cursor: wait;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   PREMIUM ANIMATIONS
-   ───────────────────────────────────────────────────────────────────────────── */
-
-/* Icon entrance animations */
-.booking-card .field-icon {
-    animation: icon-entrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-    animation-delay: calc(var(--index, 0) * 0.1s);
+.btn-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 1;
 }
 
-@keyframes icon-entrance {
-    from {
-        opacity: 0;
-        transform: scale(0) rotate(-180deg);
-    }
-    to {
-        opacity: 0.5;
-        transform: scale(1) rotate(0deg);
-    }
+.btn-icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    /* Remove rotation animations */
+    transform: none !important;
+    transition: none;
 }
 
-/* Booking note refined */
+.btn-text {
+    font-size: 1.125rem;
+    font-weight: 500;
+    /* Remove letter-spacing animations */
+    letter-spacing: 0.02em;
+    transition: none;
+}
+
+/* Remove shimmer effect completely - too gimmicky */
+.btn-shimmer {
+    display: none !important;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   TRUST BADGES - Subtle Professional
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.trust-badges {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 800px;
+    margin: 3rem auto 0;
+    padding: 0 2rem;
+}
+
+.trust-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    opacity: 0.7;
+    transition: opacity 200ms ease-out;
+    /* Remove old styling */
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* Remove old decorative pseudo-elements */
+.trust-badge::before,
+.trust-badge::after {
+    display: none;
+}
+
+.trust-badge:hover {
+    opacity: 1;
+    /* Remove lift animation */
+    transform: none;
+}
+
+.trust-badge svg,
+.badge-icon-svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--ink, #1B2A24);
+    stroke-width: 2;
+    fill: none;
+    margin-bottom: 0.25rem;
+    /* Remove all animations */
+    animation: none !important;
+    transform: none !important;
+    transition: none;
+}
+
+.trust-badge span {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    color: var(--ink, #1B2A24);
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   BOOKING NOTE
+   ──────────────────────────────────────────────────────────────────────────── */
+
 .booking-note {
     position: relative;
     padding-top: 16px;
     margin-top: 20px;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--ink, #1B2A24);
+    opacity: 0.6;
 }
 
 .booking-note::before {
@@ -374,158 +584,156 @@
     height: 0.5px;
     background: linear-gradient(90deg,
         transparent,
-        var(--brass),
+        rgba(201, 162, 39, 0.3),
         transparent);
-    opacity: 0.5;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   PREMIUM BOOKING CARD ENHANCEMENT
-   ───────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────
+   ERROR STATES
+   ──────────────────────────────────────────────────────────────────────────── */
 
-.booking-card {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 3rem;
-    background: linear-gradient(145deg,
-        rgba(255, 255, 255, 0.98),
-        rgba(255, 255, 255, 0.92));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 24px;
-    border: 1.5px solid rgba(201, 162, 39, 0.15);
-    box-shadow:
-        0 20px 60px rgba(27, 42, 36, 0.08),
-        0 8px 24px rgba(27, 42, 36, 0.04),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9),
-        inset 0 -1px 0 rgba(201, 162, 39, 0.05);
+.field-input.error {
+    border-color: #DC2626;
 }
 
-.booking-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg,
-        transparent,
-        var(--brass),
-        transparent);
-    opacity: 0.6;
-    border-radius: 24px 24px 0 0;
+.field-input.error:focus-within {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
 }
 
-.booking-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 2rem;
-    margin-bottom: 2rem;
-}
-
-.booking-field {
-    position: relative;
-}
-
-.field-label {
-    display: block;
+.error-message {
     font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--evergreen);
-    margin-bottom: 0.75rem;
-    letter-spacing: 0.02em;
+    color: #DC2626;
+    margin-top: 0.25rem;
+    opacity: 0;
+    animation: fadeIn 200ms ease-out forwards;
 }
 
-.booking-extras {
-    margin: 2rem 0;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.special-requests {
-    width: 100%;
-    padding: 1rem;
-    background: linear-gradient(135deg, #FAFAF8, #F7F6F2);
-    border: 1.5px solid rgba(231, 231, 224, 0.5);
-    border-radius: 14px;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--evergreen);
-    resize: vertical;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02),
-                inset 0 1px 2px rgba(255, 255, 255, 0.5);
+/* ────────────────────────────────────────────────────────────────────────────
+   FOCUS VISIBLE (Accessibility)
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.btn-luxury:focus-visible,
+.guest-btn:focus-visible {
+    outline: 2px solid var(--accent, #C9A227);
+    outline-offset: 4px;
 }
 
-.special-requests:hover {
-    background: white;
-    border-color: rgba(201, 162, 39, 0.2);
-    box-shadow: 0 4px 12px rgba(27, 42, 36, 0.05),
-                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+.field-input:focus-within {
+    outline: 2px solid transparent;
 }
 
-.special-requests:focus {
-    outline: none;
-    background: white;
-    border-color: transparent;
-    box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.15),
-                0 8px 24px rgba(201, 162, 39, 0.1);
-}
+/* ────────────────────────────────────────────────────────────────────────────
+   TABLET RESPONSIVE
+   ──────────────────────────────────────────────────────────────────────────── */
 
-.price-preview {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: linear-gradient(135deg,
-        rgba(201, 162, 39, 0.03),
-        rgba(201, 162, 39, 0.01));
-    border-radius: 16px;
-    border: 1px solid rgba(201, 162, 39, 0.1);
-}
-
-.price-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-.price-label {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--evergreen);
-}
-
-.price-value {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--brass);
-}
-
-.price-note {
-    font-size: 0.875rem;
-    color: rgba(27, 42, 36, 0.6);
-    margin: 0;
-}
-
-.booking-actions {
-    margin-top: 2rem;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .booking-card {
-        padding: 2rem 1.5rem;
-        border-radius: 20px;
+@media (max-width: 1024px) {
+    .chapter-availability {
+        padding: 6rem 0;
     }
 
+    .availability-header {
+        margin-bottom: 3rem;
+    }
+
+    .booking-card {
+        padding: 2.5rem;
+    }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   MOBILE RESPONSIVE
+   ──────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .chapter-availability {
+        padding: 5rem 0;
+    }
+
+    .availability-container {
+        padding: 0 1rem;
+    }
+
+    .availability-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .booking-card {
+        padding: 2rem;
+    }
+
+    /* Stack all fields in single column */
     .booking-grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .booking-field:nth-child(3),
+    .booking-field:nth-child(4) {
+        grid-column: 1;
+    }
+
+    /* Trust badges 2x2 grid on mobile */
+    .trust-badges {
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+        padding: 0 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .booking-card {
         padding: 1.5rem 1rem;
-        border-radius: 16px;
+    }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   REDUCED MOTION (Accessibility)
+   ──────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .availability-header,
+    .booking-card {
+        animation: none;
+        opacity: 1;
+    }
+
+    .field-input,
+    .guest-btn,
+    .btn-luxury,
+    .trust-badge,
+    .special-requests {
+        transition: none;
+    }
+
+    .btn-luxury:hover {
+        transform: none;
+    }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   PRINT STYLES
+   ──────────────────────────────────────────────────────────────────────────── */
+
+@media print {
+    .chapter-availability {
+        padding: 2rem 0;
+    }
+
+    .booking-card {
+        box-shadow: none;
+        border: 1px solid #E7E7E0;
+    }
+
+    .btn-luxury {
+        display: none;
     }
 }
