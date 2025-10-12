@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-// DAILY RITUALS - SMOOTH PIN + HORIZONTAL SCROLL
-// Cohesive experience: section pins, only horizontal movement visible
+// DAILY RITUALS - MINIMAL SMOOTH SCROLL
+// Cohesive pin + subtle minimal animations only
 // ═══════════════════════════════════════════════════════════════════════════════
 
 (function() {
@@ -40,54 +40,59 @@
             return trackWidth - windowWidth;
         };
 
-        // SMOOTH PIN with generous scroll space
+        // SMOOTH PIN with horizontal scroll
         gsap.to(ritualsTrack, {
             x: () => -getScrollAmount(),
             ease: "none",
             scrollTrigger: {
                 trigger: ritualsSection,
-                start: "center center", // Pin when section is centered
-                end: () => `+=${getScrollAmount() + window.innerHeight}`, // Extra space for smooth exit
+                start: "center center",
+                end: () => `+=${getScrollAmount() + window.innerHeight}`,
                 pin: true,
-                scrub: 0.5, // Very smooth scrub
+                scrub: 0.5,
                 invalidateOnRefresh: true,
-                anticipatePin: 1, // Smooth pin anticipation
-                // Add pinSpacing to prevent layout jump
+                anticipatePin: 1,
                 pinSpacing: true
             }
         });
 
-        // Subtle hover effect for panels
+        // Minimal hover effect - just lift and shadow
         panels.forEach(panel => {
             const image = panel.querySelector('.ritual-image');
 
-            if (image) {
-                panel.addEventListener('mouseenter', () => {
-                    gsap.to(panel, {
-                        y: -8,
-                        duration: 0.4,
-                        ease: "power2.out"
-                    });
+            panel.addEventListener('mouseenter', () => {
+                gsap.to(panel, {
+                    y: -6,
+                    boxShadow: '0 12px 40px rgba(0, 0, 0, 0.12)',
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+
+                if (image) {
                     gsap.to(image, {
                         scale: 1.05,
                         duration: 0.6,
                         ease: "power2.out"
                     });
+                }
+            });
+
+            panel.addEventListener('mouseleave', () => {
+                gsap.to(panel, {
+                    y: 0,
+                    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.04), 0 10px 40px rgba(0, 0, 0, 0.06)',
+                    duration: 0.4,
+                    ease: "power2.out"
                 });
 
-                panel.addEventListener('mouseleave', () => {
-                    gsap.to(panel, {
-                        y: 0,
-                        duration: 0.4,
-                        ease: "power2.out"
-                    });
+                if (image) {
                     gsap.to(image, {
                         scale: 1,
                         duration: 0.6,
                         ease: "power2.out"
                     });
-                });
-            }
+                }
+            });
         });
 
         // Smooth refresh on window resize
@@ -104,7 +109,7 @@
             gsap.set(ritualsTrack, { x: 0 });
         });
 
-        console.log('✨ Rituals smooth pin scroll initialized');
+        console.log('✨ Rituals minimal smooth scroll initialized');
     }
 
     // Initialize when DOM is ready
