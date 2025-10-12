@@ -50,17 +50,12 @@
             scrollTrigger: {
                 trigger: ritualsSection,
                 start: "top top",
-                end: () => `+=${getScrollAmount() * 1.5}`, // More scroll space for smoother feel
+                end: () => `+=${getScrollAmount()}`, // Match scroll distance exactly
                 pin: true,
-                scrub: 1.2, // Slightly higher for buttery smooth feel
+                scrub: 0.8, // Lower for more responsive feel
                 invalidateOnRefresh: true,
-                anticipatePin: 1,
-                snap: {
-                    snapTo: 1 / (panels.length - 1), // Snap to each panel
-                    duration: { min: 0.2, max: 0.4 },
-                    delay: 0.1,
-                    ease: premiumEase
-                }
+                anticipatePin: 1
+                // Snap disabled - was causing jumpy behavior
             }
         });
 
@@ -68,16 +63,16 @@
         panels.forEach((panel, index) => {
             // Set initial state
             gsap.set(panel, {
-                opacity: 0.6,
-                scale: 0.9
+                opacity: 1,
+                scale: 1
             });
 
-            // Animate as panel comes into view
+            // Subtle scale effect on scroll (optional - can be disabled)
             ScrollTrigger.create({
                 trigger: ritualsSection,
                 start: "top top",
-                end: () => `+=${getScrollAmount() * 1.5}`,
-                scrub: 1,
+                end: () => `+=${getScrollAmount()}`,
+                scrub: 0.5,
                 onUpdate: (self) => {
                     const progress = self.progress;
                     const panelProgress = progress * panels.length - index;
@@ -85,19 +80,20 @@
                     // Calculate distance from center (0 = center)
                     const distanceFromCenter = Math.abs(panelProgress - 0.5);
 
-                    // Scale: larger when centered
-                    const scale = gsap.utils.interpolate(0.9, 1.05, 1 - distanceFromCenter * 2);
+                    // Subtle scale: only slightly smaller when not centered
+                    const scale = gsap.utils.interpolate(0.95, 1, 1 - distanceFromCenter * 1.5);
 
-                    // Opacity: more opaque when centered
-                    const opacity = gsap.utils.interpolate(0.6, 1, 1 - distanceFromCenter * 2);
+                    // Opacity: minimal change
+                    const opacity = gsap.utils.interpolate(0.85, 1, 1 - distanceFromCenter * 1.5);
 
                     // Apply transforms only when panel is in view
                     if (panelProgress > -0.5 && panelProgress < 1.5) {
                         gsap.to(panel, {
-                            scale: Math.max(0.9, Math.min(1.05, scale)),
-                            opacity: Math.max(0.6, Math.min(1, opacity)),
-                            duration: 0.3,
-                            ease: premiumEase
+                            scale: Math.max(0.95, Math.min(1, scale)),
+                            opacity: Math.max(0.85, Math.min(1, opacity)),
+                            duration: 0.2,
+                            ease: "power1.out",
+                            overwrite: "auto"
                         });
                     }
                 }
@@ -124,32 +120,8 @@
             }
         });
 
-        // Progress indicator (optional - add if needed in HTML)
-        const updateProgress = () => {
-            const progressContainer = document.querySelector('.rituals-progress');
-            if (!progressContainer) return;
-
-            ScrollTrigger.create({
-                trigger: ritualsSection,
-                start: "top top",
-                end: () => `+=${getScrollAmount() * 1.5}`,
-                onUpdate: (self) => {
-                    const progress = self.progress;
-                    const currentPanel = Math.round(progress * (panels.length - 1));
-
-                    const dots = progressContainer.querySelectorAll('.progress-dot');
-                    dots.forEach((dot, i) => {
-                        if (i === currentPanel) {
-                            dot.classList.add('active');
-                        } else {
-                            dot.classList.remove('active');
-                        }
-                    });
-                }
-            });
-        };
-
-        updateProgress();
+        // Progress indicator disabled - was causing performance issues
+        // Can be re-enabled by adding .rituals-progress element to HTML
 
         // Smooth refresh on window resize
         let resizeTimer;
@@ -165,8 +137,8 @@
             gsap.set(ritualsTrack, { x: 0 });
             panels.forEach(panel => {
                 gsap.set(panel, {
-                    opacity: 0.6,
-                    scale: 0.9
+                    opacity: 1,
+                    scale: 1
                 });
             });
         });
