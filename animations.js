@@ -258,11 +258,11 @@ document.addEventListener('DOMContentLoaded', () => {
         end: 'bottom 15%'
     });
 
-    // Horizontal Rituals Section - SEXY HORIZONTAL SCROLL
+    // Horizontal Rituals Section - TEMPORARILY DISABLED (causing gallery slide bug)
     const ritualsTrack = document.querySelector('.rituals-track');
     const ritualPanels = gsap.utils.toArray('.ritual-panel');
-    
-    if (ritualsTrack && ritualPanels.length > 0 && !prefersReducedMotion) {
+
+    if (false && ritualsTrack && ritualPanels.length > 0 && !prefersReducedMotion) {
         // Calculate total scroll width
         const getScrollAmount = () => {
             let trackWidth = ritualsTrack.scrollWidth;
