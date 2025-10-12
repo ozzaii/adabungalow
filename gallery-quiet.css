@@ -302,26 +302,14 @@
     }
 }
 
-/* Loading State */
-.gallery-image[loading="lazy"] {
-    background: linear-gradient(
-        90deg,
-        var(--chip, #EFF2ED) 0%,
-        rgba(239, 242, 237, 0.8) 50%,
-        var(--chip, #EFF2ED) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 2s ease-in-out infinite;
+/* Loading State - REMOVED INFINITE SHIMMER ANIMATION
+   This was causing the horizontal sliding bug!
+   Images will now load with a static background instead */
+.gallery-image[loading="lazy"]:not(.loaded) {
+    background: var(--chip, #EFF2ED);
 }
 
-@keyframes shimmer {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
-}
+/* Shimmer animation removed - was causing gallery horizontal slide bug */
 
 /* Print styles */
 @media print {
