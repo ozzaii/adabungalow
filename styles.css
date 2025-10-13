@@ -136,11 +136,11 @@ p {
    Default: Hide all. Then show ONLY active language via html[lang="..."]
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* STEP 1: Hide ALL language variants by default */
+/* STEP 1: Hide ALL language variants by default - NO !important to allow override */
 [data-lang-en],
 [data-lang-tr],
 [data-lang-ar] {
-    display: none !important;
+    display: none;
 }
 
 /* STEP 2: Show ONLY active language - Generic inline elements */
