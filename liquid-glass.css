@@ -28,6 +28,14 @@ body > * {
     z-index: 1;
 }
 
+/* GLOBAL FIX: Prevent white gaps under ALL images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
 /* ─────────────────────────────────────────────────────────────────────────────
    GLASS CARD BASE SYSTEM
    ───────────────────────────────────────────────────────────────────────────── */
@@ -158,11 +166,20 @@ body > * {
 .villa-chapter .villa-visual {
     background: white;
     isolation: isolate;
+    line-height: 0; /* Remove inline spacing */
+    font-size: 0; /* Remove inline spacing */
+    overflow: hidden; /* Contain image properly */
 }
 
 .villa-chapter .villa-image {
     opacity: 1 !important;
-    display: block;
+    display: block !important; /* CRITICAL: Removes inline spacing that causes white gap */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top; /* Extra safety */
+    margin: 0;
+    padding: 0;
 }
 
 .villa-chapter .villa-accent-line {
@@ -277,6 +294,23 @@ body > * {
 .ritual-panel .ritual-image-wrap {
     position: relative;
     z-index: 2;
+}
+
+/* FIX: Remove white gap under ritual images */
+.ritual-panel .ritual-image-wrap {
+    line-height: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.ritual-panel .ritual-image {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
 }
 
 .ritual-panel:hover::before {
