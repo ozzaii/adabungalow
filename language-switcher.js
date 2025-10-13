@@ -5,19 +5,25 @@
 
 class LanguageSwitcher {
     constructor() {
-        this.currentLang = localStorage.getItem('adaBungalowLang') || 'tr';
+        // Auto-detect browser language or use stored preference
+        const browserLang = navigator.language.split('-')[0]; // Gets 'en', 'tr', 'ar', etc.
+        const supportedLangs = ['tr', 'en', 'ar'];
+        const detectedLang = supportedLangs.includes(browserLang) ? browserLang : 'tr';
+
+        this.currentLang = localStorage.getItem('adaBungalowLang') || detectedLang;
         this.init();
     }
-    
+
     init() {
         // Load translations script first
         this.loadTranslations(() => {
             // Set initial language
             this.switchLanguage(this.currentLang, false);
-            
-            // Setup language buttons
+
+            // Setup language dropdown and buttons
+            this.setupLanguageDropdown();
             this.setupLanguageButtons();
-            
+
             // Mark elements for translation
             this.markTranslatableElements();
         });
@@ -37,8 +43,23 @@ class LanguageSwitcher {
         }, 100);
     }
     
+    setupLanguageDropdown() {
+        // Get the language dropdown
+        const dropdown = document.getElementById('language-dropdown');
+
+        if (dropdown) {
+            // Set dropdown to current language
+            dropdown.value = this.currentLang;
+
+            // Add change event listener
+            dropdown.addEventListener('change', (e) => {
+                this.switchLanguage(e.target.value);
+            });
+        }
+    }
+
     setupLanguageButtons() {
-        // Get ALL language buttons (header, navbar, footer)
+        // Get ALL language buttons (header, navbar, footer) - for backwards compatibility
         const allLangBtns = document.querySelectorAll('.lang-btn');
 
         allLangBtns.forEach(btn => {
@@ -322,7 +343,13 @@ class LanguageSwitcher {
             }
         });
         
-        // Update active language buttons
+        // Update language dropdown
+        const dropdown = document.getElementById('language-dropdown');
+        if (dropdown) {
+            dropdown.value = lang;
+        }
+
+        // Update active language buttons (for backwards compatibility)
         document.querySelectorAll('.lang-btn').forEach(btn => {
             const btnLang = btn.getAttribute('data-lang') || btn.textContent.toLowerCase().trim();
             btn.classList.remove('active');

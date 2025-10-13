@@ -149,11 +149,11 @@
     <!-- Deferred Styles -->
     <link rel="stylesheet" href="premium-polish.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="footer-premium.css?v=14" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="booking-luxury.css?v=18" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="booking-luxury.css?v=19" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="booking-mobile.css?v=15" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="villa-borders.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="rtl-styles.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="navigation-styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="navigation-styles.css?v=2" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="rituals-horizontal.css?v=7" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="rituals-luxury.css?v=7" media="print" onload="this.media='all'">
     
@@ -209,9 +209,14 @@
                     <span class="weather-desc">Clear</span>
                 </div>
                 <div class="navbar-language-switcher">
-                    <button class="lang-btn active" data-lang="tr">TR</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="ar">AR</button>
+                    <select id="language-dropdown" class="lang-dropdown" aria-label="Select language">
+                        <option value="tr">Türkçe</option>
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                    </select>
+                    <svg class="lang-dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                 </div>
             </div>
         </div>
