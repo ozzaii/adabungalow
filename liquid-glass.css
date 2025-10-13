@@ -12,7 +12,7 @@ body {
     background-image: url('wall-surface-texture.jpg');
     background-size: contain; /* FIX: Changed from cover to contain to prevent zoom */
     background-position: center top;
-    background-attachment: fixed;
+    background-attachment: scroll; /* FIX: Changed from fixed for performance - fixed causes constant repaints */
     background-repeat: repeat-y; /* FIX: Repeat vertically instead of no-repeat */
     background-color: #F7F6F2; /* Fallback */
 }
@@ -74,9 +74,9 @@ img {
 /* Layer 1: Backdrop blur with distortion filter */
 .glass-filter {
     z-index: 1;
-    backdrop-filter: blur(12px) saturate(140%);
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
-    filter: url(#glass-distortion);
+    backdrop-filter: blur(6px) saturate(120%); /* REDUCED from 12px for performance */
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    filter: none; /* DISABLED SVG filter - too expensive */
 }
 
 /* Layer 2: Semi-transparent background overlay */
@@ -101,10 +101,11 @@ img {
         radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 80%),
         radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 0%, transparent 80%);
     background-size: 300% 300%;
-    animation: floatDistort 10s infinite ease-in-out;
+    animation: none; /* DISABLED - causing lag */
     mix-blend-mode: overlay;
     z-index: 2;
     pointer-events: none;
+    display: none; /* DISABLED completely for performance */
 }
 
 @keyframes floatDistort {
