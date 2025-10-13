@@ -1,5 +1,219 @@
 # Ada Bungalow - Cinematic Quiet Luxury Redesign Plan
 
+---
+
+# 🚨 CRITICAL ISSUES RESOLVED - READ THIS FIRST
+
+## Background Zoom Issue (FIXED Oct 2025)
+
+**Problem:** Background texture was zoomed in way too much, destroying the design.
+
+**Root Cause:** `background-size: cover` combined with high-res image caused massive zoom.
+
+**Solution:**
+```css
+body {
+    background-size: contain;     /* NOT cover - prevents zoom */
+    background-repeat: repeat-y;  /* NOT no-repeat - tiles vertically */
+    background-position: center top; /* Anchored to top */
+}
+```
+
+**Lesson:** NEVER use `background-size: cover` on body with texture images. Use `contain` + `repeat-y`.
+
+---
+
+## White Gap Under Images (FIXED Oct 2025)
+
+**Problem:** All images had 3-5px white gap at bottom inside containers.
+
+**Root Cause:** Images are inline elements by default, reserve space for text descenders (g, y, p).
+
+**Solution:**
+```css
+/* Global fix */
+img {
+    display: block !important;
+    vertical-align: top;
+}
+
+/* Container fix */
+.villa-visual,
+.ritual-image-wrap {
+    line-height: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+```
+
+**Lesson:** ALWAYS set images to `display: block` to remove inline spacing.
+
+---
+
+## CSS Cascade Hell (FIXED Oct 2025)
+
+**Problem:** 33 CSS files all fighting for control. Changes wouldn't work. Hours wasted debugging.
+
+**Files That Were Conflicting:**
+- `cinematic-polish.css` → Overriding glass effects from `liquid-glass.css`
+- `premium-polish.css` → Adding unwanted overlays
+- `villa-borders.css` → Conflicting backgrounds
+- `performance-60fps.css` → Re-enabling disabled effects
+
+**Solution:** Created **CSS-ARCHITECTURE.md** with:
+- Single Source of Truth mapping (which file owns which component)
+- What NOT to do (prevent conflicts)
+- Clear ownership rules
+- Commit checklist
+
+**Critical Rules:**
+1. `.villa-chapter` → ONLY `liquid-glass.css` can style it
+2. `.villa-narrative` → ONLY `styles.css` + `liquid-glass.css` (visibility)
+3. NEVER add `background` or `backdrop-filter` to components you don't own
+4. NEVER create `::before/::after` overlays on components you don't own
+5. CHECK ownership table BEFORE editing any CSS
+
+**Lesson:** Read **CSS-ARCHITECTURE.md** BEFORE touching any CSS file.
+
+---
+
+## Invisible Text / Transparent Content (FIXED Oct 2025)
+
+**Problem:** Villa card text completely invisible. "Özel Havuz, King Suite..." - you could select it but not see it.
+
+**Root Causes:**
+1. Stagger animation starting at `opacity: 0` and never finishing
+2. Glass overlay at `rgba(255, 255, 255, 0.25)` - too transparent
+3. Multiple ::before pseudo-elements covering content
+
+**Solution:**
+```css
+/* Disable problematic animation */
+.villa-narrative > * {
+    /* animation: fade-up-stagger 0.8s; */ /* DISABLED */
+}
+
+/* Force text visible */
+.villa-chapter .villa-narrative * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: inherit;
+}
+
+/* Increase glass opacity */
+.villa-chapter {
+    --glass-bg: rgba(255, 255, 255, 0.75); /* Was 0.25 */
+}
+```
+
+**Lesson:** Test text visibility IMMEDIATELY. Never trust animations to complete properly.
+
+---
+
+## Janky Click Effects (FIXED Oct 2025)
+
+**Problem:** Villa cards had click/active states but weren't meant to be clickable. Felt janky.
+
+**Solution:**
+```css
+.villa-chapter {
+    cursor: default !important; /* NOT pointer */
+    user-select: none;
+}
+
+.villa-chapter:active {
+    transform: none !important; /* NO click feedback */
+}
+
+/* Keep links/buttons inside clickable */
+.villa-chapter a,
+.villa-chapter button {
+    cursor: pointer;
+    pointer-events: auto;
+}
+```
+
+**Lesson:** Cards should have hover animation but NO click effect.
+
+---
+
+## Mobile Background Color Flash (FIXED Oct 2025)
+
+**Problem:** Background changed color on scroll on mobile.
+
+**Root Cause:** `background-attachment: fixed` causes rendering issues on mobile.
+
+**Solution:**
+```css
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll; /* NOT fixed */
+    }
+
+    .villa-chapter {
+        background-color: transparent !important;
+    }
+}
+```
+
+**Lesson:** ALWAYS use `scroll` on mobile, not `fixed`.
+
+---
+
+## Film Grain Overlays Destroying Clarity (FIXED Oct 2025)
+
+**Problem:** White noise/grain overlays on everything. "garip bi white texture overlay vardı her şeyin üstünde film grain gibi"
+
+**Root Cause:** Multiple `::before` pseudo-elements with SVG noise filters in:
+- `cinematic-polish.css`
+- `liquid-glass.css` (body::before)
+- `premium-polish.css`
+
+**Solution:** Disabled ALL `::before/::after` overlays with `display: none !important;`
+
+**Lesson:** NO grain. NO noise. Clean glassmorphism only.
+
+---
+
+## Future Work Guidelines
+
+### Before Editing Any CSS:
+1. ✅ Read **CSS-ARCHITECTURE.md** ownership table
+2. ✅ Check which file owns the component
+3. ✅ Run: `grep -n ".component-name" *.css` to find conflicts
+4. ✅ Edit ONLY the owner file
+5. ✅ Test on desktop AND mobile
+6. ✅ Hard refresh (Ctrl+Shift+R) to bypass cache
+7. ✅ Update cache version in index.html
+8. ✅ Document WHY you made the change
+
+### Files to NEVER Edit for Villa Cards:
+- ❌ cinematic-polish.css (only hover animations, NO backgrounds)
+- ❌ premium-polish.css (deferred, adds overlays)
+- ❌ villa-borders.css (mostly disabled)
+- ❌ performance-60fps.css (only performance tweaks)
+
+### The ONLY File to Edit for Villa Cards:
+- ✅ **liquid-glass.css** - Single source of truth
+
+---
+
+## Common Issues Cheat Sheet
+
+| Issue | Quick Fix | File |
+|-------|-----------|------|
+| Background zoomed | `background-size: contain` + `repeat-y` | liquid-glass.css |
+| White gap under images | `display: block` on img | liquid-glass.css |
+| Invisible text | Force `opacity: 1 !important` | liquid-glass.css |
+| Janky click | `cursor: default` + `:active { transform: none }` | liquid-glass.css |
+| Mobile bg flash | `background-attachment: scroll` in @media | liquid-glass.css |
+| Glass not visible | Increase `--glass-bg` opacity to 0.75+ | liquid-glass.css |
+| Conflicting styles | Check CSS-ARCHITECTURE.md ownership | N/A |
+
+---
+
+# Ada Bungalow - Cinematic Quiet Luxury Redesign Plan
+
 ## 🎬 Vision Statement
 Transform Ada Bungalow from a standard luxury website into a **cinematic, story-driven experience** that feels like a calm boutique film. The site should exhale mist, glow in brass, and tell a story as users scroll — not just show cards.
 

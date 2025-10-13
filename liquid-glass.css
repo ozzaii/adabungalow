@@ -10,10 +10,10 @@
 
 body {
     background-image: url('wall-surface-texture.jpg');
-    background-size: cover;
-    background-position: center;
+    background-size: contain; /* FIX: Changed from cover to contain to prevent zoom */
+    background-position: center top;
     background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y; /* FIX: Repeat vertically instead of no-repeat */
     background-color: #F7F6F2; /* Fallback */
 }
 
