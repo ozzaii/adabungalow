@@ -183,7 +183,22 @@ body > * {
     color: inherit;
 }
 
-/* Villa card hover effect */
+/* Villa cards are NOT clickable - only hover animation */
+.villa-chapter {
+    cursor: default !important;
+    pointer-events: auto;
+    user-select: none;
+}
+
+/* Allow clicks on links/buttons inside */
+.villa-chapter a,
+.villa-chapter button,
+.villa-chapter .btn {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* Villa card hover effect - smooth, not janky */
 .villa-chapter:hover {
     border-color: rgba(201, 162, 39, 0.4);
     box-shadow:
@@ -191,6 +206,16 @@ body > * {
         0 4px 16px rgba(27, 42, 36, 0.06),
         inset 0 1px 0 rgba(255, 255, 255, 0.8),
         0 0 0 1px rgba(201, 162, 39, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* REMOVE any active/click states */
+.villa-chapter:active {
+    transform: none !important;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.08) !important;
 }
 
 .villa-chapter:hover::before {
@@ -426,9 +451,16 @@ body > * {
    ───────────────────────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+    /* FIX: Prevent background color flashing on scroll */
+    body {
+        background-attachment: scroll; /* Fixed causes issues on mobile */
+    }
+
     /* Reduce blur significantly on mobile - still looks good */
     .villa-chapter {
         --glass-blur: 8px;
+        /* FIXED STABLE BACKGROUND - no color changes on scroll */
+        background-color: transparent !important;
     }
 
     .villa-chapter::before {
@@ -476,11 +508,21 @@ body > * {
         display: none !important;
     }
 
-    /* Simplify hover effects on mobile */
+    /* DISABLE hover effects on mobile - no janky behavior */
     .villa-chapter:hover,
     .booking-card:hover,
     .ritual-panel:hover {
-        transform: none;
+        transform: none !important;
+        box-shadow: inherit !important;
+        border-color: inherit !important;
+    }
+
+    /* Remove all active states on mobile */
+    .villa-chapter:active,
+    .booking-card:active,
+    .ritual-panel:active {
+        transform: none !important;
+        box-shadow: inherit !important;
     }
 
     /* Disable specular highlights on mobile */
