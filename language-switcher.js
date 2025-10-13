@@ -100,72 +100,30 @@ class LanguageSwitcher {
             heroCta.setAttribute('data-i18n-append', 'hero.ctaIcon');
         }
         
-        // Villa sections
+        // Villa sections - DISABLED: Using inline data-lang-* system in HTML instead
+        // The HTML already has proper language structure with data-lang-en/tr/ar
+        // Using CSS-only show/hide system to avoid conflicts
+
+        /*
         const villas = document.querySelectorAll('.villa-chapter');
         villas.forEach((villa, index) => {
-            const types = ['vip', 'waterfall', 'family'];
-            const type = types[index];
-            
-            if (!type) return;
-            
-            // Villa label
-            const label = villa.querySelector('.micro-label');
-            if (label) label.setAttribute('data-i18n', `villas.${type}.label`);
-            
-            // Villa name
-            const name = villa.querySelector('.villa-name');
-            if (name) name.setAttribute('data-i18n', `villas.${type}.name`);
-            
-            // Villa description
-            const desc = villa.querySelector('.villa-prose');
-            if (desc) desc.setAttribute('data-i18n', `villas.${type}.description`);
-            
-            // Price whisper
-            const price = villa.querySelector('.price-whisper');
-            if (price) price.setAttribute('data-i18n', `villas.${type}.priceWhisper`);
-            
-            // CTA button
-            const cta = villa.querySelector('.villa-cta .btn-primary');
-            if (cta) {
-                cta.setAttribute('data-i18n', `villas.${type}.cta`);
-                cta.setAttribute('data-i18n-whatsapp', `villas.${type}.whatsappMessage`);
-            }
-            
-            // Amenities
-            const badges = villa.querySelectorAll('.amenity-chips .badge');
-            const amenityKeys = {
-                0: type === 'vip' ? 'pool' : type === 'waterfall' ? 'waterfallView' : 'bedrooms',
-                1: type === 'vip' ? 'suite' : type === 'waterfall' ? 'fireplace' : 'kitchen',
-                2: type === 'vip' ? 'view' : type === 'waterfall' ? 'naturalAir' : 'livingRoom',
-                3: type === 'vip' ? 'jacuzzi' : type === 'waterfall' ? 'terrace' : 'garden'
-            };
-            
-            badges.forEach((badge, i) => {
-                if (amenityKeys[i]) {
-                    badge.setAttribute('data-i18n', `villas.${type}.amenities.${amenityKeys[i]}`);
-                }
-            });
+            // NOTE: Villa content uses inline data-lang-* attributes in HTML
+            // Managed via CSS: styles.css lines 134-170
+            // DO NOT add data-i18n here - it causes duplicate text issues
         });
+        */
         
-        // Rituals section
+        // Rituals section - DISABLED: Using inline data-lang-* system in HTML instead
+        /*
         const ritualsLabel = document.querySelector('.rituals-header .micro-label');
         if (ritualsLabel) ritualsLabel.setAttribute('data-i18n', 'rituals.sectionLabel');
-        
+
         const ritualsTitle = document.querySelector('.rituals-header .section-title');
         if (ritualsTitle) ritualsTitle.setAttribute('data-i18n', 'rituals.sectionTitle');
-        
+
         const ritualPanels = document.querySelectorAll('.ritual-panel');
-        const ritualTypes = ['morning', 'forest', 'dinner', 'campfire'];
-        ritualPanels.forEach((panel, i) => {
-            const type = ritualTypes[i];
-            if (!type) return;
-            
-            const title = panel.querySelector('.ritual-title');
-            if (title) title.setAttribute('data-i18n', `rituals.${type}.title`);
-            
-            const desc = panel.querySelector('.ritual-desc');
-            if (desc) desc.setAttribute('data-i18n', `rituals.${type}.description`);
-        });
+        // NOTE: Rituals use inline data-lang-* attributes - managed via CSS
+        */
         
         // Booking section
         const bookingTitle = document.querySelector('.booking-title');
