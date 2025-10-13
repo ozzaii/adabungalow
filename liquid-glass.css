@@ -66,15 +66,16 @@ body > * {
 /* Layer 1: Backdrop blur with distortion filter */
 .glass-filter {
     z-index: 1;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    filter: url(#glass-distortion) saturate(120%) brightness(1.15);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    filter: url(#glass-distortion);
 }
 
 /* Layer 2: Semi-transparent background overlay */
 .glass-overlay {
     z-index: 2;
     background: var(--glass-bg);
+    opacity: 1;
 }
 
 /* Layer 3: Specular glass highlights */
@@ -116,15 +117,15 @@ body > * {
    ───────────────────────────────────────────────────────────────────────────── */
 
 .villa-chapter {
-    --glass-bg: rgba(255, 255, 255, 0.25);
-    --glass-highlight: rgba(255, 255, 255, 0.75);
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-highlight: rgba(255, 255, 255, 0.9);
 
     position: relative;
     margin: var(--s-8, 32px) 0;
     padding: 0;
     border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 /* Add glass layers to villa cards */
@@ -139,15 +140,31 @@ body > * {
 
 .villa-chapter .villa-split {
     position: relative;
-    z-index: 4;
+    z-index: 5;
+    padding: 0;
+    background: transparent;
 }
 
 /* Ensure all content is above glass layers */
 .villa-chapter .villa-visual,
-.villa-chapter .villa-narrative,
-.villa-chapter .villa-accent-line {
+.villa-chapter .villa-narrative {
     position: relative;
-    z-index: 4;
+    z-index: 5;
+}
+
+.villa-chapter .villa-accent-line {
+    position: absolute;
+    z-index: 1;
+}
+
+/* Add readable background to text content */
+.villa-chapter .villa-narrative {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 1rem;
 }
 
 /* Villa card hover effect */
