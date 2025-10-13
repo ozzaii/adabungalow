@@ -144,22 +144,40 @@ p {
 }
 
 /* Language visibility system */
-[lang]:not(.active-lang) {
+/* Hide all language-specific content by default */
+[data-lang-en],
+[data-lang-tr],
+[data-lang-ar] {
     display: none !important;
 }
 
-.active-lang {
+/* Show only the active language based on html lang attribute */
+html[lang="en"] [data-lang-en] {
     display: block !important;
 }
 
-/* RTL support for Arabic */
-[lang="ar"] {
-    direction: rtl;
-    text-align: right;
+html[lang="tr"] [data-lang-tr] {
+    display: block !important;
 }
 
-[lang="ar"] * {
+html[lang="ar"] [data-lang-ar] {
+    display: block !important;
+}
+
+/* For inline elements (spans inside spans) */
+html[lang="en"] span[data-lang-en],
+html[lang="tr"] span[data-lang-tr],
+html[lang="ar"] span[data-lang-ar] {
+    display: inline !important;
+}
+
+/* RTL support for Arabic */
+html[lang="ar"] {
     direction: rtl;
+}
+
+html[lang="ar"] body {
+    text-align: right;
 }
 
 /* ───────────────────────────────────────────────────────────────────────────────
