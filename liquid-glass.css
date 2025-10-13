@@ -117,15 +117,17 @@ body > * {
    ───────────────────────────────────────────────────────────────────────────── */
 
 .villa-chapter {
-    --glass-bg: rgba(255, 255, 255, 0.65);
-    --glass-highlight: rgba(255, 255, 255, 0.9);
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-highlight: rgba(255, 255, 255, 0.95);
 
     position: relative;
     margin: var(--s-8, 32px) 0;
     padding: 0;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Add glass layers to villa cards */
@@ -152,19 +154,33 @@ body > * {
     z-index: 5;
 }
 
+/* Images must be OPAQUE - no transparency */
+.villa-chapter .villa-visual {
+    background: white;
+    isolation: isolate;
+}
+
+.villa-chapter .villa-image {
+    opacity: 1 !important;
+    display: block;
+}
+
 .villa-chapter .villa-accent-line {
     position: absolute;
     z-index: 1;
 }
 
-/* Add readable background to text content */
+/* Text content area - ensure visibility */
 .villa-chapter .villa-narrative {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     padding: 2rem;
-    border-radius: 12px;
-    margin: 1rem;
+    color: var(--evergreen);
+}
+
+/* Force all text elements visible */
+.villa-chapter .villa-narrative * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: inherit;
 }
 
 /* Villa card hover effect */

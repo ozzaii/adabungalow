@@ -18,12 +18,9 @@
     display: none !important;
 }
 
-/* Individual villa chapters - premium card feel */
+/* Individual villa chapters - DISABLED - liquid-glass.css handles all glass effects */
 .villa-chapter {
-    position: relative;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
+    /* ALL GLASS EFFECTS MANAGED BY liquid-glass.css - DO NOT ADD BACKGROUND/BACKDROP-FILTER HERE */
 }
 
 .villa-chapter::before {
@@ -32,7 +29,7 @@
 }
 
 .villa-chapter:nth-child(even) {
-    background: rgba(247, 246, 242, 0.8);
+    /* DISABLED - liquid-glass.css handles backgrounds */
 }
 
 .villa-chapter:nth-child(even)::before {
@@ -295,8 +292,8 @@
         transform: scale(1.05);
     }
 
-    /* Stagger animations for depth */
-    .villa-narrative > * {
+    /* DISABLED - Stagger animations causing invisible text */
+    /* .villa-narrative > * {
         animation: fade-up-stagger 0.8s cubic-bezier(0.19, 1, 0.22, 1) both;
     }
 
@@ -315,7 +312,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-    }
+    } */
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
