@@ -1,0 +1,352 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   60FPS PERFORMANCE CSS
+   Hardware acceleration and rendering optimization
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. GPU ACCELERATION - Force composite layers
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.hero-image,
+.hero-supreme,
+.villa-image,
+.ritual-panel,
+.rituals-track,
+.gallery-item,
+.lightbox,
+.lightbox-image,
+.booking-card {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. OPTIMIZED BACKDROP FILTERS - Reduce blur usage
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Reduce backdrop-filter usage to critical elements only */
+.booking-card,
+.weather-chip,
+.header-minimal.scrolled {
+    /* Use lighter blur for better performance */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Remove backdrop-filter from non-critical elements */
+.villa-chapter,
+.map-overlay {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. LAYER CONTAINMENT - Isolate rendering
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.villa-chapter,
+.ritual-panel,
+.gallery-item,
+.booking-card {
+    contain: layout style paint;
+}
+
+.footer-content,
+.chapter-rituals,
+.chapter-gallery {
+    contain: layout style;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   4. CONTENT VISIBILITY - Defer off-screen rendering
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.chapter-villas,
+.chapter-rituals,
+.chapter-gallery,
+.chapter-availability,
+.footer-luxury {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 800px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   5. OPTIMIZED TRANSFORMS - Use GPU-friendly properties only
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Always use translate3d instead of translate for GPU acceleration */
+.btn:hover,
+.badge:hover,
+.ritual-panel:hover {
+    transform: translate3d(0, -2px, 0);
+}
+
+.btn:active,
+.badge:active {
+    transform: translate3d(0, 0, 0) scale3d(0.98, 0.98, 1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   6. WILL-CHANGE REMOVAL - Managed dynamically via JS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Remove static will-change declarations - managed by performance-optimization.js */
+.btn,
+.badge,
+.villa-image,
+.hero-image {
+    will-change: auto !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   7. REDUCED SVG NOISE - Limit to key areas only
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Remove expensive SVG textures from non-hero elements */
+.villa-chapter::before,
+.chapter-rituals::before,
+.chapter-rituals::after,
+.booking-card::before {
+    opacity: 0 !important;
+    display: none;
+}
+
+/* Keep only on hero for atmosphere */
+.chapter-villas::before {
+    opacity: 0.15;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   8. ANIMATION OPTIMIZATION - Faster, smoother transitions
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Use transform and opacity only - most performant properties */
+.reveal {
+    transition: transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1),
+                opacity 0.42s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Fast micro-interactions */
+.btn,
+.badge,
+.lang-dropdown {
+    transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
+                opacity 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   9. IMAGE OPTIMIZATION - Force GPU rendering
+   ───────────────────────────────────────────────────────────────────────────── */
+
+img {
+    transform: translate3d(0, 0, 0);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Smooth scaling for images */
+.villa-image,
+.ritual-image,
+.gallery-image {
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform-origin: center center;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   10. SCROLL PERFORMANCE - Optimize scroll-triggered animations
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Reduce animation complexity on scroll */
+.header-minimal {
+    transition: background-color 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Simplify scroll progress */
+.scroll-progress {
+    transform: scaleX(var(--scroll-progress, 0));
+    transform-origin: left center;
+    will-change: transform;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   11. HARDWARE ACCELERATION HINTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Force layer creation for animated elements */
+.hero-supreme,
+.villa-chapter,
+.ritual-panel,
+.booking-card,
+.lightbox {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   12. MOBILE OPTIMIZATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    /* Disable expensive effects on mobile */
+    .villa-image::before,
+    .villa-visual::after,
+    .ritual-panel:hover .ritual-image {
+        display: none;
+        transform: none !important;
+    }
+
+    /* Simpler transitions on mobile */
+    .btn:hover,
+    .badge:hover,
+    .ritual-panel:hover {
+        transform: none;
+    }
+
+    /* Reduce backdrop-filter on mobile */
+    .booking-card,
+    .weather-chip,
+    .header-minimal.scrolled {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Disable parallax on mobile */
+    .hero-image,
+    .villa-image {
+        will-change: auto !important;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   13. REDUCED MOTION - Respect user preferences
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* Disable all transforms */
+    .btn:hover,
+    .badge:hover,
+    .villa-chapter:hover,
+    .ritual-panel:hover {
+        transform: none !important;
+    }
+
+    /* Remove will-change entirely */
+    * {
+        will-change: auto !important;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   14. FONT RENDERING OPTIMIZATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+body,
+.btn,
+.badge,
+h1, h2, h3, h4, h5, h6 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-smooth: always;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   15. Z-INDEX MANAGEMENT - Prevent excessive layer creation
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Consolidate z-index values to reduce compositor complexity */
+.header-minimal { z-index: 1000; }
+.lightbox { z-index: 9998; }
+.lightbox-close { z-index: 9999; }
+.preloader { z-index: 10000; }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   16. COMPOSITE LAYER HINTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Isolate animations to prevent repaints */
+@supports (isolation: isolate) {
+    .villa-chapter,
+    .ritual-panel,
+    .booking-card,
+    .hero-supreme {
+        isolation: isolate;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   17. SMOOTH SCROLL BEHAVIOR
+   ───────────────────────────────────────────────────────────────────────────── */
+
+html {
+    scroll-behavior: smooth;
+    overscroll-behavior-y: none;
+}
+
+/* Prevent scroll jank */
+body {
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   18. CRITICAL CSS OPTIMIZATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Prevent layout shifts */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Force aspect ratio */
+.villa-visual,
+.ritual-image-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.villa-visual::after,
+.ritual-image-wrap::after {
+    content: '';
+    display: block;
+    padding-bottom: 66.67%; /* 3:2 aspect ratio */
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   19. INTERSECTION OBSERVER OPTIMIZATION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Hide elements until intersecting */
+[data-observe] {
+    visibility: hidden;
+}
+
+[data-observe].is-visible {
+    visibility: visible;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   20. DEBUG MODE - Visual performance indicators
+   ───────────────────────────────────────────────────────────────────────────── */
+
+body[data-debug-perf] * {
+    outline: 1px solid rgba(255, 0, 0, 0.1);
+}
+
+body[data-debug-perf] *:hover {
+    outline: 2px solid rgba(255, 0, 0, 0.5);
+}

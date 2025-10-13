@@ -815,7 +815,7 @@ html.lenis {
     height: 120%;
     object-fit: cover;
     object-position: center;
-    will-change: transform;
+    /* will-change managed dynamically by performance-optimization.js */
 }
 
 /* Villa Image Animation Setup */
@@ -829,7 +829,7 @@ html.lenis {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    will-change: transform, filter;
+    /* will-change managed dynamically by performance-optimization.js */
     transform-origin: center;
 }
 
@@ -856,7 +856,7 @@ html.lenis {
     object-fit: contain;
     position: relative;
     cursor: default;
-    will-change: transform, width, height;
+    /* will-change managed dynamically by performance-optimization.js */
 }
 
 .lightbox-close {
@@ -965,7 +965,7 @@ html.lenis {
     padding: var(--s-20) var(--s-8);
     height: 100%;
     align-items: center;
-    will-change: transform;
+    /* will-change managed dynamically by performance-optimization.js */
 }
 
 .ritual-panel {

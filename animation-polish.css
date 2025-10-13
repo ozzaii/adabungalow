@@ -41,7 +41,7 @@
         transform var(--duration-ui) var(--ease-primary),
         box-shadow var(--duration-ui) var(--ease-primary),
         background-color var(--duration-fast) var(--ease-primary);
-    will-change: transform;
+    /* will-change managed dynamically by performance-optimization.js */
 }
 
 .btn:hover,
@@ -103,7 +103,7 @@
         transform var(--duration-fast) var(--ease-primary),
         box-shadow var(--duration-fast) var(--ease-primary),
         background-color var(--duration-instant) var(--ease-primary);
-    will-change: transform;
+    /* will-change managed dynamically by performance-optimization.js */
 }
 
 .badge:hover {
@@ -174,7 +174,7 @@
     transition:
         transform var(--duration-normal) var(--ease-primary),
         box-shadow var(--duration-normal) var(--ease-primary);
-    will-change: transform;
+    /* will-change managed dynamically by performance-optimization.js */
 }
 
 .ritual-panel:hover {
