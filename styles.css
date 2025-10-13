@@ -131,42 +131,89 @@ p {
    LANGUAGE VISIBILITY
    ───────────────────────────────────────────────────────────────────────────── */
 
-/* Hide all language variants by default */
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LANGUAGE VISIBILITY SYSTEM - ULTRA SPECIFIC RULES
+   Default: Hide all. Then show ONLY active language via html[lang="..."]
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* STEP 1: Hide ALL language variants by default */
 [data-lang-en],
 [data-lang-tr],
 [data-lang-ar] {
     display: none !important;
 }
 
-/* Show only the active language - inline elements */
+/* STEP 2: Show ONLY active language - Generic inline elements */
 html[lang="tr"] [data-lang-tr],
 html[lang="en"] [data-lang-en],
 html[lang="ar"] [data-lang-ar] {
     display: inline !important;
 }
 
-/* For block-level elements (p, div) */
+/* STEP 3: Block-level elements (p, div, h2, h3) */
 html[lang="tr"] p[data-lang-tr],
 html[lang="tr"] div[data-lang-tr],
+html[lang="tr"] h2[data-lang-tr],
+html[lang="tr"] h3[data-lang-tr],
 html[lang="en"] p[data-lang-en],
 html[lang="en"] div[data-lang-en],
+html[lang="en"] h2[data-lang-en],
+html[lang="en"] h3[data-lang-en],
 html[lang="ar"] p[data-lang-ar],
-html[lang="ar"] div[data-lang-ar] {
+html[lang="ar"] div[data-lang-ar],
+html[lang="ar"] h2[data-lang-ar],
+html[lang="ar"] h3[data-lang-ar] {
     display: block !important;
 }
 
-/* For flex elements */
+/* STEP 4: Villa prose - ULTRA SPECIFIC */
+html[lang="tr"] p.villa-prose[data-lang-tr],
+html[lang="en"] p.villa-prose[data-lang-en],
+html[lang="ar"] p.villa-prose[data-lang-ar] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* STEP 5: Flex elements */
 html[lang="tr"] .line[data-lang-tr],
 html[lang="en"] .line[data-lang-en],
 html[lang="ar"] .line[data-lang-ar] {
     display: flex !important;
 }
 
-/* For badge content - inline with enhanced styling */
-html[lang="tr"] .badge [data-lang-tr],
-html[lang="en"] .badge [data-lang-en],
-html[lang="ar"] .badge [data-lang-ar] {
+/* STEP 5.5: Villa specific elements */
+.micro-label,
+.villa-name {
+    display: block !important;
+    visibility: visible !important;
+}
+
+html[lang="tr"] .micro-label span[data-lang-tr],
+html[lang="en"] .micro-label span[data-lang-en],
+html[lang="ar"] .micro-label span[data-lang-ar],
+html[lang="tr"] .villa-name span[data-lang-tr],
+html[lang="en"] .villa-name span[data-lang-en],
+html[lang="ar"] .villa-name span[data-lang-ar] {
     display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* STEP 6: Badge content - ULTRA SPECIFIC with premium styling */
+.badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.375rem !important;
+    visibility: visible !important;
+}
+
+html[lang="tr"] .badge span[data-lang-tr],
+html[lang="en"] .badge span[data-lang-en],
+html[lang="ar"] .badge span[data-lang-ar] {
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     font-family: var(--font-body);
     font-size: 0.7rem;
     font-weight: 600;
@@ -175,21 +222,74 @@ html[lang="ar"] .badge [data-lang-ar] {
     color: var(--evergreen);
 }
 
-/* Price whisper styling - make it prominent with gold accent */
+/* Badge icon always visible */
+.badge .badge-icon,
+.badge svg {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* STEP 7: Price whisper - ULTRA SPECIFIC with gold styling */
 .price-whisper {
     font-family: var(--font-display);
     font-size: 1.05rem;
     font-weight: 500;
     letter-spacing: 0.02em;
-    color: var(--brass);
     font-style: italic;
+    display: block !important;
+    visibility: visible !important;
+}
+
+html[lang="tr"] .price-whisper span[data-lang-tr],
+html[lang="en"] .price-whisper span[data-lang-en],
+html[lang="ar"] .price-whisper span[data-lang-ar] {
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: var(--brass);
     text-shadow: 0 1px 2px rgba(201, 162, 39, 0.15);
 }
 
-.price-whisper [data-lang-en],
-.price-whisper [data-lang-tr],
-.price-whisper [data-lang-ar] {
-    color: var(--brass);
+/* STEP 8: Villa CTA buttons */
+.btn-primary,
+.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    visibility: visible !important;
+}
+
+html[lang="tr"] .btn-primary span[data-lang-tr],
+html[lang="en"] .btn-primary span[data-lang-en],
+html[lang="ar"] .btn-primary span[data-lang-ar],
+html[lang="tr"] .btn span[data-lang-tr],
+html[lang="en"] .btn span[data-lang-en],
+html[lang="ar"] .btn span[data-lang-ar] {
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* STEP 9: Rituals section */
+.ritual-title,
+.ritual-desc,
+.section-title {
+    display: block !important;
+    visibility: visible !important;
+}
+
+html[lang="tr"] .ritual-title span[data-lang-tr],
+html[lang="en"] .ritual-title span[data-lang-en],
+html[lang="ar"] .ritual-title span[data-lang-ar],
+html[lang="tr"] .ritual-desc span[data-lang-tr],
+html[lang="en"] .ritual-desc span[data-lang-en],
+html[lang="ar"] .ritual-desc span[data-lang-ar],
+html[lang="tr"] .section-title span[data-lang-tr],
+html[lang="en"] .section-title span[data-lang-en],
+html[lang="ar"] .section-title span[data-lang-ar] {
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* Villa prose styling - elegant typography */
