@@ -63,87 +63,45 @@ body > * {
     border-radius: inherit;
 }
 
-/* Layer 1: Backdrop blur with HEAVY distortion for liquid effect */
+/* Layer 1: Backdrop blur with distortion filter */
 .glass-filter {
     z-index: 1;
-    backdrop-filter: blur(var(--glass-blur)) saturate(130%) brightness(1.12);
-    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(130%) brightness(1.12);
-    filter: url(#glass-distortion);
-    /* Add slight opacity to make distortion more visible */
-    opacity: 0.95;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    filter: url(#glass-distortion) saturate(120%) brightness(1.15);
 }
 
-/* Layer 2: Semi-transparent overlay with subtle gradient for depth */
+/* Layer 2: Semi-transparent background overlay */
 .glass-overlay {
     z-index: 2;
-    background:
-        linear-gradient(135deg,
-            var(--glass-bg) 0%,
-            rgba(255, 255, 255, 0.08) 50%,
-            var(--glass-bg) 100%),
-        var(--glass-bg);
-    mix-blend-mode: normal;
+    background: var(--glass-bg);
 }
 
-/* Layer 3: Enhanced specular highlights (REAL glass shine) */
+/* Layer 3: Specular glass highlights */
 .glass-specular {
     z-index: 3;
-    background:
-        /* Top-left shine */
-        radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.5) 0%, transparent 25%),
-        /* Top edge highlight */
-        linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 15%),
-        /* Left edge highlight */
-        linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, transparent 10%),
-        /* Subtle overall shine */
-        linear-gradient(135deg,
-            rgba(255, 255, 255, 0.2) 0%,
-            rgba(255, 255, 255, 0.05) 40%,
-            rgba(255, 255, 255, 0) 70%);
-    box-shadow:
-        inset 1px 1px 0 rgba(255, 255, 255, 0.6),
-        inset -1px -1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: inset 1px 1px 1px var(--glass-highlight);
     pointer-events: none;
 }
 
-/* Layer 4: LIQUID distortion overlay - looks like water/glass refraction */
+/* Layer 4: Animated distortion overlay */
 .glass-distortion-overlay {
     position: absolute;
     inset: 0;
     background:
-        /* Multiple liquid bubbles */
-        radial-gradient(ellipse at 15% 25%, rgba(255,255,255,0.15) 0%, transparent 40%),
-        radial-gradient(ellipse at 85% 30%, rgba(255,255,255,0.12) 0%, transparent 35%),
-        radial-gradient(ellipse at 50% 70%, rgba(255,255,255,0.1) 0%, transparent 45%),
-        radial-gradient(ellipse at 25% 80%, rgba(255,255,255,0.08) 0%, transparent 30%),
-        /* Flowing liquid pattern */
-        linear-gradient(135deg,
-            transparent 0%,
-            rgba(255,255,255,0.05) 25%,
-            transparent 50%,
-            rgba(255,255,255,0.05) 75%,
-            transparent 100%);
-    background-size: 400% 400%, 400% 400%, 400% 400%, 400% 400%, 200% 200%;
-    animation: liquidFlow 20s infinite ease-in-out;
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 80%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 0%, transparent 80%);
+    background-size: 300% 300%;
+    animation: floatDistort 10s infinite ease-in-out;
     mix-blend-mode: overlay;
     z-index: 2;
     pointer-events: none;
-    opacity: 0.8;
 }
 
-@keyframes liquidFlow {
-    0% {
-        background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%, 0% 0%;
-    }
-    33% {
-        background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
-    }
-    66% {
-        background-position: 100% 100%, 0% 100%, 100% 0%, 0% 0%, 100% 100%;
-    }
-    100% {
-        background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%, 0% 0%;
-    }
+@keyframes floatDistort {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
 }
 
 /* Content layer above all glass effects */
@@ -158,32 +116,38 @@ body > * {
    ───────────────────────────────────────────────────────────────────────────── */
 
 .villa-chapter {
-    --glass-bg: rgba(255, 255, 255, 0.15);
-    --glass-blur: 16px;
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-highlight: rgba(255, 255, 255, 0.75);
 
+    position: relative;
     margin: var(--s-8, 32px) 0;
     padding: 0;
-    border: 1.5px solid rgba(255, 255, 255, 0.35);
-    box-shadow:
-        /* Outer depth shadow */
-        0 12px 40px rgba(27, 42, 36, 0.12),
-        0 4px 12px rgba(27, 42, 36, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
 }
 
-.villa-chapter::before {
-    /* DISABLED - Removing white gradient overlay */
-    display: none !important;
-}
-
-/* Liquid distortion animation on villa cards */
-.villa-chapter::after {
-    /* DISABLED - Removing white radial gradients */
-    display: none !important;
+/* Add glass layers to villa cards */
+.villa-chapter .glass-filter,
+.villa-chapter .glass-overlay,
+.villa-chapter .glass-specular,
+.villa-chapter .glass-distortion-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
 }
 
 .villa-chapter .villa-split {
     position: relative;
-    z-index: 3;
+    z-index: 4;
+}
+
+/* Ensure all content is above glass layers */
+.villa-chapter .villa-visual,
+.villa-chapter .villa-narrative,
+.villa-chapter .villa-accent-line {
+    position: relative;
+    z-index: 4;
 }
 
 /* Villa card hover effect */
