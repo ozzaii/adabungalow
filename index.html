@@ -138,6 +138,7 @@
     
     <!-- Core Styles - Load immediately -->
     <link rel="stylesheet" href="styles.css?v=10">
+    <link rel="stylesheet" href="liquid-glass.css?v=1">
     <link rel="stylesheet" href="typography-polish.css">
     <link rel="stylesheet" href="spacing-refinements.css">
     <link rel="stylesheet" href="animation-polish.css?v=5">
@@ -175,6 +176,28 @@
     -->
 </head>
 <body>
+    <!-- SVG Filters for Liquid Glass Effects -->
+    <svg style="display: none" aria-hidden="true">
+        <defs>
+            <!-- Glass Distortion Filter -->
+            <filter id="glass-distortion" x="-50%" y="-50%" width="200%" height="200%">
+                <feTurbulence type="turbulence" baseFrequency="0.008" numOctaves="2" seed="2" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="77" xChannelSelector="R" yChannelSelector="G" />
+                <feGaussianBlur stdDeviation="0.5" result="blur" />
+            </filter>
+
+            <!-- Liquid Shine Filter -->
+            <filter id="liquid-shine" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+                <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.75" specularExponent="20" lighting-color="#ffffff" result="spec">
+                    <fePointLight x="100" y="100" z="200"/>
+                </feSpecularLighting>
+                <feComposite in="spec" in2="SourceGraphic" operator="in" result="specOut"/>
+                <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+            </filter>
+        </defs>
+    </svg>
+
     <script>
         // Show content once styles start loading
         requestAnimationFrame(() => {
@@ -1255,6 +1278,7 @@
     <!-- JavaScript -->
     <script src="translations.js"></script>
     <script src="language-switcher.js"></script>
+    <script src="liquid-glass-interactions.js"></script>
     <script src="performance-optimization.js"></script>
     <script src="main.js" defer></script>
     <script src="animations.js?v=4" defer></script>

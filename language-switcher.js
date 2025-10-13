@@ -250,9 +250,15 @@ class LanguageSwitcher {
         this.currentLang = lang;
         localStorage.setItem('adaBungalowLang', lang);
         
-        // Update document attributes
-        document.documentElement.lang = lang;
-        document.documentElement.dir = translations[lang].dir;
+        // Update document attributes - FORCE CSS RE-EVALUATION
+        // Remove then re-add to trigger browser CSS recalculation
+        document.documentElement.removeAttribute('lang');
+        document.documentElement.removeAttribute('dir');
+
+        requestAnimationFrame(() => {
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', translations[lang].dir);
+        });
         
         // Add RTL class if Arabic
         if (lang === 'ar') {
