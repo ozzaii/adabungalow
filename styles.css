@@ -138,7 +138,7 @@ p {
     display: none !important;
 }
 
-/* Show only the active language */
+/* Show only the active language - inline elements */
 html[lang="tr"] [data-lang-tr],
 html[lang="en"] [data-lang-en],
 html[lang="ar"] [data-lang-ar] {
@@ -160,6 +160,13 @@ html[lang="tr"] .line[data-lang-tr],
 html[lang="en"] .line[data-lang-en],
 html[lang="ar"] .line[data-lang-ar] {
     display: flex !important;
+}
+
+/* For badge content - inline-flex for proper icon alignment */
+html[lang="tr"] .badge [data-lang-tr],
+html[lang="en"] .badge [data-lang-en],
+html[lang="ar"] .badge [data-lang-ar] {
+    display: inline !important;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
