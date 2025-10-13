@@ -328,7 +328,7 @@ body > * {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   PERFORMANCE OPTIMIZATIONS
+   PERFORMANCE OPTIMIZATIONS - HEAVY BUT SMART
    ───────────────────────────────────────────────────────────────────────────── */
 
 /* Force GPU acceleration on all glass elements */
@@ -353,48 +353,135 @@ body > * {
     contain: layout style paint;
 }
 
+/* Optimize blur rendering - use whole pixel values */
+.villa-chapter {
+    --glass-blur: 16px; /* Reduced from 20px */
+}
+
+.booking-card {
+    --glass-blur: 20px; /* Reduced from 24px */
+}
+
+.ritual-panel {
+    --glass-blur: 10px; /* Reduced from 12px */
+}
+
+.weather-chip {
+    --glass-blur: 8px; /* Reduced from 10px */
+}
+
+.badge {
+    --glass-blur: 6px; /* Reduced from 8px */
+}
+
+/* Optimize will-change usage - only on hover/interaction */
+.villa-chapter,
+.booking-card,
+.ritual-panel,
+.btn,
+.badge {
+    will-change: auto;
+}
+
+.villa-chapter:hover,
+.booking-card:hover,
+.ritual-panel:hover {
+    will-change: transform, opacity;
+}
+
+.btn:hover,
+.badge:hover {
+    will-change: transform;
+}
+
+/* Remove will-change after animation completes */
+.villa-chapter,
+.booking-card,
+.ritual-panel,
+.btn,
+.badge {
+    transition: transform 0.3s ease, opacity 0.3s ease, will-change 0s 0.3s;
+}
+
 /* ─────────────────────────────────────────────────────────────────────────────
-   MOBILE OPTIMIZATIONS
+   MOBILE OPTIMIZATIONS - AGGRESSIVE BUT BEAUTIFUL
    ───────────────────────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-    /* Reduce blur on mobile for better performance */
+    /* Reduce blur significantly on mobile - still looks good */
     .villa-chapter {
-        --glass-blur: 12px;
-    }
-
-    .villa-chapter::before {
-        backdrop-filter: blur(12px) saturate(115%);
-        -webkit-backdrop-filter: blur(12px) saturate(115%);
-    }
-
-    .booking-card {
-        --glass-blur: 16px;
-    }
-
-    .booking-card::before {
-        backdrop-filter: blur(16px) saturate(120%);
-        -webkit-backdrop-filter: blur(16px) saturate(120%);
-    }
-
-    .ritual-panel {
         --glass-blur: 8px;
     }
 
-    .ritual-panel::before {
+    .villa-chapter::before {
         backdrop-filter: blur(8px) saturate(110%);
         -webkit-backdrop-filter: blur(8px) saturate(110%);
     }
 
+    .booking-card {
+        --glass-blur: 10px;
+    }
+
+    .booking-card::before {
+        backdrop-filter: blur(10px) saturate(115%);
+        -webkit-backdrop-filter: blur(10px) saturate(115%);
+    }
+
+    .ritual-panel {
+        --glass-blur: 6px;
+    }
+
+    .ritual-panel::before {
+        backdrop-filter: blur(6px) saturate(105%);
+        -webkit-backdrop-filter: blur(6px) saturate(105%);
+    }
+
+    .weather-chip {
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+    }
+
+    .badge {
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+
     /* Disable distortion animation on mobile */
     .glass-distortion-overlay {
-        animation: none;
-        opacity: 0.5;
+        animation: none !important;
+        opacity: 0.3;
+        display: none; /* Completely remove for performance */
     }
 
     /* Disable interactive effects on mobile */
     .glass-interactive::after {
-        display: none;
+        display: none !important;
+    }
+
+    /* Simplify hover effects on mobile */
+    .villa-chapter:hover,
+    .booking-card:hover,
+    .ritual-panel:hover {
+        transform: none;
+    }
+
+    /* Disable specular highlights on mobile */
+    .glass-specular {
+        display: none !important;
+    }
+
+    /* Optimize SVG filters for mobile */
+    .glass-filter {
+        filter: none !important; /* Remove SVG filter on mobile */
+    }
+
+    /* Reduce transition times on mobile */
+    .villa-chapter,
+    .booking-card,
+    .ritual-panel,
+    .btn,
+    .badge {
+        transition-duration: 0.2s !important;
     }
 }
 

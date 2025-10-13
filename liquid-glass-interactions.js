@@ -55,26 +55,52 @@
         const glassInteractiveElements = document.querySelectorAll('.glass-interactive');
 
         glassInteractiveElements.forEach(element => {
-            // Mousemove handler
+            let rafId = null;
+            let lastX = 0;
+            let lastY = 0;
+
+            // Mousemove handler - THROTTLED with RAF
             element.addEventListener('mousemove', function(e) {
                 const rect = this.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
 
-                // Calculate percentages for CSS custom properties
-                const xPercent = (x / rect.width) * 100;
-                const yPercent = (y / rect.height) * 100;
+                // Only update if mouse moved more than 5px (reduce calculations)
+                if (Math.abs(x - lastX) < 5 && Math.abs(y - lastY) < 5) {
+                    return;
+                }
 
-                // Update CSS custom properties for radial gradient positioning
-                this.style.setProperty('--mouse-x', `${xPercent}%`);
-                this.style.setProperty('--mouse-y', `${yPercent}%`);
+                lastX = x;
+                lastY = y;
 
-                // Update SVG filter distortion based on mouse position
-                updateSVGDistortion(this, x, y, rect);
+                // Cancel previous RAF if still pending
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                }
 
-                // Create specular highlight at mouse position
-                updateSpecularHighlight(this, x, y);
-            });
+                // Schedule update for next frame
+                rafId = requestAnimationFrame(() => {
+                    // Calculate percentages for CSS custom properties
+                    const xPercent = (x / rect.width) * 100;
+                    const yPercent = (y / rect.height) * 100;
+
+                    // Update CSS custom properties for radial gradient positioning
+                    this.style.setProperty('--mouse-x', `${xPercent}%`);
+                    this.style.setProperty('--mouse-y', `${yPercent}%`);
+
+                    // Update SVG filter distortion based on mouse position (desktop only)
+                    if (!isMobile()) {
+                        updateSVGDistortion(this, x, y, rect);
+                    }
+
+                    // Create specular highlight at mouse position (desktop only)
+                    if (!isMobile()) {
+                        updateSpecularHighlight(this, x, y);
+                    }
+
+                    rafId = null;
+                });
+            }.bind(element));
 
             // Mouseleave handler - reset effects
             element.addEventListener('mouseleave', function() {
@@ -186,6 +212,12 @@
        ───────────────────────────────────────────────────────────────────────────── */
 
     function setupSVGFilterAnimations() {
+        // Skip SVG animations on mobile for performance
+        if (isMobile()) {
+            console.log('[Liquid Glass] SVG animations disabled on mobile');
+            return;
+        }
+
         const turbulence = document.querySelector('#glass-distortion feTurbulence');
         if (!turbulence) {
             console.warn('[Liquid Glass] SVG filter not found in DOM');
@@ -194,13 +226,18 @@
 
         let baseFrequency = 0.008;
         let time = 0;
+        let frameCount = 0;
 
         // Animate turbulence frequency for liquid motion effect
+        // UPDATE ONLY EVERY 3RD FRAME for performance (20fps instead of 60fps)
         function animateTurbulence() {
-            time += 0.0001;
-            const newFrequency = baseFrequency + Math.sin(time) * 0.001;
+            frameCount++;
 
-            turbulence.setAttribute('baseFrequency', newFrequency.toFixed(6));
+            if (frameCount % 3 === 0) {
+                time += 0.0001;
+                const newFrequency = baseFrequency + Math.sin(time) * 0.001;
+                turbulence.setAttribute('baseFrequency', newFrequency.toFixed(6));
+            }
 
             requestAnimationFrame(animateTurbulence);
         }
@@ -208,7 +245,7 @@
         // Start animation
         requestAnimationFrame(animateTurbulence);
 
-        console.log('[Liquid Glass] SVG filter animation started');
+        console.log('[Liquid Glass] SVG filter animation started (optimized 20fps)');
     }
 
     /* ─────────────────────────────────────────────────────────────────────────────
