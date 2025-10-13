@@ -61,10 +61,7 @@
     text-align: center;
     max-width: 600px;
     margin: 0 auto 4rem;
-
-    /* Soft entrance */
-    opacity: 0;
-    animation: mistFadeUp 500ms ease-out 200ms forwards;
+    opacity: 1;
 }
 
 @keyframes mistFadeUp {
@@ -142,10 +139,7 @@
         0 16px 40px rgba(0, 0, 0, 0.06),
         inset 0 1px 0 rgba(255, 255, 255, 0.8),
         inset 0 0 1px rgba(220, 200, 160, 0.1);
-
-    /* Soft entrance animation */
-    opacity: 0;
-    animation: mistFadeUp 500ms ease-out 300ms forwards;
+    opacity: 1;
 }
 
 /* Defined gold top accent */
