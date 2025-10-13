@@ -198,6 +198,13 @@
     letter-spacing: 1.5px;
     text-transform: uppercase;
     text-shadow: 0 1px 2px rgba(184, 147, 42, 0.2);
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+/* Hide field hints - they cause clutter */
+.field-hint {
+    display: none;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -410,6 +417,11 @@
     margin: 2rem 0;
 }
 
+.booking-extras .field-label {
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
 .special-requests {
     width: 100%;
     min-height: 100px;
@@ -478,27 +490,36 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.75rem;
 }
 
 .price-row span:first-child,
 .price-label {
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: #7D7D7D;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #6B7280;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
 }
 
 .price-row span:last-child,
 .price-value {
-    font-size: 1.125rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1rem;
     font-weight: 500;
-    color: #2D2D2D;
+    color: #1B2A24;
+    letter-spacing: 0.2px;
 }
 
 .price-note {
-    font-size: 0.875rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.8125rem;
     color: #7D7D7D;
-    opacity: 0.7;
-    margin-top: 0.5rem;
+    opacity: 0.75;
+    margin-top: 0;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -622,9 +643,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: flex-start;
+    gap: 0.625rem;
     text-align: center;
-    opacity: 0.65;
+    opacity: 0.7;
     transition: all 300ms ease-out;
 }
 
@@ -634,12 +656,12 @@
 
 .trust-badge svg,
 .badge-icon-svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     stroke: #B8932A;
     stroke-width: 1.75;
     fill: none;
-    margin-bottom: 0.25rem;
+    flex-shrink: 0;
     filter: drop-shadow(0 2px 4px rgba(184, 147, 42, 0.25));
 }
 
@@ -650,6 +672,7 @@
     font-weight: 400;
     color: #6B7280;
     letter-spacing: 0.2px;
+    line-height: 1.4;
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -658,12 +681,15 @@
 
 .booking-note {
     position: relative;
-    padding-top: 16px;
-    margin-top: 20px;
+    padding-top: 1rem;
+    margin-top: 1.25rem;
     text-align: center;
-    font-size: 0.875rem;
-    color: #7D7D7D;
-    opacity: 0.7;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.8125rem;
+    color: #6B7280;
+    opacity: 0.8;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
 }
 
 .booking-note::before {
@@ -676,7 +702,7 @@
     height: 1px;
     background: linear-gradient(90deg,
         transparent,
-        rgba(220, 200, 160, 0.3),
+        rgba(184, 147, 42, 0.3),
         transparent);
 }
 
