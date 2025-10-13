@@ -114,9 +114,10 @@
     display: none;
 }
 
-/* Keep only on hero for atmosphere */
+/* DISABLED - Remove ALL grain overlays per user request */
 .chapter-villas::before {
-    opacity: 0.15;
+    opacity: 0 !important;
+    display: none !important;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
