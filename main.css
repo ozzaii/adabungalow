@@ -95,16 +95,9 @@ img {
    ─────────────────────────────────────────────────────────────────────────────── */
 
 body {
-    background-image: url('wall-surface-texture.jpg');
+    /* Background image removed per user request */
+    /* background-image: url('wall-surface-texture.jpg'); */
     background-color: var(--alpine-white);
-    background-position: center top;
-
-    /* CRITICAL: Prevent zoom - use contain + repeat-y, NOT cover */
-    background-size: contain;
-    background-repeat: repeat-y;
-
-    /* CRITICAL: Use scroll for mobile performance, NOT fixed */
-    background-attachment: scroll;
 
     font-family: var(--font-body);
     color: var(--evergreen);
