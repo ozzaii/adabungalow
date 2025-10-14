@@ -260,8 +260,8 @@
         };
 
         const animatedElements = document.querySelectorAll(
-            '.villa-chapter, .ritual-panel, .gallery-item, .booking-card'
-        );
+            '.villa-chapter, .gallery-item, .booking-card'
+        ); // Removed .ritual-panel to prevent ScrollTrigger conflicts
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -289,7 +289,7 @@
         const originalAddEventListener = EventTarget.prototype.addEventListener;
 
         EventTarget.prototype.addEventListener = function(type, listener, options) {
-            const passiveEvents = ['scroll', 'wheel', 'touchstart', 'touchmove', 'touchend'];
+            const passiveEvents = ['wheel', 'touchstart', 'touchmove', 'touchend']; // Removed 'scroll' - conflicts with ScrollTrigger
 
             if (passiveEvents.includes(type)) {
                 if (typeof options === 'object') {

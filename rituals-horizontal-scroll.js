@@ -40,19 +40,20 @@
             return trackWidth - windowWidth;
         };
 
-        // SMOOTH PIN with horizontal scroll
+        // SMOOTH PIN with horizontal scroll - FIXED: Less aggressive pinning
         gsap.to(ritualsTrack, {
             x: () => -getScrollAmount(),
             ease: "none",
             scrollTrigger: {
                 trigger: ritualsSection,
-                start: "center center",
-                end: () => `+=${getScrollAmount() + window.innerHeight}`,
+                start: "top 20%",           // Gentler activation - no premature jumping
+                end: () => `+=${getScrollAmount()}`,  // Shorter duration - no extra spacing
                 pin: true,
-                scrub: 0.5,
+                scrub: 1.5,                 // Match villa animations - no conflicts
                 invalidateOnRefresh: true,
-                anticipatePin: 1,
-                pinSpacing: true
+                anticipatePin: 0,           // CRITICAL: No pre-pinning - prevents jumping
+                pinSpacing: false,          // CRITICAL: No artificial spacing - prevents bouncing
+                markers: false              // Disable debug markers
             }
         });
 

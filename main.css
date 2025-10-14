@@ -845,10 +845,11 @@ html[lang="ar"] body {
     max-width: 350px;
     scroll-snap-align: start;
 
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 16px;
     overflow: hidden;
+    box-shadow: var(--shadow-md);
 
     /* GPU acceleration */
     transform: translate3d(0, 0, 0);
@@ -1401,13 +1402,12 @@ html[lang="ar"] body {
 
 /* Booking card */
 .booking-card {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(var(--blur-lg));
-    -webkit-backdrop-filter: blur(var(--blur-lg));
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent !important;
+    /* NO backdrop-filter - crisp like gallery */
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: var(--s-40);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
 }
 
 .booking-grid {
