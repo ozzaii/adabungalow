@@ -1648,6 +1648,19 @@ html[lang="ar"] body {
 .badge-icon-svg {
     flex-shrink: 0;
     color: var(--brass);
+    opacity: 1 !important;
+}
+
+/* Force badge text visible */
+.trust-badge .badge-text {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: var(--evergreen);
+}
+
+.trust-badge .badge-text * {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 /* Villa CTA (in cards) */
