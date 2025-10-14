@@ -2411,5 +2411,111 @@ html[lang="ar"] body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
+   SECTION 19: GALLERY LOAD MORE
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Hidden gallery items */
+.gallery-item.hidden {
+    display: none !important;
+}
+
+/* Load more container */
+.gallery-load-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--s-48) 0;
+    margin-top: var(--s-32);
+}
+
+/* Load more button */
+#load-more-btn {
+    padding: var(--s-16) var(--s-32);
+    background: transparent;
+    color: var(--evergreen);
+    border: 1px solid var(--evergreen);
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-quiet);
+    position: relative;
+    overflow: hidden;
+}
+
+#load-more-btn:hover {
+    background: var(--evergreen);
+    color: var(--alpine-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(27, 42, 36, 0.2);
+}
+
+#load-more-btn:active {
+    transform: translateY(0);
+}
+
+/* Hide button when all images are shown */
+#load-more-btn.all-loaded {
+    display: none;
+}
+
+/* Gallery item fade-in animation */
+.gallery-item.fade-in {
+    animation: galleryFadeIn 0.5s var(--ease-quiet) forwards;
+}
+
+@keyframes galleryFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Secondary button style */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-8);
+    padding: var(--s-12) var(--s-24);
+    background: transparent;
+    color: var(--evergreen);
+    border: 1px solid var(--evergreen);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--font-body);
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: transform 0.18s var(--ease-quiet),
+                box-shadow 0.18s var(--ease-quiet),
+                background 0.18s var(--ease-quiet),
+                color 0.18s var(--ease-quiet);
+}
+
+.btn-secondary:hover {
+    background: var(--evergreen);
+    color: var(--alpine-white);
+    transform: translate3d(0, -2px, 0);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:active {
+    transform: translate3d(0, 0, 0) scale3d(0.98, 0.98, 1);
+}
+
+.btn-secondary:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
    END OF USER IMPROVEMENTS
    ═══════════════════════════════════════════════════════════════════════════════ */

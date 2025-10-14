@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Load More Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-results {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        pre {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gallery Load More Functionality Test</h1>
+
+    <div id="test-results" class="test-results">
+        <h2>Test Results:</h2>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const results = document.getElementById('results');
+
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = type;
+            div.textContent = message;
+            results.appendChild(div);
+        }
+
+        async function runTests() {
+            log('Starting Gallery Load More Tests...', 'info');
+
+            try {
+                // Test 1: Check if index.html loads
+                log('Test 1: Loading index.html...');
+                const response = await fetch('/');
+                if (response.ok) {
+                    log('✓ index.html loaded successfully', 'success');
+                } else {
+                    log('✗ Failed to load index.html', 'error');
+                    return;
+                }
+
+                // Test 2: Parse the HTML
+                const html = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                // Test 3: Check for gallery items
+                const totalGalleryItems = doc.querySelectorAll('.gallery-item').length;
+                const hiddenItems = doc.querySelectorAll('.gallery-item.hidden').length;
+                const visibleItems = totalGalleryItems - hiddenItems;
+
+                log(`Test 2: Gallery Items Analysis:`, 'info');
+                log(`  - Total gallery items: ${totalGalleryItems}`, 'info');
+                log(`  - Visible items: ${visibleItems}`, 'info');
+                log(`  - Hidden items: ${hiddenItems}`, 'info');
+
+                if (totalGalleryItems > 0) {
+                    log('✓ Gallery items found', 'success');
+                } else {
+                    log('✗ No gallery items found', 'error');
+                }
+
+                if (hiddenItems > 0) {
+                    log('✓ Hidden items ready for load more', 'success');
+                } else {
+                    log('⚠ No hidden items for load more functionality', 'error');
+                }
+
+                // Test 4: Check for Load More button
+                const loadMoreBtn = doc.getElementById('load-more-btn');
+                if (loadMoreBtn) {
+                    log('✓ Load More button found', 'success');
+                } else {
+                    log('✗ Load More button not found', 'error');
+                }
+
+                // Test 5: Check if gallery-load-more.js is included
+                const hasScript = html.includes('gallery-load-more.js');
+                if (hasScript) {
+                    log('✓ gallery-load-more.js is included', 'success');
+                } else {
+                    log('✗ gallery-load-more.js is NOT included', 'error');
+                }
+
+                // Test 6: Check if the script file exists
+                const scriptResponse = await fetch('/gallery-load-more.js');
+                if (scriptResponse.ok) {
+                    log('✓ gallery-load-more.js file exists and is accessible', 'success');
+                    const scriptContent = await scriptResponse.text();
+                    log(`  Script size: ${scriptContent.length} bytes`, 'info');
+                } else {
+                    log('✗ gallery-load-more.js file not found', 'error');
+                }
+
+                // Test 7: Check villa carousels
+                const villaCarousels = doc.querySelectorAll('.villa-carousel');
+                log(`Test 3: Villa Carousels:`, 'info');
+                log(`  - Total carousels: ${villaCarousels.length}`, 'info');
+
+                villaCarousels.forEach((carousel, index) => {
+                    const images = carousel.querySelectorAll('.villa-image');
+                    const villaType = carousel.dataset.villa || `Carousel ${index + 1}`;
+                    log(`  - ${villaType}: ${images.length} images`, 'info');
+                });
+
+                if (villaCarousels.length > 0) {
+                    log('✓ Villa carousels configured', 'success');
+                }
+
+                // Summary
+                log('\n=== Test Summary ===', 'info');
+                log(`Gallery is set up with ${visibleItems} visible and ${hiddenItems} hidden items`, 'info');
+                log('Load More functionality should be working if button is clicked', 'info');
+
+            } catch (error) {
+                log(`Error during testing: ${error.message}`, 'error');
+                console.error(error);
+            }
+        }
+
+        // Run tests when page loads
+        runTests();
+    </script>
+</body>
+</html>
