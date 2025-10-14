@@ -818,23 +818,33 @@ html[lang="ar"] body {
     padding: 0 var(--s-24);
 }
 
-/* Horizontal scroll track - GSAP controlled premium scroll */
+/* Horizontal scroll track - GSAP controlled premium scroll on desktop */
 .rituals-track {
     display: flex;
     gap: var(--s-24);
     padding: 0 var(--s-24);
     overflow-x: visible;  /* Changed to visible for GSAP animation */
     overflow-y: hidden;
-    /* Removed scroll-behavior and scroll-snap for GSAP control */
 
     /* GPU acceleration */
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
-    will-change: transform;  /* Changed to transform for GSAP */
+    will-change: transform;  /* GSAP transform animation */
 
     /* Ensure full width to show all panels */
-    width: max-content;  /* Changed to max-content for proper GSAP measurement */
+    width: max-content;
     position: relative;
+}
+
+/* Desktop: Disable scroll-snap when GSAP takes over */
+@media (min-width: 769px) {
+    .rituals-track {
+        scroll-snap-type: none;
+    }
+
+    .ritual-panel {
+        scroll-snap-align: none;
+    }
 }
 
 .rituals-track::-webkit-scrollbar {
@@ -930,17 +940,21 @@ html[lang="ar"] body {
     opacity: 1 !important;
 }
 
-/* Mobile adjustments */
+/* Mobile adjustments - Native horizontal scroll */
 @media (max-width: 768px) {
     .ritual-panel {
         flex: 0 0 260px;  /* Reduced for better mobile visibility */
         max-width: 260px;
         min-width: 260px;
+        scroll-snap-align: start; /* Re-enable snap for mobile */
     }
 
     .rituals-track {
         padding: 0 var(--s-16);
         gap: var(--s-16);
+        overflow-x: auto; /* Enable native scroll on mobile */
+        scroll-snap-type: x mandatory; /* Smooth snap scrolling */
+        -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
     }
 }
 

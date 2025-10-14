@@ -223,6 +223,85 @@ document.addEventListener('DOMContentLoaded', () => {
     // This prevents any ScrollTrigger conflicts or horizontal transforms
     // ═══════════════════════════════════════════════════════════════════
 
+    // ═══════════════════════════════════════════════════════════════════
+    // RITUALS SECTION - Pinned Horizontal Scroll (Desktop Only)
+    // Ultra-smooth scroll-jacking: pins section, scrolls horizontally,
+    // then continues vertical scroll. Mobile gets native scroll.
+    // ═══════════════════════════════════════════════════════════════════
+    const ritualsSection = document.querySelector('.chapter-rituals');
+    const ritualsTrack = document.querySelector('.rituals-track');
+
+    if (ritualsSection && ritualsTrack && window.innerWidth > 768 && !prefersReducedMotion) {
+        // Calculate total horizontal scroll distance needed
+        const getScrollDistance = () => {
+            const trackWidth = ritualsTrack.scrollWidth;
+            const windowWidth = window.innerWidth;
+            return trackWidth - windowWidth;
+        };
+
+        // Create the pinned horizontal scroll animation
+        const horizontalScrollTween = gsap.to(ritualsTrack, {
+            x: () => -getScrollDistance(),
+            ease: 'none',
+            scrollTrigger: {
+                trigger: ritualsSection,
+                start: 'top top',
+                end: () => `+=${getScrollDistance()}`,
+                scrub: 1,
+                pin: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true
+            }
+        });
+
+        // Ritual panels fade in as they come into view during horizontal scroll
+        gsap.utils.toArray('.ritual-panel').forEach((panel, index) => {
+            gsap.from(panel, {
+                opacity: 0,
+                scale: 0.95,
+                y: 30,
+                duration: 0.6,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: panel,
+                    start: 'left 85%',
+                    end: 'left 60%',
+                    toggleActions: 'play none none reverse',
+                    containerAnimation: horizontalScrollTween.scrollTrigger,
+                    horizontal: true
+                }
+            });
+        });
+
+        // Header reveal
+        gsap.from('.rituals-header > *', {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: ritualsSection,
+                start: 'top 70%',
+                toggleActions: 'play none none none'
+            }
+        });
+    } else if (ritualsSection && window.innerWidth <= 768) {
+        // Mobile: Simple reveal animation for ritual panels
+        gsap.from('.ritual-panel', {
+            x: 50,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: ritualsSection,
+                start: 'top 70%',
+                toggleActions: 'play none none none'
+            }
+        });
+    }
+
     // Map Section Animations
     const mapContainer = document.querySelector('.map-container');
     if (mapContainer) {
