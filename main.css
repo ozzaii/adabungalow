@@ -2157,3 +2157,107 @@ html[lang="ar"] body {
 
    Total: ~1,900 lines vs 33 files
    ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SECTION 17: USER REQUESTED IMPROVEMENTS - October 2025
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* 1. GOLD DIVIDER between villa cards */
+.villa-divider {
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--brass) 20%,
+        var(--brass) 80%,
+        transparent 100%
+    );
+    margin: var(--s-64) auto;
+    max-width: 600px;
+    opacity: 0.6;
+}
+
+/* 2. REMOVE WHITE OVERLAY from villa cards */
+.glass-overlay {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+/* 3. SMALLER PREMIUM ICONS for amenity badges */
+.badge-icon {
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0;
+    stroke-width: 1.5;
+}
+
+/* 4. AMENITY CHIPS container */
+.amenity-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-8);
+    margin: var(--s-20) 0;
+}
+
+/* 5. Villa card text styles (HTML uses .villa-name and .villa-prose) */
+.villa-name {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-family: var(--font-display);
+    color: var(--evergreen);
+    margin-bottom: var(--s-12);
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.villa-prose {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--evergreen);
+    margin-bottom: var(--s-20);
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 6. FIX RITUALS HORIZONTAL SCROLL - Add padding at end for visibility */
+.rituals-track {
+    /* Add right padding so last items are visible */
+    padding: 0 var(--s-24) 0 var(--s-24);
+}
+
+.rituals-track::after {
+    content: '';
+    flex: 0 0 var(--s-24);
+    height: 1px;
+}
+
+/* Ensure last panel is visible */
+.ritual-panel:last-child {
+    margin-right: var(--s-24);
+}
+
+/* Mobile rituals improvements */
+@media (max-width: 768px) {
+    .rituals-track {
+        padding: 0 var(--s-16) 0 var(--s-16);
+    }
+    
+    .ritual-panel:last-child {
+        margin-right: var(--s-16);
+    }
+}
+
+/* 7. Ensure villa chapter has clean background without white overlay */
+.villa-chapter {
+    background: rgba(255, 255, 255, 0.60);
+}
+
+/* 8. Better badge styling with smaller, premium appearance */
+.badge {
+    padding: var(--s-4) var(--s-10);
+    gap: var(--s-4);
+    font-size: 0.8125rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   END OF USER IMPROVEMENTS
+   ═══════════════════════════════════════════════════════════════════════════════ */
