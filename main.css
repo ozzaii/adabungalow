@@ -331,6 +331,33 @@ html[lang="ar"] body {
     opacity: 0 !important;
 }
 
+/* Villa split wrapper - explicit transparency (was missing!) */
+.villa-split {
+    display: flex;
+    flex-direction: column;
+    background: transparent !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Villa accent lines - hidden (decorative, no visual purpose) */
+.villa-accent-line {
+    display: none !important;
+}
+
+/* Desktop layout for villa split */
+@media (min-width: 769px) {
+    .villa-split {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .villa-visual,
+    .villa-narrative {
+        flex: 1;
+    }
+}
+
 /* Content wrapper - above glass layers */
 .villa-chapter > *:not(.glass-filter):not(.glass-overlay) {
     position: relative;
@@ -2181,7 +2208,7 @@ html[lang="ar"] body {
 /* Remove white background from villa cards */
 .villa-chapter {
     background: transparent !important;
-    background-color: rgba(247, 246, 242, 0.15) !important; /* Very subtle off-white tint only */
+    /* Removed background-color - was creating white overlay */
 }
 
 /* 3. SMALLER PREMIUM ICONS for amenity badges */
