@@ -816,7 +816,7 @@ html[lang="ar"] body {
     padding: 0 var(--s-24);
 }
 
-/* Horizontal scroll track */
+/* Horizontal scroll track - Native CSS only, no JavaScript */
 .rituals-track {
     display: flex;
     gap: var(--s-24);
@@ -824,7 +824,12 @@ html[lang="ar"] body {
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;  /* Changed from mandatory to proximity for natural feel */
+
+    /* MOMENTUM SCROLLING - iOS/Android swipe continuation */
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    scroll-padding: 0 var(--s-24);
 
     /* Hide scrollbar but keep functionality */
     scrollbar-width: none;
@@ -833,6 +838,7 @@ html[lang="ar"] body {
     /* GPU acceleration */
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
+    will-change: scroll-position;
 }
 
 .rituals-track::-webkit-scrollbar {

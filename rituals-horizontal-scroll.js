@@ -40,22 +40,28 @@
             return trackWidth - windowWidth;
         };
 
-        // SMOOTH PIN with horizontal scroll - FIXED: Less aggressive pinning
+        // DISABLED - Using native CSS horizontal scroll instead
+        // This was causing navigation jumping and conflicts with gallery
+        /*
         gsap.to(ritualsTrack, {
             x: () => -getScrollAmount(),
             ease: "none",
             scrollTrigger: {
                 trigger: ritualsSection,
-                start: "top 20%",           // Gentler activation - no premature jumping
-                end: () => `+=${getScrollAmount()}`,  // Shorter duration - no extra spacing
+                start: "top 20%",
+                end: () => `+=${getScrollAmount()}`,
                 pin: true,
-                scrub: 1.5,                 // Match villa animations - no conflicts
+                scrub: 1.5,
                 invalidateOnRefresh: true,
-                anticipatePin: 0,           // CRITICAL: No pre-pinning - prevents jumping
-                pinSpacing: false,          // CRITICAL: No artificial spacing - prevents bouncing
-                markers: false              // Disable debug markers
+                anticipatePin: 0,
+                pinSpacing: false,
+                markers: false
             }
         });
+        */
+
+        // Using native CSS scroll with momentum - no pinning, no jumping
+        console.log('✨ Rituals using native CSS horizontal scroll - no pinning');
 
         // Minimal hover effect - just lift and shadow
         panels.forEach(panel => {
@@ -96,7 +102,8 @@
             });
         });
 
-        // Smooth refresh on window resize
+        // DISABLED - No ScrollTrigger refresh needed anymore
+        /*
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
@@ -105,10 +112,10 @@
             }, 250);
         });
 
-        // Clean reset on refresh
         ScrollTrigger.addEventListener("refreshInit", () => {
             gsap.set(ritualsTrack, { x: 0 });
         });
+        */
 
         console.log('✨ Rituals minimal smooth scroll initialized');
     }
