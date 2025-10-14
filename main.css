@@ -2218,31 +2218,34 @@ html[lang="ar"] body {
     visibility: visible !important;
 }
 
-/* 6. FIX RITUALS HORIZONTAL SCROLL - Add padding at end for visibility */
+/* 6. FIX RITUALS HORIZONTAL SCROLL - Proper padding after last element */
 .rituals-track {
-    /* Add right padding so last items are visible */
-    padding: 0 var(--s-24) 0 var(--s-24);
+    padding-left: var(--s-24) !important;
+    padding-right: var(--s-48) !important; /* Extra padding on right for visibility */
 }
 
 .rituals-track::after {
     content: '';
-    flex: 0 0 var(--s-24);
-    height: 1px;
+    flex: 0 0 100px; /* Wide invisible spacer */
+    min-width: 100px;
+    height: 100%;
 }
 
-/* Ensure last panel is visible */
+/* Remove snap alignment from last panel to prevent cut-off */
 .ritual-panel:last-child {
-    margin-right: var(--s-24);
+    scroll-snap-align: center; /* Center instead of start */
 }
 
 /* Mobile rituals improvements */
 @media (max-width: 768px) {
     .rituals-track {
-        padding: 0 var(--s-16) 0 var(--s-16);
+        padding-left: var(--s-16) !important;
+        padding-right: var(--s-32) !important;
     }
-    
-    .ritual-panel:last-child {
-        margin-right: var(--s-16);
+
+    .rituals-track::after {
+        flex: 0 0 80px;
+        min-width: 80px;
     }
 }
 
