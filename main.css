@@ -266,14 +266,9 @@ html[lang="ar"] body {
 
 /* Individual villa card */
 .villa-chapter {
-    /* Glass effect variables */
-    --glass-bg: rgba(255, 255, 255, 0.75);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --glass-blur-desktop: 8px;
-    --glass-blur-mobile: 4px;
-
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
+    /* NO GLASS EFFECT - TRANSPARENT */
+    background: transparent !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow-md);
@@ -315,27 +310,18 @@ html[lang="ar"] body {
     opacity: 0 !important;
 }
 
-/* Glass filter layer */
+/* Glass filter layer - DISABLED */
 .glass-filter {
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(var(--glass-blur-desktop)) saturate(120%);
-    -webkit-backdrop-filter: blur(var(--glass-blur-desktop)) saturate(120%);
-    z-index: 1;
-    pointer-events: none;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
-/* Glass overlay layer */
+/* Glass overlay layer - DISABLED */
 .glass-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.3) 0%,
-        rgba(255, 255, 255, 0.1) 100%
-    );
-    z-index: 2;
-    pointer-events: none;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 /* Disable specular and distortion layers */
