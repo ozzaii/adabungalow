@@ -99,76 +99,53 @@ document.addEventListener('DOMContentLoaded', () => {
         visibility: 'visible' 
     });
     
-    // Booking Card Entrance Animation - Optimized timing
+    // Booking Card Entrance Animation - CONSOLIDATED to prevent jumping
     const bookingCard = document.querySelector('.booking-card');
     if (bookingCard) {
-        // Main card animation with earlier trigger
-        gsap.from(bookingCard, {
-            y: 40,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power2.out',
+        // Single timeline for all booking animations - prevents conflicts
+        const bookingTl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.chapter-availability',
-                start: 'top 80%', // Earlier trigger
-                toggleActions: 'play none none none'
+                start: 'top 80%',
+                toggleActions: 'play none none none',
+                once: true // Only play once
             }
         });
-        
-        // Field stagger animation - faster
-        gsap.from('.booking-field', {
-            y: 20,
-            opacity: 0,
-            duration: 0.4,
-            stagger: 0.08,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '.booking-card',
-                start: 'top 85%',
-                toggleActions: 'play none none none'
-            }
-        });
-        
-        // Price preview animation - no delay
-        gsap.from('.price-preview', {
-            scale: 0.98,
-            opacity: 0,
-            duration: 0.6,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '.price-preview',
-                start: 'top 90%',
-                toggleActions: 'play none none none'
-            }
-        });
-        
-        // CTA button animation - reduced delay
-        gsap.from('.booking-actions', {
-            y: 15,
-            opacity: 0,
-            duration: 0.6,
-            delay: 0.2,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '.booking-actions',
-                start: 'top 90%',
-                toggleActions: 'play none none none'
-            }
-        });
-        
-        // Trust badges stagger - faster
-        gsap.from('.trust-badge', {
-            scale: 0.9,
-            opacity: 0,
-            duration: 0.4,
-            stagger: 0.06,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '.trust-badges',
-                start: 'top 90%',
-                toggleActions: 'play none none none'
-            }
-        });
+
+        // Chain animations in sequence
+        bookingTl
+            .from(bookingCard, {
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            })
+            .from('.booking-field', {
+                y: 20,
+                opacity: 0,
+                duration: 0.4,
+                stagger: 0.08,
+                ease: 'power2.out'
+            }, '-=0.4') // Overlap slightly
+            .from('.price-preview', {
+                scale: 0.98,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.out'
+            }, '-=0.3')
+            .from('.booking-actions', {
+                y: 15,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.out'
+            }, '-=0.4')
+            .from('.trust-badge', {
+                scale: 0.9,
+                opacity: 0,
+                duration: 0.4,
+                stagger: 0.06,
+                ease: 'power2.out'
+            }, '-=0.3');
     }
     
     // Floating animation for background

@@ -269,7 +269,8 @@
                 const element = entry.target;
 
                 if (entry.isIntersecting) {
-                    element.style.opacity = Math.max(0.6, opacity);
+                    // DISABLED - Let CSS handle opacity (transparent !important)
+                    // element.style.opacity = Math.max(0.6, opacity);
 
                     // Add subtle scale animation when entering viewport
                     if (opacity > 0.5 && !element.dataset.glassSeen) {
@@ -282,10 +283,10 @@
 
         // Observe all glass elements
         glassElements.forEach(element => {
-            // Initial state for entrance animation
-            element.style.opacity = '0.6';
-            element.style.transform = 'translate3d(0, 0, 0) scale(0.98)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            // DISABLED - These inline styles override CSS transparent !important
+            // element.style.opacity = '0.6';
+            // element.style.transform = 'translate3d(0, 0, 0) scale(0.98)';
+            // element.style.transition = 'opacity 0.6s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
 
             observer.observe(element);
         });
