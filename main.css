@@ -2177,10 +2177,25 @@ html[lang="ar"] body {
     opacity: 0.6;
 }
 
-/* 2. REMOVE WHITE OVERLAY from villa cards */
+/* 2. REMOVE ALL WHITE OVERLAYS from villa cards */
 .glass-overlay {
     display: none !important;
     opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.glass-filter {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Remove white background from villa cards */
+.villa-chapter {
+    background: transparent !important;
+    background-color: rgba(247, 246, 242, 0.15) !important; /* Very subtle off-white tint only */
 }
 
 /* 3. SMALLER PREMIUM ICONS for amenity badges */
@@ -2249,12 +2264,7 @@ html[lang="ar"] body {
     }
 }
 
-/* 7. Ensure villa chapter has clean background without white overlay */
-.villa-chapter {
-    background: rgba(255, 255, 255, 0.60);
-}
-
-/* 8. Better badge styling with smaller, premium appearance */
+/* 7. Better badge styling with smaller, premium appearance */
 .badge {
     padding: var(--s-4) var(--s-10);
     gap: var(--s-4);
