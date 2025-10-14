@@ -1,7 +1,7 @@
 // Gallery Load More Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const loadMoreBtn = document.getElementById('load-more-btn');
-    const galleryGrid = document.querySelector('.gallery-grid');
+    const galleryGrid = document.getElementById('gallery-grid') || document.querySelector('.gallery-justified');
     const hiddenItems = document.querySelectorAll('.gallery-item.hidden');
 
     if (!loadMoreBtn || !galleryGrid || hiddenItems.length === 0) {

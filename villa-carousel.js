@@ -18,7 +18,7 @@
 
     function setupCarousel(carousel) {
         const images = carousel.querySelectorAll('.villa-image');
-        const dots = carousel.querySelectorAll('.dot');
+        const dots = carousel.querySelectorAll('.carousel-dots .dot');
 
         if (!images.length || !dots.length) return;
 

@@ -2316,9 +2316,10 @@ html[lang="ar"] body {
 
 /* Active image */
 .villa-carousel .villa-image.active {
-    position: relative;
     opacity: 1 !important;
     visibility: visible !important;
+    z-index: 2;
+    position: absolute; /* Keep absolute positioning for proper layering */
 }
 
 /* Carousel dots */
