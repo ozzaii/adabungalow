@@ -236,7 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const getScrollDistance = () => {
             const trackWidth = ritualsTrack.scrollWidth;
             const windowWidth = window.innerWidth;
-            return trackWidth - windowWidth;
+            // Add 100px breathing room so last panel is fully visible
+            return trackWidth - windowWidth + 100;
         };
 
         // Create the pinned horizontal scroll animation
@@ -247,10 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 trigger: ritualsSection,
                 start: 'top top',
                 end: () => `+=${getScrollDistance()}`,
-                scrub: 1,
+                scrub: 1, // 1 second lag for buttery smoothness
                 pin: true,
                 anticipatePin: 1,
-                invalidateOnRefresh: true
+                invalidateOnRefresh: true,
+                markers: false, // Production safety
+                fastScrollEnd: true, // Prevent jank on fast scroll
+                preventOverlaps: true // Prevent conflicts with other ScrollTriggers
             }
         });
 

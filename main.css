@@ -690,6 +690,7 @@ html[lang="ar"] body {
     overflow: hidden;
     border-radius: 12px;
     cursor: pointer;
+    border: 1px solid transparent; /* Base for golden border */
 
     /* Aspect ratio preservation */
     aspect-ratio: 3 / 2;
@@ -699,12 +700,30 @@ html[lang="ar"] body {
     backface-visibility: hidden;
 
     transition: transform 0.3s var(--ease-quiet),
-                box-shadow 0.3s var(--ease-quiet);
+                box-shadow 0.3s var(--ease-quiet),
+                border-color 0.3s var(--ease-quiet);
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s var(--ease-quiet);
+    pointer-events: none;
 }
 
 .gallery-item:hover {
     transform: translate3d(0, -4px, 0);
-    box-shadow: var(--shadow-lg);
+    box-shadow:
+        0 0 0 1px rgba(201, 162, 39, 0.2),
+        0 0 20px rgba(201, 162, 39, 0.15),
+        0 8px 32px rgba(27, 42, 36, 0.16);
+}
+
+.gallery-item:hover::after {
+    border-color: rgba(201, 162, 39, 0.5); /* Subtle golden glow */
 }
 
 /* Gallery image */
@@ -803,12 +822,14 @@ html[lang="ar"] body {
 
 .chapter-rituals {
     padding: var(--s-64) 0;
-    overflow: visible; /* Changed from hidden - was cutting off horizontal scroll */
+    overflow: hidden; /* CRITICAL: Must be hidden to clip horizontal scroll */
+    position: relative;
+    min-height: 100vh; /* Ensure space for GSAP pinning */
 }
 
 .rituals-container {
     max-width: 100%;
-    overflow: hidden;  /* Hide horizontal overflow for GSAP animation */
+    overflow: hidden;  /* Clip horizontal overflow */
     position: relative;
 }
 
@@ -818,18 +839,17 @@ html[lang="ar"] body {
     padding: 0 var(--s-24);
 }
 
-/* Horizontal scroll track - GSAP controlled premium scroll on desktop */
+/* Horizontal scroll track - GSAP controlled on desktop */
 .rituals-track {
     display: flex;
     gap: var(--s-24);
     padding: 0 var(--s-24);
-    overflow-x: visible;  /* Changed to visible for GSAP animation */
-    overflow-y: hidden;
+    overflow: hidden; /* CRITICAL: Hidden to prevent scrollbars during GSAP animation */
 
     /* GPU acceleration */
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
-    will-change: transform;  /* GSAP transform animation */
+    will-change: transform;  /* GSAP animates transform */
 
     /* Ensure full width to show all panels */
     width: max-content;
@@ -840,10 +860,11 @@ html[lang="ar"] body {
 @media (min-width: 769px) {
     .rituals-track {
         scroll-snap-type: none;
+        overflow-x: hidden; /* Force hidden on desktop */
     }
 
     .ritual-panel {
-        scroll-snap-align: none;
+        scroll-snap-align: none; /* Disable snap on desktop */
     }
 }
 
@@ -853,10 +874,10 @@ html[lang="ar"] body {
 
 /* Individual ritual panel */
 .ritual-panel {
-    flex: 0 0 320px;  /* Reduced from 350px to ensure all 6 panels are visible */
-    max-width: 320px;
-    min-width: 320px;  /* Ensure consistent width */
-    scroll-snap-align: start;
+    flex: 0 0 360px; /* INCREASED from 320px for better visibility */
+    max-width: 360px;
+    min-width: 360px;
+    /* scroll-snap-align moved to mobile media query only */
 
     background: transparent !important;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -867,6 +888,10 @@ html[lang="ar"] body {
     /* GPU acceleration */
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
+
+    /* Performance isolation */
+    contain: layout style paint;
+    content-visibility: auto;
 
     transition: transform 0.3s var(--ease-quiet),
                 box-shadow 0.3s var(--ease-quiet);
@@ -943,19 +968,27 @@ html[lang="ar"] body {
 /* Mobile adjustments - Native horizontal scroll */
 @media (max-width: 768px) {
     .ritual-panel {
-        flex: 0 0 260px;  /* Reduced for better mobile visibility */
-        max-width: 260px;
-        min-width: 260px;
-        scroll-snap-align: start; /* Re-enable snap for mobile */
+        flex: 0 0 280px; /* INCREASED from 260px for better readability */
+        max-width: 280px;
+        min-width: 280px;
+        scroll-snap-align: start; /* ONLY enabled on mobile */
     }
 
     .rituals-track {
         padding: 0 var(--s-16);
         gap: var(--s-16);
         overflow-x: auto; /* Enable native scroll on mobile */
+        overflow-y: hidden;
         scroll-snap-type: x mandatory; /* Smooth snap scrolling */
         -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
     }
+}
+
+/* GSAP pin-spacer handling */
+.pin-spacer {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
 }
 
 /* ───────────────────────────────────────────────────────────────────────────────
@@ -1889,18 +1922,20 @@ html[lang="ar"] body {
 }
 
 .badge-line {
-    width: 40px;
+    width: 50px;
     height: 1px;
-    background: var(--brass);
+    background: linear-gradient(90deg, transparent 0%, var(--brass) 50%, transparent 100%);
 }
 
 .badge-text {
     font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.25em; /* WIDER tracking for ultra-premium feel */
     text-transform: uppercase;
     color: var(--alpine-white);
     opacity: 1 !important;
+    font-variant: small-caps; /* Sophisticated small-caps */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle depth */
 }
 
 /* Hero composition */
@@ -1916,7 +1951,9 @@ html[lang="ar"] body {
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-style: italic;
     color: var(--alpine-white);
-    opacity: 0.9;
+    opacity: 0.95;
+    font-feature-settings: 'ss01' on, 'liga' on, 'kern' on; /* Stylistic alternates */
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Elegant depth */
 }
 
 .hero-headline {
@@ -1927,6 +1964,9 @@ html[lang="ar"] body {
     color: var(--alpine-white);
     margin: 0;
     opacity: 1 !important;
+    font-feature-settings: 'ss01' on, 'liga' on, 'kern' on; /* Stylistic alternates */
+    text-shadow: 0 6px 24px rgba(0, 0, 0, 0.5); /* Dramatic depth */
+    letter-spacing: -0.02em; /* Tight tracking for impact */
 }
 
 .line {
@@ -1942,7 +1982,12 @@ html[lang="ar"] body {
 
 .italic {
     font-style: italic;
-    color: var(--brass);
+    background: linear-gradient(135deg, #D4AF37 0%, var(--brass) 50%, #B8941F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(201, 162, 39, 0.4); /* Golden glow */
+    filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.3));
 }
 
 /* Hero description */
@@ -1955,7 +2000,10 @@ html[lang="ar"] body {
     font-size: 1.125rem;
     line-height: 1.8;
     color: var(--alpine-white);
-    opacity: 0.9;
+    opacity: 0.92;
+    font-variant-numeric: lining-nums proportional-nums; /* Elegant numbers */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle depth */
+    text-wrap: balance; /* Balanced line lengths */
 }
 
 .prose-line {
