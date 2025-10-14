@@ -808,6 +808,8 @@ html[lang="ar"] body {
 
 .rituals-container {
     max-width: 100%;
+    overflow: hidden;  /* Hide horizontal overflow for GSAP animation */
+    position: relative;
 }
 
 .rituals-header {
@@ -816,33 +818,23 @@ html[lang="ar"] body {
     padding: 0 var(--s-24);
 }
 
-/* Horizontal scroll track - Native CSS only, no JavaScript */
+/* Horizontal scroll track - GSAP controlled premium scroll */
 .rituals-track {
     display: flex;
     gap: var(--s-24);
     padding: 0 var(--s-24);
-    overflow-x: auto;
+    overflow-x: visible;  /* Changed to visible for GSAP animation */
     overflow-y: hidden;
-    scroll-behavior: smooth;
-    scroll-snap-type: x proximity;  /* Changed from mandatory to proximity for natural feel */
-
-    /* MOMENTUM SCROLLING - iOS/Android swipe continuation */
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-    scroll-padding: 0 var(--s-24);
-
-    /* Hide scrollbar but keep functionality */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    /* Removed scroll-behavior and scroll-snap for GSAP control */
 
     /* GPU acceleration */
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
-    will-change: scroll-position;
+    will-change: transform;  /* Changed to transform for GSAP */
 
     /* Ensure full width to show all panels */
-    width: 100%;
-    max-width: 100vw;
+    width: max-content;  /* Changed to max-content for proper GSAP measurement */
+    position: relative;
 }
 
 .rituals-track::-webkit-scrollbar {
