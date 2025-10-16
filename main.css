@@ -1981,13 +1981,15 @@ html[lang="ar"] body {
 }
 
 .italic {
-    font-style: italic;
-    background: linear-gradient(135deg, #D4AF37 0%, var(--brass) 50%, #B8941F 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 0 30px rgba(201, 162, 39, 0.4); /* Golden glow */
-    filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.3));
+    font-style: italic !important;
+    background: linear-gradient(135deg, #D4AF37 0%, var(--brass) 50%, #B8941F 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    /* text-shadow doesn't work with transparent text - use filter instead */
+    filter: drop-shadow(0 0 40px rgba(201, 162, 39, 0.8)) !important;
+    /* Add webkit prefix for better browser support */
+    -webkit-filter: drop-shadow(0 0 40px rgba(201, 162, 39, 0.8)) !important;
 }
 
 /* Hero description */
@@ -2582,4 +2584,4 @@ html[lang="ar"] body {
 /* ═══════════════════════════════════════════════════════════════════════════════
    END OF USER IMPROVEMENTS
    ═══════════════════════════════════════════════════════════════════════════════ */
-/* Cache bust v11 - removed commented CSS files 1760459000 */
+/* Cache bust v12 - fixed .italic gradient with !important 1760459500 */
