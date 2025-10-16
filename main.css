@@ -369,6 +369,10 @@ html[lang="ar"] body {
     position: relative;
     width: 100%;
 
+    /* CRITICAL FIX: Add height for carousel */
+    aspect-ratio: 3 / 2;
+    min-height: 400px;
+
     /* CRITICAL: Remove white gap under image */
     line-height: 0;
     font-size: 0;
@@ -2584,4 +2588,4 @@ html[lang="ar"] body {
 /* ═══════════════════════════════════════════════════════════════════════════════
    END OF USER IMPROVEMENTS
    ═══════════════════════════════════════════════════════════════════════════════ */
-/* Cache bust v12 - fixed .italic gradient with !important 1760459500 */
+/* Cache bust v13 - CRITICAL FIX: villa-visual height restored */

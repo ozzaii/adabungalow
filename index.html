@@ -126,18 +126,18 @@
 
     <!-- Preload critical assets -->
     <link rel="preload" href="uzungol_ada_bungalow/havuzlu_luks_villa/ad252492_z.jpg" as="image" fetchpriority="high">
-    <link rel="preload" href="main.css?v=12" as="style">
+    <link rel="preload" href="main.css?v=13" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-    
+
     <!-- Critical inline styles to prevent FOUC -->
     <style>
         /* Prevent flash of unstyled content */
         html { visibility: hidden; opacity: 0; }
         .no-fouc { visibility: visible; opacity: 1; transition: opacity 0.3s ease; }
     </style>
-    
+
     <!-- SINGLE CSS FILE - main.css replaces all previous 33 stylesheets -->
-    <link rel="stylesheet" href="main.css?v=12">
+    <link rel="stylesheet" href="main.css?v=13">
     
     <!-- GSAP & ScrollTrigger - Deferred Loading -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
